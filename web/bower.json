@@ -1,0 +1,21 @@
+{
+  "name": "MyUnimol",
+  "version": "0.0.0",
+  "authors": [
+    "intersimone999 <intersimone999@hotmail.it>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.4.2",
+    "core-elements": "Polymer/core-elements#~0.4.2",
+    "paper-elements": "Polymer/paper-elements#~0.4.2"
+  }
+}
