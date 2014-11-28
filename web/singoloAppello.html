@@ -1,0 +1,175 @@
+<html>
+    <head>
+        <title>MyUnimol</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="bower_components/platform/platform.js"></script>
+        <link rel="import" href="bower_components/core-scaffold/core-scaffold.html">
+        <link rel="import" href="bower_components/core-header-panel/core-header-panel.html">
+        <link rel="import" href="bower_components/core-menu/core-menu.html">
+        <link rel="import" href="bower_components/core-item/core-item.html">
+        <link rel="import" href="bower_components/core-icon-button/core-icon-button.html">
+        <link rel="import" href="bower_components/core-toolbar/core-toolbar.html">
+        <link rel="import" href="bower_components/core-icons/core-icons.html">
+        <link rel="import" href="bower_components/core-icon/core-icon.html">
+        <link rel="import" href="bower_components/core-menu/core-submenu.html">
+
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+            }
+            table {
+                width: 80%;
+                border: 2px solid #D6DDE6;
+                border-collapse: collapse;
+            }
+            thead {
+                background-color: #35A4DF;
+                width: 80%;
+                border: 2px solid #D6DDE6;
+                border-collapse: collapse;
+            
+            }
+            th {
+                color: rgb(0, 0, 0);
+                font-weight: bold;
+            }
+            td, th {
+                padding: 6px;
+                border: 1px solid rgb(204, 204, 204);
+                text-align: left;
+            }
+            #core_scaffold {
+                position: absolute;
+                top: 0px;
+                right: 0px;
+                bottom: 0px;
+                left: 0px;
+                width: 100%;
+                height: 100%;
+            }
+            #core_header_panel {
+                background-color: rgb(255, 255, 255);
+            }
+            #core_toolbar {
+                color: rgb(255, 255, 255);
+                background-color: rgb(79, 125, 201);
+            }
+            #core_menu {
+                font-size: 16px;
+            }
+            #student_name {
+                left: 70px;
+                top: 10px;
+                position: absolute;
+                width: 155px;
+                height: 30px;
+            }
+            #student_id {
+                top: 40px;
+                position: absolute;
+                left: 70px;
+            }
+            
+.PrenotaButton {
+	-moz-box-shadow:inset 0px 1px 0px 0px #7a8eb9;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #7a8eb9;
+	box-shadow:inset 0px 1px 0px 0px #7a8eb9;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #637aad), color-stop(1, #5972a7));
+	background:-moz-linear-gradient(top, #637aad 5%, #5972a7 100%);
+	background:-webkit-linear-gradient(top, #637aad 5%, #5972a7 100%);
+	background:-o-linear-gradient(top, #637aad 5%, #5972a7 100%);
+	background:-ms-linear-gradient(top, #637aad 5%, #5972a7 100%);
+	background:linear-gradient(to bottom, #637aad 5%, #5972a7 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#637aad', endColorstr='#5972a7',GradientType=0);
+	background-color:#637aad;
+	border:1px solid #314179;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:arial;
+	font-size:18px;
+	font-weight:bold;
+	padding:8px 8px;
+	text-decoration:none;
+        position: relative;
+        margin-left: 300px;
+        margin-top: 50px;
+}
+.PrenotaButton:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #5972a7), color-stop(1, #637aad));
+	background:-moz-linear-gradient(top, #5972a7 5%, #637aad 100%);
+	background:-webkit-linear-gradient(top, #5972a7 5%, #637aad 100%);
+	background:-o-linear-gradient(top, #5972a7 5%, #637aad 100%);
+	background:-ms-linear-gradient(top, #5972a7 5%, #637aad 100%);
+	background:linear-gradient(to bottom, #5972a7 5%, #637aad 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#5972a7', endColorstr='#637aad',GradientType=0);
+	background-color:#5972a7;
+}
+.PrenotaButton:active {
+	position:relative;
+	top:1px;
+}
+
+        </style>
+
+    </head>
+
+    <body>
+    <core-scaffold id="core_scaffold">
+        <table>
+            <thead
+                    <tr>
+                    <th>Materia</th>
+                    <th>CFU</th>
+                    <th>Data</th>
+                    <th>Professore</th>
+                    <th>Aula</th>
+                    <th>N° Prenotati</th>
+                    <th>Note</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Proggettistica</a></td>
+                    <td>12</td>
+                    <td>12/11/2015</td>
+                    <td>Simone Scalabrino</td>
+                    <td>L. Pilla</td>
+                    <td>35</td>
+                    <td>niente</td>
+                </tr>
+         
+            </tbody>
+        </table>
+        
+        
+            
+            <a href="#" class="PrenotaButton">Prenota Esame</a>
+            </div>
+        
+        <core-header-panel mode="seamed" id="core_header_panel" navigation flex>
+            <core-toolbar id="core_toolbar">
+                <div id="student_name" tool horizontal layout center start-justified>Marco Rossi</div>
+                <div id="student_id" tool start-justified>140000</div>
+            </core-toolbar>
+            <core-menu selected="Home" valueattr="label" selectedindex="0" id="core_menu" icon="extension" theme="core-light-theme">
+                <core-item id="home_item" icon="home" label="Home" horizontal center layout active></core-item>
+                <core-item id="libretto_item" icon="folder-shared" label="Libretto" horizontal center layout></core-item>
+                <core-item id="docenti_item" icon="mail" label="Rubrica Docenti" horizontal center layout></core-item>
+                <core-item id="appelli_item" icon="assignment" label="Appelli" horizontal center layout></core-item>
+                <core-item id="bacheca_item" icon="announcement" label="Bacheca avvisi" horizontal center layout></core-item>
+                <core-item id="piano_item" icon="view-list" label="Piano di studi" horizontal center layout></core-item>
+            </core-menu>
+        </core-header-panel>
+       
+
+    </core-scaffold>
+</body>
+</html>
+
+
+
+
+
+
