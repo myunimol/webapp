@@ -1,5 +1,5 @@
 
-package it.unimol.mywebapp.login;
+package rocks.teammolise.myunimol.webapp;
 
 /**
  * Il bean del'utente con le informazioni da inserire nella sessione

@@ -1,4 +1,4 @@
-package rocks.teammolise.myunimol.stublogin;
+package rocks.teammolise.myunimol.stubs;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "stub", urlPatterns = {"/stub"})
-public class Stub extends HttpServlet {
+@WebServlet(name = "TestCredentials", urlPatterns = {"/TestCredentials"})
+public class TestCredentialsStub extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>

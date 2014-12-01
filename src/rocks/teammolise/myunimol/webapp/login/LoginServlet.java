@@ -3,13 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package it.unimol.mywebapp.login;
+package rocks.teammolise.myunimol.webapp.login;
 
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
-import it.unimol.mywebapp.configuration.ConfigurationManager;
-import it.unimol.mywebapp.configuration.ConfigurationManagerHandler;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -19,6 +17,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.json.*;
+
+import rocks.teammolise.myunimol.webapp.UserInfo;
+import rocks.teammolise.myunimol.webapp.configuration.ConfigurationManager;
+import rocks.teammolise.myunimol.webapp.configuration.ConfigurationManagerHandler;
 
 /**
  * 

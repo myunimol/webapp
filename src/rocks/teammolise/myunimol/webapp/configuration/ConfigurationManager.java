@@ -1,4 +1,4 @@
-package it.unimol.mywebapp.configuration;
+package rocks.teammolise.myunimol.webapp.configuration;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -9,7 +9,12 @@ import java.util.Properties;
  *
  * @author Vincenzo
  */
-public class ConfigurationManager implements ConfigurationManagerInterface{      
+public class ConfigurationManager implements ConfigurationManagerInterface{  
+	private File file;
+	
+	public ConfigurationManager(String pFilename) {
+		this.file = new File(pFilename);
+	}
     
     public Properties loadProperties() throws IOException {
         
@@ -18,7 +23,6 @@ public class ConfigurationManager implements ConfigurationManagerInterface{
         /**
          * Carico il file config.properties in un File con il suo absolute path **TO FIX**
          */
-        File file = new File("C:\\Users\\Vincenzo\\Documents\\NetBeansProjects\\MyUnimolWebApp\\src\\java\\it\\unimol\\mywebapp\\configuration\\resources\\config.properties");
 
         FileInputStream input = new FileInputStream(file);
         

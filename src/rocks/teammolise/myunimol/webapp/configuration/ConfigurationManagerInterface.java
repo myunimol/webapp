@@ -1,4 +1,4 @@
-package it.unimol.mywebapp.configuration;
+package rocks.teammolise.myunimol.webapp.configuration;
 
 import java.io.IOException;
 
