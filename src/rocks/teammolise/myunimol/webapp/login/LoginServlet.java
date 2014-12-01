@@ -44,7 +44,7 @@ public class LoginServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         //l'url del servizio di login
-        String urlLogin = "http://localhost:8080/MyUnimolWebServices/stub";
+        String urlLogin = ConfigurationManagerHandler.getInstance().getWebServicesRoot() + "TestCredentials";
         try {
             //ricavo un'istanza di configManager da dove prenderò il token
             ConfigurationManager configManager = ConfigurationManagerHandler.getInstance();
