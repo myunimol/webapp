@@ -59,4 +59,8 @@ public class UserInfo {
         this.studentClass = studentClass;
     }
     
+    public String getCredentials() {
+    	return "";
+    }
+    
 }
