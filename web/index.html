@@ -1,105 +1,101 @@
+<!DOCTYPE html>
+<!-- -->
 <html>
-	<head>
-                <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-		<script src="bower_components/platform/platform.js"></script>
-		
-		<link rel="import" href="bower_components/core-toolbar/core-toolbar.html">
-		<link rel="import" href="bower_components/core-ajax/core-ajax.html">
-		<link rel="import" href="bower_components/core-menu/core-menu.html">
-		<link rel="import" href="bower_components/core-item/core-item.html">
-		<link rel="import" href="bower_components/core-header-panel/core-header-panel.html">
-		<link rel="import" href="bower_components/core-drawer-panel/core-drawer-panel.html">
-		<link rel="import" href="bower_components/core-icons/core-icons.html">
-		<link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
-                <link rel="import" href="bower_components/paper-toast/paper-toast.html">
-		
-		<style shim-shadowdom>
-			core-header-panel {
-				background: white;
-			}
+    <head>
+        <title>login</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="bower_components/platform/platform.js"></script>
 
-			core-toolbar {
-				background-color: #03A9F4;
-			}
-			
-			#navheader {
-				background-color: #56BA89;
-			}
-			
-			/* Si nasconde il bottone del menu sugli schermi non "stretti" */
-			core-drawer-panel:not([narrow]) #navicon {
-				display: none;
-			}
-		</style>
-		
-		<style>
-			body {
-				font-family: sans-serif;
-			}
-			.content {
-				padding: 20px;
-			}
-		</style>
+        <link rel="import" href="bower_components/core-icons/core-icons.html">
+        <link rel="import" href="bower_components/core-icon/core-icon.html">
+        <link rel="import" href="bower_components/core-input/core-input.html">
+        <link rel="import" href="bower_components/paper-button/paper-button.html">
 
-	</head>
-	
-	<body>
-        <paper-toast id="msgErrore" role="alert" text="Errore: pagina non disponibile."></paper-toast>
-		<core-ajax id='ajaxTsw' url='get-exam-info' params='{}' handleAs='json'></core-ajax>
-		<core-ajax id='ajaxIs' url='get-exam-info' params='{}' handleAs='json'></core-ajax>
-		<core-drawer-panel id="drawerPanel">
-			<core-header-panel drawer>
-					<core-toolbar>
-					<span>Menu</span>
-				</core-toolbar>
-				<core-menu>
-					<core-item id='tsw' label="TSW"></core-item>
-					<core-item id='is' label="Ingegneria del software"></core-item>
-				</core-menu>
-			</core-header-panel>
+        <style>    
+            body {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                box-sizing: border-box;
+                background-color: rgb(53, 164, 223);
+                font-family: Arial, sans-serif;
+            }
 
-			<core-header-panel main>
-				<core-toolbar id="mainheader">
-					<paper-icon-button id="navicon" icon="menu"></paper-icon-button>
-					<span flex>Title</span>
-				</core-toolbar>
-				<div id='mainContentHandler' class="content">
-					Cliccare su una voce del menu a sinistra per visualizzarne il contenuto
-                                        <template bind="{{}}">
-                                            <div><h2>Crediti</h2><p>{{cfu}}</p></div>
-                                            <div><h2>Obiettivi</h2><p>{{goal}}</p></div>
-                                            <div><h2>Libro</h2><p>{{book}}</p></div>
-                                        </template>
-				</div>
-			</core-header-panel>
-		</core-drawer-panel>
-		
-		<script>
-			document.addEventListener('polymer-ready', function() {
-				var navicon = document.getElementById('navicon');
-				var drawerPanel = document.getElementById('drawerPanel');
-				navicon.addEventListener('click', function() {
-					drawerPanel.togglePanel();
-				});
 
-				var tsw = document.getElementById("tsw");
-				var is = document.getElementById("is")
+            #icona_myunimol {
+                display: block;
+                margin-top: 0.5%;
+                margin-left: auto;
+                margin-right: auto;
+                min-height: 10%;
+                min-width: 10%;
+                max-height: 20%;
+                max-width: 10%;
+                //width: 200px;
+                //height: 200px;
+                /*min-height: 22%;
+                min-width: 20%;
+                max-height: 42%;
+                max-width: 40%;*/
+            }
+            #username_input {
+                display: block;
+                margin-top: 1%;
+                margin-left: auto;
+                margin-right: auto;
+                width: auto;
+                height: auto;
+                min-height: 5%;
+                min-width: 50%;
+                max-height: 5%;
+                max-width: 55%;
+                opacity: 0.9;
+                background-color: rgb(225, 242, 251);
+            }
+            #password_input {
+                display: block;
+                margin-top: 1%;
+                margin-left: auto;
+                margin-right: auto;
+                width: auto;
+                height: auto;
+                min-height: 5%;
+                min-width: 50%;
+                max-height: 5%;
+                max-width: 55%;
+                opacity: 0.9;
+                background-color: rgb(225, 242, 251);
+            }
+            #login_button {
+                display: block;
+                margin-top: 4%;
+                margin-left: auto;
+                margin-right: auto;
+                width: 80px;
+                height: 30px;
+                background-color: rgb(182, 222, 243);
+            }
+            #titolo_myunimol {
+                display: block;
+                margin-top: 0.5%;
+                margin-left: auto;
+                margin-right: auto;
+                width: auto;
+                height: auto;
+                min-height: 15%;
+                min-width: 45%;
+                max-height: 25%;
+                max-width: 45%;
+            }
 
-				tsw.addEventListener('click', function() {
-					document.getElementById('ajaxTsw').go();
-                                        document.getElementById('drawerPanel').togglePanel();
-				});
-				is.addEventListener('click', function() {
-					document.getElementById('msgErrore').show();
-                                        document.querySelector("template").model = "{}";
-                                        document.getElementById('drawerPanel').togglePanel();
-				});
-				
-				document.querySelector("#ajaxTsw").addEventListener('core-response', function(e) {
-					document.querySelector("template").model = e.detail.response;
-				});
-
-			});
-		</script>
-	</body>
+        </style>
+    </head>
+    <body>
+        <img id="icona_myunimol" src="img/MyUnimolLogo.png" centered></img>
+        <img id="titolo_myunimol" src="img/MyUnimolTitle.png" centered></img>
+        <input id="username_input" placeholder="Username" is="core-input">
+        <input id="password_input" placeholder="Password" is="core-input">
+        <paper-button raised recenteringtouch id="login_button">login</paper-button>
+</body>
 </html>
