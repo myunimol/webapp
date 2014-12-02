@@ -8,10 +8,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import rocks.teammolise.myunimol.webapp.configuration.ConfigurationManagerHandler;
+
 @WebServlet(name = "TestCredentials", urlPatterns = {"/TestCredentials"})
 public class TestCredentialsStub extends HttpServlet {
+	private static final long serialVersionUID = 1L;
 
-    /**
+	/**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
@@ -27,12 +30,12 @@ public class TestCredentialsStub extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
             //TODO: inserire token di prova
-            if (request.getParameter("token").equals("")) {
+            if (request.getParameter("token") != null && request.getParameter("token").equals(ConfigurationManagerHandler.getInstance().getToken())) {
                 out.println("{\"result\": \"positive\", \"name\": \"Matteo\", \"surname\": \"Bianchi\", \"studentId\": \"140000\", \"studentClass\": \"primo anno\"}");
-                out.println(request.getParameter("username"));
-                out.println(request.getParameter("password"));
+                //out.println(request.getParameter("username"));
+                //out.println(request.getParameter("password"));
             } else {
-                out.println(request.getParameter("{\"result\": \"negative\"}"));
+                out.println("{\"result\": \"negative\"}");
             }
         } finally {
             out.close();

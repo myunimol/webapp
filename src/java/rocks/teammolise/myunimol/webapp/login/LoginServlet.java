@@ -50,7 +50,7 @@ public class LoginServlet extends HttpServlet {
             ConfigurationManager configManager = ConfigurationManagerHandler.getInstance();
             //sono per ricavare il contenuto degli input field
             String user = (String) request.getParameter("username");
-            String password = (String) request.getParameter("pw");
+            String password = (String) request.getParameter("password");
             
             String token = configManager.getToken();//il token ancora non ce l'ho a disp!!
             //fa la richiesta post al servizio di login
@@ -63,7 +63,7 @@ public class LoginServlet extends HttpServlet {
             //il parser del json 
             JSONObject loginJSON = new JSONObject(stringResponse.getBody());
             if (loginJSON.getString("result").equals("negative")) {
-                response.sendError(405, "Errore! Dati non validi");//errore temporaneo lol
+                out.print(loginJSON.toString());
             } else {
                 //inserisco i dati presi dal JSON nel bean dell'utente
                 UserInfo userInfo = new UserInfo();
@@ -76,11 +76,13 @@ public class LoginServlet extends HttpServlet {
                 //inserisco nella sessione i dati sull'utente
                 HttpSession session = request.getSession(true);
                 session.setAttribute("userInfo", userInfo);
-                //TODO: REDIRECT ALLA PAGINA DI BENVENUTO
+                out.print(loginJSON.toString());
             }
         } catch (UnirestException e) {
 
             out.print("Errore nel Login");
+        } catch (JSONException e) {
+        	out.println(e.getMessage());
         } finally {
             out.close();
         }
