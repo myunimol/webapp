@@ -11,6 +11,7 @@
         <link rel="import" href="bower_components/core-icon/core-icon.html">
         <link rel="import" href="bower_components/core-input/core-input.html">
         <link rel="import" href="bower_components/paper-button/paper-button.html">
+        <link rel="import" href="bower_components/core-ajax/core-ajax.html">
 
         <style>    
             body {
@@ -96,6 +97,29 @@
         <img id="titolo_myunimol" src="img/MyUnimolTitle.png" centered></img>
         <input id="username_input" placeholder="Username" is="core-input">
         <input id="password_input" placeholder="Password" is="core-input">
-        <paper-button raised recenteringtouch id="login_button">login</paper-button>
+        <paper-button raised recenteringtouch id="login_button" onclick='document.getElementById("ajax").go();'>login</paper-button>
+        
+        <core-ajax id='ajax' method='POST' url='http://localhost:8080/MyUnimol_WebApp/LoginServlet'
+        		params = '{"username":"", "password":""}'
+        		handleAs='json'></core-ajax>
+        		
+        <script>
+        	document.addEventListener("polymer-ready", function() {
+        		var req = document.getElementById("ajax");
+        		req.addEventListener("core-response", function(event) {
+        			alert(JSON.stringify(event.detail.response))
+        		})
+        	});
+        	
+        	function objToString (obj) {
+        	    var str = '';
+        	    for (var p in obj) {
+        	        if (obj.hasOwnProperty(p)) {
+        	            str += p + '::' + obj[p] + '\n';
+        	        }
+        	    }
+        	    return str;
+        	}
+        </script>
 </body>
 </html>
