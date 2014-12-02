@@ -21,6 +21,7 @@
                 box-sizing: border-box;
                 background-color: rgb(53, 164, 223);
                 font-family: Arial, sans-serif;
+                text-align: center;
             }
 
 
@@ -29,9 +30,7 @@
                 margin-top: 0.5%;
                 margin-left: auto;
                 margin-right: auto;
-                min-height: 10%;
                 min-width: 10%;
-                max-height: 20%;
                 max-width: 10%;
                 //width: 200px;
                 //height: 200px;
@@ -47,9 +46,7 @@
                 margin-right: auto;
                 width: auto;
                 height: auto;
-                min-height: 5%;
                 min-width: 50%;
-                max-height: 5%;
                 max-width: 55%;
                 opacity: 0.9;
                 background-color: rgb(225, 242, 251);
@@ -61,20 +58,15 @@
                 margin-right: auto;
                 width: auto;
                 height: auto;
-                min-height: 5%;
                 min-width: 50%;
-                max-height: 5%;
                 max-width: 55%;
                 opacity: 0.9;
                 background-color: rgb(225, 242, 251);
             }
             #login_button {
-                display: block;
-                margin-top: 4%;
+            	margin-top:4%;
                 margin-left: auto;
                 margin-right: auto;
-                width: 80px;
-                height: 30px;
                 background-color: rgb(182, 222, 243);
             }
             #titolo_myunimol {
@@ -97,29 +89,29 @@
         <img id="titolo_myunimol" src="img/MyUnimolTitle.png" centered></img>
         <input id="username_input" placeholder="Username" is="core-input">
         <input id="password_input" placeholder="Password" is="core-input">
-        <paper-button raised recenteringtouch id="login_button" onclick='document.getElementById("ajax").go();'>login</paper-button>
+        <paper-button raised recenteringtouch id="login_button" onclick='sendRequest();'>login</paper-button>
         
         <core-ajax id='ajax' method='POST' url='http://localhost:8080/MyUnimol_WebApp/LoginServlet'
         		params = '{"username":"", "password":""}'
         		handleAs='json'></core-ajax>
         		
         <script>
+        
+        	function sendRequest() {
+        		var req = document.getElementById("ajax");
+        		var username = document.getElementById("username_input").value;
+        		var password = document.getElementById("password_input").value;
+        		
+        		req.params = '{"username": "' +  username + '", "password":"' + password + '"}';
+        		req.go();
+        	}
+        	
         	document.addEventListener("polymer-ready", function() {
         		var req = document.getElementById("ajax");
         		req.addEventListener("core-response", function(event) {
         			alert(JSON.stringify(event.detail.response))
         		})
         	});
-        	
-        	function objToString (obj) {
-        	    var str = '';
-        	    for (var p in obj) {
-        	        if (obj.hasOwnProperty(p)) {
-        	            str += p + '::' + obj[p] + '\n';
-        	        }
-        	    }
-        	    return str;
-        	}
         </script>
 </body>
 </html>

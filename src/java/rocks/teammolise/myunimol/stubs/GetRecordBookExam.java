@@ -10,32 +10,31 @@ import javax.servlet.http.HttpServletResponse;
 
 import rocks.teammolise.myunimol.webapp.configuration.ConfigurationManagerHandler;
 
-@WebServlet(name = "testCredentials", urlPatterns = {"/testCredentials"})
-public class TestCredentialsStub extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+/**
+ *
+ * @author Vincenzo
+ */
+@WebServlet(name = "getRecordBookExam", urlPatterns = {"/getRecordBookExam"})
 
-	/**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+public class GetRecordBookExam extends HttpServlet {
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setCharacterEncoding("UTF-8");
+        
+        response.setContentType("text/html;charset=UTF-8");
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
+        
+        String token = request.getParameter("token");
+        String realToken = ConfigurationManagerHandler.getInstance().getToken();
+        
         try {
-            if (request.getParameter("token") != null && request.getParameter("token").equals(ConfigurationManagerHandler.getInstance().getToken())) {
-                out.println("{\"result\": \"positive\", \"name\": \"Matteo\", \"surname\": \"Bianchi\", \"studentId\": \"140000\", \"studentClass\": \"primo anno\"}");
-                //out.println(request.getParameter("username"));
-                //out.println(request.getParameter("password"));
+            if (token != null && token.equals(realToken)) {
+                out.println("{\"name\":\"Matematica\", \"cfu\":\"12\", \"vote\":\"28\", \"date\":\"28/11/2014\", \"year\":\"2014/2015\", \"details\":[{\"name\":\"Matematica discreta\", \"cfu\":\"6\", \"hours\":\"48\", \"area\":\"MAT/01\"},{\"name\":\"Analisi matematica\", \"cfu\":\"6\", \"hours\":\"48\", \"area\":\"MAT/01\"}");
             } else {
-                out.println("{\"result\": \"negative\"}");
+                out.println("{\"result\": \"unauthorized\"}");
             }
+   
         } finally {
             out.close();
         }

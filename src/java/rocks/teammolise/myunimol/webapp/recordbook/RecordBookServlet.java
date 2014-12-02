@@ -1,41 +1,56 @@
-package rocks.teammolise.myunimol.stubs;
+package rocks.teammolise.myunimol.webapp.recordbook;
 
+import com.mashape.unirest.http.HttpResponse;
+import com.mashape.unirest.http.Unirest;
+import com.mashape.unirest.http.exceptions.UnirestException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.json.JSONObject;
 
+import rocks.teammolise.myunimol.api.APIConsumer;
+import rocks.teammolise.myunimol.webapp.UserInfo;
 import rocks.teammolise.myunimol.webapp.configuration.ConfigurationManagerHandler;
 
-@WebServlet(name = "testCredentials", urlPatterns = {"/testCredentials"})
-public class TestCredentialsStub extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+/**
+ *
+ * @author Vincenzo
+ */
+@WebServlet(name = "RecordBookServlet", urlPatterns = {"/RecordBookServlet"})
 
-	/**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+public class RecordBookServlet extends HttpServlet {
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setCharacterEncoding("UTF-8");
-        response.setContentType("application/json");
+        
+        response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        try {
-            if (request.getParameter("token") != null && request.getParameter("token").equals(ConfigurationManagerHandler.getInstance().getToken())) {
-                out.println("{\"result\": \"positive\", \"name\": \"Matteo\", \"surname\": \"Bianchi\", \"studentId\": \"140000\", \"studentClass\": \"primo anno\"}");
-                //out.println(request.getParameter("username"));
-                //out.println(request.getParameter("password"));
-            } else {
-                out.println("{\"result\": \"negative\"}");
-            }
+                
+        try { 
+        	if (request.getSession().getAttribute("userInfo") == null) {
+				response.sendError(500, "Unauthorized");
+				return;
+			}
+        	
+        	UserInfo userInfo = (UserInfo)request.getSession().getAttribute("userInfo");
+        	
+            String username = userInfo.getUsername();
+            String password = userInfo.getPassword();
+            
+            JSONObject recBookJSON = new APIConsumer().consume("getRecordBook", username, password);
+            
+            out.println(recBookJSON);
+            
+        } catch (UnirestException e) {
+            response.sendError(200, "Internal Server Error");
+     
         } finally {
             out.close();
         }
@@ -53,7 +68,7 @@ public class TestCredentialsStub extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+            processRequest(request, response);
     }
 
     /**
@@ -67,7 +82,7 @@ public class TestCredentialsStub extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+            processRequest(request, response);
     }
 
     /**

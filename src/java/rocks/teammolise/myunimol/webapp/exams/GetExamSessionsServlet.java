@@ -1,5 +1,11 @@
-package rocks.teammolise.myunimol.stubs;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package rocks.teammolise.myunimol.webapp.exams;
 
+import com.mashape.unirest.http.exceptions.UnirestException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -7,14 +13,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.json.JSONObject;
 
-import rocks.teammolise.myunimol.webapp.configuration.ConfigurationManagerHandler;
+import rocks.teammolise.myunimol.api.APIConsumer;
+import rocks.teammolise.myunimol.webapp.UserInfo;
 
-@WebServlet(name = "testCredentials", urlPatterns = {"/testCredentials"})
-public class TestCredentialsStub extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-
-	/**
+/**
+ *
+ * @author Silvio
+ */
+@WebServlet(name = "GetExamSessionsServlet", urlPatterns = {"/GetExamSessionsServlet"})
+public class GetExamSessionsServlet extends HttpServlet {
+    /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
@@ -25,22 +35,30 @@ public class TestCredentialsStub extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setCharacterEncoding("UTF-8");
-        response.setContentType("application/json");
+        
+        response.setContentType("application/json; charset=UTF-8");
         PrintWriter out = response.getWriter();
+        
         try {
-            if (request.getParameter("token") != null && request.getParameter("token").equals(ConfigurationManagerHandler.getInstance().getToken())) {
-                out.println("{\"result\": \"positive\", \"name\": \"Matteo\", \"surname\": \"Bianchi\", \"studentId\": \"140000\", \"studentClass\": \"primo anno\"}");
-                //out.println(request.getParameter("username"));
-                //out.println(request.getParameter("password"));
-            } else {
-                out.println("{\"result\": \"negative\"}");
-            }
-        } finally {
+			if (request.getSession().getAttribute("userInfo") == null) {
+				response.sendError(500, "Unauthorized");
+				return;
+			}
+
+			UserInfo userInfo = (UserInfo)request.getSession().getAttribute("userInfo");
+
+			String username = userInfo.getUsername();
+			String password = userInfo.getPassword();
+			
+            JSONObject examSessionsJSON = new APIConsumer().consume("getExamSessions", username, password);
+            out.print(examSessionsJSON);
+        } catch (UnirestException ex) {        
+             response.sendError(200, "Internal server error");
+        }finally{
             out.close();
         }
     }
-
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

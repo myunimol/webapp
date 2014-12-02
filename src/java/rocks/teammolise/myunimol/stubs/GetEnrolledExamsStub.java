@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package rocks.teammolise.myunimol.stubs;
 
 import java.io.IOException;
@@ -10,11 +15,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import rocks.teammolise.myunimol.webapp.configuration.ConfigurationManagerHandler;
 
-@WebServlet(name = "testCredentials", urlPatterns = {"/testCredentials"})
-public class TestCredentialsStub extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+/**
+ *
+ * @author Silvio
+ */
+@WebServlet(name = "getEnrolledExams", urlPatterns = {"/getEnrolledExams"})
+public class GetEnrolledExamsStub extends HttpServlet {
 
-	/**
+    /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
@@ -25,17 +33,19 @@ public class TestCredentialsStub extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setCharacterEncoding("UTF-8");
-        response.setContentType("application/json");
+        response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        
+        String token = request.getParameter("token");
+        String realToken = ConfigurationManagerHandler.getInstance().getToken();
+        
         try {
-            if (request.getParameter("token") != null && request.getParameter("token").equals(ConfigurationManagerHandler.getInstance().getToken())) {
-                out.println("{\"result\": \"positive\", \"name\": \"Matteo\", \"surname\": \"Bianchi\", \"studentId\": \"140000\", \"studentClass\": \"primo anno\"}");
-                //out.println(request.getParameter("username"));
-                //out.println(request.getParameter("password"));
-            } else {
-                out.println("{\"result\": \"negative\"}");
-            }
+            //Controllo del token
+           if(token != null && token.equals(realToken)){
+               out.println("{\"result\": \"positive\", \"name\": \"Matematica\", \"cfu\": \"12\", \"professor\": \"Giovanni Capobianco\", \"date\": \"10/10/10\", \"expiringDate\": \"03/10/10\", \"room\": \"G.Galilei\", \"enrollmentPosition\": \"4\", \"enrolled\": \"23\", \"notes\": \"blablabla\"}");     
+           } else {
+        	   out.println("{\"result\": \"unauthorized\"}");
+           }
         } finally {
             out.close();
         }
