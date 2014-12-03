@@ -1,4 +1,3 @@
-
 package rocks.teammolise.myunimol.webapp;
 
 /**
@@ -6,7 +5,39 @@ package rocks.teammolise.myunimol.webapp;
  * @author Federica Mauriello
  */
 public class UserInfo {
-    private String name, surname, studentId, studentClass, username, password;
+    private String name, surname, studentId, studentClass, username, password, taxes, careerPlan, availableExams, enrolledExams ;
+
+    public String getTaxes() {
+        return taxes;
+    }
+
+    public void setTaxes(String taxes) {
+        this.taxes = taxes;
+    }
+
+    public String getCareerPlan() {
+        return careerPlan;
+    }
+
+    public void setCareerPlan(String careerPlan) {
+        this.careerPlan = careerPlan;
+    }
+
+    public String getAvailableExams() {
+        return availableExams;
+    }
+
+    public void setAvailableExams(String availableExams) {
+        this.availableExams = availableExams;
+    }
+
+    public String getEnrolledExams() {
+        return enrolledExams;
+    }
+
+    public void setEnrolledExams(String enrolledExams) {
+        this.enrolledExams = enrolledExams;
+    }
     public UserInfo(){
         
     }
@@ -57,10 +88,6 @@ public class UserInfo {
 
     public void setStudentClass(String studentClass) {
         this.studentClass = studentClass;
-    }
-    
-    public String getCredentials() {
-    	return "";
     }
     
 }

@@ -9,6 +9,7 @@ import org.json.JSONObject;
 import rocks.teammolise.myunimol.webapp.configuration.ConfigurationManager;
 import rocks.teammolise.myunimol.webapp.configuration.ConfigurationManagerHandler;
 
+import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import com.mashape.unirest.request.HttpRequestWithBody;
@@ -41,7 +42,10 @@ public class APIConsumer {
         	body = body.field(key, pParameters.get(key));
         }
         
-        return new JSONObject(body.asString().getBody());
+        HttpResponse<String> response = body.asString();
+        String responseBody = response.getBody();
+        
+        return new JSONObject(responseBody);
 	}
 	
 	/**
