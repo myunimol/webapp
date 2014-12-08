@@ -52,25 +52,25 @@ public class LoginServlet extends HttpServlet {
             
             JSONObject loginJSON = new APIConsumer().consume("testCredentials", username, password);
             
-            if (loginJSON.getString("result").equals("negative")) {
+            if (loginJSON.getString("result").equals("invalid")) {
                 out.print(loginJSON.toString());
             } else {
                 //inserisco i dati presi dal JSON nel bean dell'utente
-                UserInfo userInfo = new UserInfo();
+            	UserInfo userInfo = new UserInfo();
                 userInfo.setName(loginJSON.getString("name"));
                 userInfo.setSurname(loginJSON.getString("surname"));
                 userInfo.setStudentClass(loginJSON.getString("studentClass"));
                 userInfo.setStudentId(loginJSON.getString("studentId"));
-                /*userInfo.setTaxes(loginJSON.getString("taxes"));
+                userInfo.setTaxes(loginJSON.getString("taxes"));
                 userInfo.setCareerPlan(loginJSON.getString("careerPlan"));
                 userInfo.setAvailableExams(loginJSON.getString("availableExams"));
-                userInfo.setEnrolledExams(loginJSON.getString("enrolledExams"));*/
+                userInfo.setEnrolledExams(loginJSON.getString("enrolledExams"));
                 userInfo.setUsername(username);
                 userInfo.setPassword(password); //da inserire le altre info x la schermata di benvenuto
                 HttpSession session = request.getSession(true);
                 session.setAttribute("userInfo", userInfo);
                 
-                out.print(loginJSON.toString());
+                out.print("{\"result\": \"correct\"}");
             }
         } catch (UnirestException e) {
         	response.sendError(200, "Internal Server Error");
