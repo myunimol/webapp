@@ -42,7 +42,7 @@ public class GetExamSessionsStub extends HttpServlet {
         try {
             //Controllo del token
            if (token != null && token.equals(realToken)){
-               out.println("{\"result\": \"positive\", \"name\": \"Matematica\", \"cfu\": \"12\", \"professor\": \"Giovanni Capobianco\", \"date\": \"10/10/10\", \"expiringDate\": \"03/10/10\", \"room\": \"G.Galilei\", \"notes\": \"blablabla\"}");     
+        	   out.println("{\"exams\": [{\"name\": \"Matematica\",\"cfu\": \"12\",\"professor\": \"Capobianco\",\"date\": \"12/12/2013\",\"expiringDate\": \"01/12/2013\",\"room\": \"Galileo Galilei\",\"notes\": \"\",\"enrolled\": \"12\",\"session\": \"2013/2014\"},{\"name\": \"Fisica\",\"cfu\": \"7\",\"professor\": \"Marmolino\",\"date\": \"12/11/2013\",\"expiringDate\": \"01/11/2013\",\"room\": \"Isernia II\",\"notes\": \"\",\"enrolled\": \"44\",\"session\": \"2013/2014\"}]}");     
            } else {
                out.println("{\"result\": \"unauthorized\"}");
            }
