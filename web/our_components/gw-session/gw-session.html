@@ -1,0 +1,26 @@
+<link rel="import" href="../polymer/polymer.html">
+<polymer-element name="gw-session">
+    <template>
+        <!-- Foglio di stile per il singolo componente -->
+        <link rel="stylesheet" href="style.css">
+        <div class="content-item">
+            <!--Questo template itera tante volte quanti sono gli oggetti nell'array sessions.
+            L'array è creato nello script in fondo alla pagina.
+            -->
+            <template repeat="{{session in sessions}}">
+                <div class="session-container">
+                    <div id="session-matter">{{session.name}}</div>
+                    <div id="session-data">Data: {{session.date}}</div>
+                    <div id="session-professor">Professore: {{session.professor}}</div>
+                    <span id="session-cfu-text">CFU: </span>
+                    <div id="session-cfu">{{session.cfu}}</div>
+                </div>
+            </template>
+        </div>
+    </template>
+    <!--File javascript che crea l'array sessions.
+    session.js crea un array "a mano"; l'ho utilizzato per testare il corretto funzionamento della componente
+    session-json.js dovrebbe essere lo script che va a creare l'array sessions sulla base del json risultante dalla chiamata alla servlet.
+    -->
+    <script src="session.js"></script>
+</polymer-element>

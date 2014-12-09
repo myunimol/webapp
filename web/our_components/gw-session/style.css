@@ -1,0 +1,51 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 8-dic-2014, 15.00.52
+    Author     : Giuseppe
+*/
+
+.session-container {
+    border: 1px solid #bebebe;
+    padding: 16px;
+    margin: 16px;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #555;
+}
+
+#session-matter {
+    font-size: 26px;
+    padding: 8px 0 16px;
+    color: #888;
+}
+
+#session-data {
+    font-size: 16px;
+    padding-bottom: 8px;
+}
+
+#session-professor {
+    font-size: 16px;
+}
+
+#session-cfu-text {
+    font-size: 16px;
+    padding-bottom: 15px;
+    color: black;
+}
+
+#session-cfu {
+    display: inline-block;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    background: #ddd;
+    line-height: 32px;
+    font-size: 16px;
+    color: #666; 
+    text-align: center;
+}

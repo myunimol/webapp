@@ -1,8 +1,16 @@
+<%@page import="rocks.teammolise.myunimol.webapp.UserInfo"%>
+<% if (session == null || session.getAttribute("userInfo") == null) {
+        response.sendRedirect("index.html");
+        return;
+    }
+%>
+
 <html>
     <head>
-        <title>MyUnimol</title>
+        <title>Libretto</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script src="bower_components/platform/platform.js"></script>
         <link rel="import" href="bower_components/core-scaffold/core-scaffold.html">
         <link rel="import" href="bower_components/core-header-panel/core-header-panel.html">
@@ -13,22 +21,15 @@
         <link rel="import" href="bower_components/core-icons/core-icons.html">
         <link rel="import" href="bower_components/core-icon/core-icon.html">
         <link rel="import" href="bower_components/core-menu/core-submenu.html">
+        <link rel="import" href="bower_components/core-ajax/core-ajax.html">
 
         <style>
             body {
                 font-family: Arial, sans-serif;
             }
             table {
-                width: 80%;
-                border: 2px solid #D6DDE6;
+                width: 100%;
                 border-collapse: collapse;
-            }
-            thead {
-                background-color: #35A4DF;
-                width: 80%;
-                border: 2px solid #D6DDE6;
-                border-collapse: collapse;
-                
             }
             th {
                 color: rgb(0, 0, 0);
@@ -75,55 +76,40 @@
     </head>
 
     <body>
+
     <core-scaffold id="core_scaffold">
-        <table>
-            <thead>
-                    <tr>
-                    <th>Materia</th>
-                    <th>CFU</th>
-                    <th>Data</th>
-                    <th>Professore</th>
+
+        <core-item id="weighted" icon="trending-up" label="Media Pesata" horizontal center layout></core-item>
+        <core-item id="media" icon="assessment" label="Media" horizontal center layout></core-item>
+        <table id="table">
+            <thead id="thead">
+                <tr id="tr">
+                    <th id="th">Nome</th>
+                    <th id="th1">Cfu</th>
+                    <th id="th2">Voto</th>
+                    <th id="th3">Data</th>
+                    <th id="th4">Anno</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="tbody">
                 <tr>
-                    <td><a href="http://localhost:8080/MyUnimolWebApp/singoloAppello.html">Proggettistica</a></td> 
-                    <td>12</td>
-                    <td>12/11/2015</td>
-                    <td>Simone Scalabrino</td>
-                </tr>
-                <tr>
-                    <td>Proggettistica</td>
-                    <td>12</td>
-                    <td>12/11/2015</td>
-                    <td>Simone Scalabrino</td>
-                </tr><tr>
-                    <td>Proggettistica</td>
-                    <td>12</td>
-                    <td>12/11/2015</td>
-                    <td>Simone Scalabrino</td>
-                </tr>
-                <tr>
-                    <td>Proggettistica</td>
-                    <td>12</td>
-                    <td>12/11/2015</td>
-                    <td>Simone Scalabrino</td>
-                </tr>
-                <tr>
-                    <td>Proggettistica</td>
-                    <td>12</td>
-                    <td>12/11/2015</td>
-                    <td>Simone Scalabrino</td>
+                    <td id="td"></td>
+                    <td id="td1"></td>
+                    <td id="td2"></td>
+                    <td id="td3"></td>
+                    <td id="td4"></td>
                 </tr>
             </tbody>
         </table>
-        
-    
         <core-header-panel mode="seamed" id="core_header_panel" navigation flex>
             <core-toolbar id="core_toolbar">
-                <div id="student_name" tool horizontal layout center start-justified>Marco Rossi</div>
-                <div id="student_id" tool start-justified>140000</div>
+                <%
+                    UserInfo user = (UserInfo) session.getAttribute("userInfo");
+                    out.print("<div id=\"student_name\" tool horizontal layout center start-justified>" + user.getName() + " " + user.getSurname() + "</div>");
+                    out.print("<div id=\"student_id\" tool start-justified>" + user.getStudentId() + "</div>");
+                %>       
             </core-toolbar>
+
             <core-menu selected="Home" valueattr="label" selectedindex="0" id="core_menu" icon="extension" theme="core-light-theme">
                 <core-item id="home_item" icon="home" label="Home" horizontal center layout active></core-item>
                 <core-item id="libretto_item" icon="folder-shared" label="Libretto" horizontal center layout></core-item>
@@ -133,7 +119,16 @@
                 <core-item id="piano_item" icon="view-list" label="Piano di studi" horizontal center layout></core-item>
             </core-menu>
         </core-header-panel>
-        <div id="title" tool>Lista Appelli</div>
+        <div id="title" tool>Libretto</div>
+
+        <script>
+            $(document).ready(function response(event) {
+                var result = event.detail.response;
+                for (int i = 0; i < result.exams; i++) {
+                    $('#table tr:last').after('<tr><td id="td">' + result.exams[i].name + '</td><td id="td1">' + result.exams[i].cfu + '</td><td id="td2">' + result.exams[i].vote + '</td><td id="td3">' + result.exams[i].date + '</td><td id="td4">' + result.exams[i].year + '</td></tr>');
+                }
+            });
+        </script>
 
     </core-scaffold>
 </body>

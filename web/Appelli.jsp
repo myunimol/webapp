@@ -12,7 +12,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script src="bower_components/platform/platform.js"></script>
-        <link rel="import" href="bower_components/core-scaffold/core-scaffold.html">
+         <link rel="import" href="bower_components/core-scaffold/core-scaffold.html">
         <link rel="import" href="bower_components/core-header-panel/core-header-panel.html">
         <link rel="import" href="bower_components/core-menu/core-menu.html">
         <link rel="import" href="bower_components/core-item/core-item.html">
@@ -20,8 +20,13 @@
         <link rel="import" href="bower_components/core-toolbar/core-toolbar.html">
         <link rel="import" href="bower_components/core-icons/core-icons.html">
         <link rel="import" href="bower_components/core-icon/core-icon.html">
-        <link rel="import" href="bower_components/core-menu/core-submenu.html">
+        <link rel="import" href="bower_components/paper-tabs/paper-tabs.html">
+        <link rel="import" href="bower_components/font-roboto/roboto.html">
+        <link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
+        <link rel="import" href="bower_components/core-scroll-header-panel/core-scroll-header-panel.html">
         <link rel="import" href="bower_components/core-ajax/core-ajax.html">
+        
+        <link rel="import" href="our_components/gw-session/gw-session.html">
 
         <style>
             body {
@@ -82,30 +87,18 @@
 
     <body>
 
-    <core-ajax auto id='ajax' method='POST' url='http://localhost:8080/MyUnimolWebApp/RecordBookServlet'
-               params = '{}'
-               handleAs='json'></core-ajax>
-
-
     <core-scaffold id="core_scaffold">
 
-        <core-item id="weighted" icon="trending-up" label="Media Pesata" horizontal center layout></core-item>
-        <core-item id="media" icon="assessment" label="Media" horizontal center layout></core-item>
-        <table id="table">
-            <thead id="thead">
-                <tr id="tr">
-                    <th id="th">Nome</th>
-                    <th id="th1">Cfu</th>
-                    <th id="th2">Voto</th>
-                    <th id="th3">Data</th>
-                    <th id="th4">Anno</th>
-                </tr>
-            </thead>
-            <tbody id="tbody">
-                <tr>
-                </tr>
-            </tbody>
-        </table>
+		<div class="content">
+                <core-ajax id='ajax' auto url="http://localhost:8080/MyUnimolWebApp/GetExamSessionsServlet" params='{}' handleas="json"></core-ajax>
+                <div class="content-item">
+                    <!-- Componente creato per la creazione della lista delle sessioni.
+                    Tutte le altre informazioni sono in bower-components > gw-session > gw-session.html
+                    -->
+                    <gw-session id='gwsession'></gw-session>
+                </div>
+            </div>
+        
         <core-header-panel mode="seamed" id="core_header_panel" navigation flex>
             <core-toolbar id="core_toolbar">
                 <%
@@ -124,28 +117,17 @@
                 <core-item id="piano_item" icon="view-list" label="Piano di studi" horizontal center layout><a href=''></a></core-item>
             </core-menu>
         </core-header-panel>
-        <div id="title" tool>Libretto</div>
+        <div id="title" tool>Lista appelli</div>
 
         <script>
-            document.addEventListener("polymer-ready", function () {
-                var result = document.getElementById("ajax");
+	        document.addEventListener('polymer-ready', function() {
 
-                result.addEventListener("core-response", function (event) {
-                	var data = event.detail.response;
-                    for (var i = 0; i < data.exams.length; i++) {
-                        $('#table tr:last').after(
-                        		'<tr><td id="td">'   + data.exams[i].name + 
-                        		'</td><td id="td1">' + data.exams[i].cfu + 
-                        		'</td><td id="td2">' + data.exams[i].vote + 
-                        		'</td><td id="td3">' + data.exams[i].date + 
-                        		'</td><td id="td4">' + data.exams[i].year + 
-                        		'</td></tr>');
-                        
-                        $('#weighted').html('<div class="avgContainer">' + data.weightedAverage + '</div>');
-                        $('#media').html('<div class="avgContainer">' + data.average + '</div>');
-                    }
-                });
-            });
+	            var ajax = document.getElementById("ajax");
+	            
+	            ajax.addEventListener("core-response", function (event) {
+	            	document.getElementById("gwsession").sessions = event.detail.response.exams;
+	            });
+	        });
 
         </script>
 
