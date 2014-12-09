@@ -60,7 +60,7 @@ public class LoginServlet extends HttpServlet {
                 userInfo.setName(loginJSON.getString("name"));
                 userInfo.setSurname(loginJSON.getString("surname"));
                 userInfo.setStudentClass(loginJSON.getString("studentClass"));
-                userInfo.setStudentId(loginJSON.getString("studentId"));
+                userInfo.setStudentId(loginJSON.getString("studentID"));
                 userInfo.setTaxes(loginJSON.getString("taxes"));
                 userInfo.setCareerPlan(loginJSON.getString("careerPlan"));
                 userInfo.setAvailableExams(loginJSON.getString("availableExams"));

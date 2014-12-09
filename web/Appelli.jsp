@@ -90,7 +90,7 @@
     <core-scaffold id="core_scaffold">
 
 		<div class="content">
-                <core-ajax id='ajax' auto url="http://localhost:8080/MyUnimolWebApp/GetExamSessionsServlet" params='{}' handleas="json"></core-ajax>
+                <core-ajax id='ajax' auto url="GetExamSessionsServlet" params='{}' handleas="json"></core-ajax>
                 <div class="content-item">
                     <!-- Componente creato per la creazione della lista delle sessioni.
                     Tutte le altre informazioni sono in bower-components > gw-session > gw-session.html
@@ -110,7 +110,7 @@
 
             <core-menu selected="Home" valueattr="label" selectedindex="0" id="core_menu" icon="extension" theme="core-light-theme">
                 <core-item id="home_item" icon="home" label="Home" horizontal center layout active><a href=''></a></core-item>
-                <core-item id="libretto_item" icon="folder-shared" label="Libretto" horizontal center layout><a href=''></a></core-item>
+                <core-item id="libretto_item" icon="folder-shared" label="Libretto" horizontal center layout><a href='Libretto.jsp'></a></core-item>
                 <core-item id="docenti_item" icon="mail" label="Rubrica Docenti" horizontal center layout><a href=''></a></core-item>
                 <core-item id="appelli_item" icon="assignment" label="Appelli" horizontal center layout><a href='Appelli.jsp'></a></core-item>
                 <core-item id="bacheca_item" icon="announcement" label="Bacheca avvisi" horizontal center layout><a href=''></a></core-item>

@@ -82,7 +82,7 @@
 
     <body>
 
-    <core-ajax auto id='ajax' method='POST' url='http://localhost:8080/MyUnimolWebApp/RecordBookServlet'
+    <core-ajax auto id='ajax' method='POST' url='RecordBookServlet'
                params = '{}'
                handleAs='json'></core-ajax>
 
@@ -92,19 +92,13 @@
         <core-item id="weighted" icon="trending-up" label="Media Pesata" horizontal center layout></core-item>
         <core-item id="media" icon="assessment" label="Media" horizontal center layout></core-item>
         <table id="table">
-            <thead id="thead">
-                <tr id="tr">
-                    <th id="th">Nome</th>
-                    <th id="th1">Cfu</th>
-                    <th id="th2">Voto</th>
-                    <th id="th3">Data</th>
-                    <th id="th4">Anno</th>
-                </tr>
-            </thead>
-            <tbody id="tbody">
-                <tr>
-                </tr>
-            </tbody>
+              <tr id="tr">
+                  <th id="th">Nome</th>
+                  <th id="th1">Cfu</th>
+                  <th id="th2">Voto</th>
+                  <th id="th3">Data</th>
+                  <th id="th4">Anno</th>
+              </tr>
         </table>
         <core-header-panel mode="seamed" id="core_header_panel" navigation flex>
             <core-toolbar id="core_toolbar">
