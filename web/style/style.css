@@ -1,0 +1,26 @@
+html,body {
+	height: 100%;
+	margin: 0;
+	background-color: #F1F1F1;
+	font-family: 'RobotoDraft', sans-serif;
+}
+core-drawer-panel:not([narrow]) #navicon {
+	display: none;
+}
+core-header-panel {
+	height: 100%;
+	overflow: auto;
+	-webkit-overflow-scrolling: touch;
+	background: white; 
+}
+
+core-toolbar {
+	color: white;
+}
+#navheader {
+	background-color: rgb(79, 125, 201);
+}
+
+#mainheader {
+  	background-color: #526E9C;
+}

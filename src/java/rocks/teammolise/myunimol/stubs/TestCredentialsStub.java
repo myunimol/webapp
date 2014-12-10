@@ -29,8 +29,9 @@ public class TestCredentialsStub extends HttpServlet {
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
         try {
-            if (request.getParameter("token") != null && request.getParameter("token").equals(ConfigurationManagerHandler.getInstance().getToken()) && (request.getParameter("username").equals("pippo"))) {
-            	out.println("{\"result\": \"positive\", \"name\": \"Matteo\", \"surname\": \"Bianchi\", \"studentId\": \"140000\", \"studentClass\": \"primo anno\", \"taxes\": \"situazione regolare\", \"careerPlan\": \"modificabile\", \"availableExams\": \"2 appelli disponibili\", \"enrolledExams\": \"0 prenotazioni\"}");
+            if (request.getParameter("token") != null && request.getParameter("token").equals(ConfigurationManagerHandler.getInstance().getToken()) 
+            		&& (request.getParameter("username") != null && request.getParameter("username").equals("pippo"))) {
+            	out.println("{\"result\": \"positive\", \"name\": \"Matteo\", \"surname\": \"Bianchi\", \"studentID\": \"140000\", \"studentClass\": \"primo anno\", \"taxes\": \"situazione regolare\", \"careerPlan\": \"modificabile\", \"availableExams\": \"2 appelli disponibili\", \"enrolledExams\": \"0 prenotazioni\"}");
             } else {
             	out.println("{\"result\": \"invalid\"}");
             }
