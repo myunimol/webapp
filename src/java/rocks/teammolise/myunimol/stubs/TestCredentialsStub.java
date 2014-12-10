@@ -29,8 +29,12 @@ public class TestCredentialsStub extends HttpServlet {
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
         try {
+<<<<<<< HEAD
             if (request.getParameter("token") != null && request.getParameter("token").equals(ConfigurationManagerHandler.getInstance().getToken()) 
             		&& (request.getParameter("username") != null && request.getParameter("username").equals("pippo"))) {
+=======
+            if (request.getParameter("token") != null && request.getParameter("token").equals(ConfigurationManagerHandler.getInstance().getToken()) && (request.getParameter("username").equals("pippo"))) {
+>>>>>>> bfa3b9704771023e9de8a11828601e74d71cf100
             	out.println("{\"result\": \"positive\", \"name\": \"Matteo\", \"surname\": \"Bianchi\", \"studentID\": \"140000\", \"studentClass\": \"primo anno\", \"taxes\": \"situazione regolare\", \"careerPlan\": \"modificabile\", \"availableExams\": \"2 appelli disponibili\", \"enrolledExams\": \"0 prenotazioni\"}");
             } else {
             	out.println("{\"result\": \"invalid\"}");
