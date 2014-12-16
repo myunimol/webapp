@@ -49,7 +49,7 @@ public class JspUtils {
 	}
 	
 	/**
-	 * Scrive gli import standard necessari, quindi script (JQuery e Polymer) e css (style.css)
+	 * Scrive gli import standard necessari, quindi script (JQuery e Polymer), css (style.css) e font (Roboto)
 	 * @throws IOException
 	 */
 	public void writeStandardImports() throws IOException {
@@ -98,7 +98,7 @@ public class JspUtils {
 	private void writeMainMenu() throws IOException {
 		out("<core-item id=home_item' icon='home' label='Home' horizontal center layout active><a href=''></a></core-item>");
 		out("<core-item id='libretto_item' icon='folder-shared' label='Libretto' horizontal center layout><a href='Libretto.jsp'></a></core-item>");
-		out("<core-item id='docenti_item' icon='mail' label='Rubrica Docenti' horizontal center layout><a href=''></a></core-item>");
+		out("<core-item id='docenti_item' icon='mail' label='Rubrica' horizontal center layout><a href=''></a></core-item>");
 		out("<core-item id='appelli_item' icon='assignment' label='Appelli' horizontal center layout><a href='Appelli.jsp'></a></core-item>");
 		out("<core-item id='bacheca_item' icon='announcement' label='Bacheca avvisi' horizontal center layout><a href=''></a></core-item>");
 		out("<core-item id='piano_item' icon='view-list' label='Piano di studi' horizontal center layout><a href=''></a></core-item>");

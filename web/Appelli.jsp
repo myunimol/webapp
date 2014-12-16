@@ -12,21 +12,22 @@
         <title>MuUnimol</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        <% 
-        utils.writeStandardImports();
-
-        utils.writePolymerImport("core-header-panel");
-        utils.writePolymerImport("core-drawer-panel");
-        utils.writePolymerImport("core-menu");
-        utils.writePolymerImport("core-item");
-        utils.writePolymerImport("core-icon-button");
-        utils.writePolymerImport("core-toolbar");
-        utils.writePolymerImport("core-icons");
-        utils.writePolymerImport("core-icon");
-        utils.writePolymerImport("paper-icon-button");
-        utils.writePolymerImport("core-ajax");
+		
+		<% 
+        	utils.writeStandardImports();
         %>
+        
+        <link rel='import' href='bower_components/core-header-panel/core-header-panel.html' />
+        <link rel='import' href='bower_components/core-drawer-panel/core-drawer-panel.html' />
+        <link rel='import' href='bower_components/core-menu/core-menu.html' />
+        <link rel='import' href='bower_components/core-drawer-panel/core-drawer-panel.html' />
+        <link rel='import' href='bower_components/core-item/core-item.html' />
+        <link rel='import' href='bower_components/core-icon-button/core-icon-button.html' />
+        <link rel='import' href='bower_components/core-toolbar/core-toolbar.html' />
+        <link rel='import' href='bower_components/core-icons/core-icons.html' />
+        <link rel='import' href='bower_components/core-icon/core-icon.html' />
+        <link rel='import' href='bower_components/paper-icon-button/paper-icon-button.html' />
+        <link rel='import' href='bower_components/core-ajax/core-ajax.html' />
         
         <link rel="import" href="our_components/gw-session/gw-session.html">
     </head>
