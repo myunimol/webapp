@@ -52,7 +52,7 @@ public class LoginServlet extends HttpServlet {
             
             JSONObject loginJSON = new APIConsumer().consume("testCredentials", username, password);
             
-            if (loginJSON.getString("result").equals("invalid")) {
+            if (loginJSON.getString("result").equals("failure")) {
                 out.print(loginJSON.toString());
             } else {
                 //inserisco i dati presi dal JSON nel bean dell'utente

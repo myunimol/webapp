@@ -35,7 +35,7 @@ public class TestCredentialsStub extends HttpServlet {
             		&& request.getParameter("username").equals("pippo")) {
             	out.println("{\"result\": \"positive\", \"name\": \"Matteo\", \"surname\": \"Bianchi\", \"studentID\": \"140000\", \"studentClass\": \"primo anno\", \"taxes\": \"situazione regolare\", \"careerPlan\": \"modificabile\", \"availableExams\": \"2 appelli disponibili\", \"enrolledExams\": \"0 prenotazioni\"}");
             } else {
-            	out.println("{\"result\": \"invalid\"}");
+            	out.println("{\"result\": \"failure\"}");
             }
         } finally {
             out.close();
