@@ -2,7 +2,6 @@ package rocks.teammolise.myunimol.jsputils;
 
 import java.io.IOException;
 
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -11,6 +10,7 @@ import javax.servlet.jsp.JspWriter;
 import rocks.teammolise.myunimol.webapp.UserInfo;
 
 public class JspUtils {
+	@SuppressWarnings("unused")
 	private HttpServletRequest request;
 	private HttpServletResponse response;
 	private HttpSession session;

@@ -20,16 +20,7 @@ import com.mashape.unirest.request.body.MultipartBody;
  * @author simone
  */
 public class APIConsumer {
-	/**
-	 * Chiama un servizio API che richiede solo username e password
-	 * @param pAPI Nome dell'API da chiamare
-	 * @param pParameters Mappa dei parametri
-	 * 
-	 * @return Oggetto JSON restituito dal server
-	 * @throws UnirestException Errore di Unirest
-	 * @throws IOException Errore nella lettura del file di configurazione
-	 */
-	public JSONObject consume(String pAPI, Map<String, Object> pParameters) throws UnirestException, IOException {
+	private JSONObject consume(String pAPI, Map<String, Object> pParameters) throws UnirestException, IOException {
     	ConfigurationManager config = ConfigurationManagerHandler.getInstance();
     	
     	String apiUrl = config.getWebServicesRoot() + pAPI;
@@ -51,10 +42,9 @@ public class APIConsumer {
 	/**
 	 * Chiama un servizio API che richiede solo username e password
 	 * @param pAPI Nome dell'API da chiamare
-	 * @param pUsername Username dell'utente
-	 * @param pPassword Password dell'utente
+	 * @param pParameters Mappa dei parametri
 	 * 
-	 * @return Oggetto JSON restituito dal server 
+	 * @return Oggetto JSON restituito dal server
 	 * @throws UnirestException Errore di Unirest
 	 * @throws IOException Errore nella lettura del file di configurazione
 	 */
@@ -64,5 +54,23 @@ public class APIConsumer {
 		map.put("password", pPassword);
 		
 		return this.consume(pAPI, map);
+	}
+	
+	/**
+	 * Chiama un servizio API generico
+	 * @param pAPI Nome dell'API da chiamare
+	 * @param pUsername Username dell'utente
+	 * @param pPassword Password dell'utente
+	 * @param pParameters Mappa <Nome parametro, valore parametro> che contiene tutti i parametri da passare al web service
+	 * 
+	 * @return Oggetto JSON restituito dal server 
+	 * @throws UnirestException Errore di Unirest
+	 * @throws IOException Errore nella lettura del file di configurazione
+	 */
+	public JSONObject consume(String pAPI, String pUsername, String pPassword, Map<String, Object> pParameters) throws UnirestException, IOException {
+		pParameters.put("username", pUsername);
+		pParameters.put("password", pPassword);
+		
+		return this.consume(pAPI, pParameters);
 	}
 }

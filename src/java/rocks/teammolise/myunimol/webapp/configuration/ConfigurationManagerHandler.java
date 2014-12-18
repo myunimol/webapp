@@ -1,7 +1,5 @@
 package rocks.teammolise.myunimol.webapp.configuration;
 
-import java.io.File;
-
 /**
  *
  * @author Vincenzo

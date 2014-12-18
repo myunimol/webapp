@@ -5,8 +5,6 @@
  */
 package rocks.teammolise.myunimol.webapp.login;
 
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -20,8 +18,6 @@ import org.json.*;
 
 import rocks.teammolise.myunimol.api.APIConsumer;
 import rocks.teammolise.myunimol.webapp.UserInfo;
-import rocks.teammolise.myunimol.webapp.configuration.ConfigurationManager;
-import rocks.teammolise.myunimol.webapp.configuration.ConfigurationManagerHandler;
 
 /**
  * 
@@ -29,8 +25,9 @@ import rocks.teammolise.myunimol.webapp.configuration.ConfigurationManagerHandle
  */
 @WebServlet(name = "LoginServlet", urlPatterns = {"/LoginServlet"})
 public class LoginServlet extends HttpServlet {
+	private static final long serialVersionUID = 2857028958624319384L;
 
-    /**
+	/**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
@@ -73,9 +70,9 @@ public class LoginServlet extends HttpServlet {
                 out.print("{\"result\": \"correct\"}");
             }
         } catch (UnirestException e) {
-        	response.sendError(200, "Internal Server Error");
+        	response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Internal Server Error");
         } catch (JSONException e) {
-        	response.sendError(200, "Internal Server Error");
+        	response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Internal Server Error");
         } finally {
             out.close();
         }

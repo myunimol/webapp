@@ -5,8 +5,6 @@
  */
 package rocks.teammolise.myunimol.webapp.exams;
 
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -19,8 +17,6 @@ import org.json.JSONObject;
 
 import rocks.teammolise.myunimol.api.APIConsumer;
 import rocks.teammolise.myunimol.webapp.UserInfo;
-import rocks.teammolise.myunimol.webapp.configuration.ConfigurationManager;
-import rocks.teammolise.myunimol.webapp.configuration.ConfigurationManagerHandler;
 
 /**
  * 
@@ -28,6 +24,7 @@ import rocks.teammolise.myunimol.webapp.configuration.ConfigurationManagerHandle
  */
 @WebServlet(name = "GetEnrolledExamsServlet", urlPatterns = { "/GetEnrolledExamsServlet" })
 public class GetEnrolledExamsServlet extends HttpServlet {
+	private static final long serialVersionUID = -1078308828141459307L;
 
 	/**
 	 * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -49,7 +46,7 @@ public class GetEnrolledExamsServlet extends HttpServlet {
 
 		try {
 			if (request.getSession().getAttribute("userInfo") == null) {
-				response.sendError(500, "Unauthorized");
+				response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized");
 				return;
 			}
 
@@ -62,7 +59,7 @@ public class GetEnrolledExamsServlet extends HttpServlet {
 		
 			out.print(enrolledExamsJSON);
 		} catch (UnirestException ex) {
-			response.sendError(200, "Internal server error");
+			response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Internal server error");
 		} finally {
 			out.close();
 		}

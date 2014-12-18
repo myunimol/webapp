@@ -1,7 +1,5 @@
 package rocks.teammolise.myunimol.webapp.recordbook;
 
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -17,7 +15,6 @@ import org.json.JSONObject;
 
 import rocks.teammolise.myunimol.api.APIConsumer;
 import rocks.teammolise.myunimol.webapp.UserInfo;
-import rocks.teammolise.myunimol.webapp.configuration.ConfigurationManagerHandler;
 
 /**
  *
@@ -26,8 +23,9 @@ import rocks.teammolise.myunimol.webapp.configuration.ConfigurationManagerHandle
 @WebServlet(name = "RecordBookExamServlet", urlPatterns = {"/RecordBookExamServlet"})
 
 public class RecordBookExamServlet extends HttpServlet {
+	private static final long serialVersionUID = -8595320636382451924L;
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
 
@@ -36,7 +34,7 @@ public class RecordBookExamServlet extends HttpServlet {
                 
         try {
         	if (request.getSession().getAttribute("userInfo") == null) {
-				response.sendError(500, "Unauthorized");
+				response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized");
 				return;
 			}
         	
@@ -45,18 +43,20 @@ public class RecordBookExamServlet extends HttpServlet {
             String username = userInfo.getUsername();
             String password = userInfo.getPassword();
             String examId = request.getParameter("id");
+            if (examId == null) {
+            	response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Bad request");
+		        return;
+		    }
             
             Map<String, Object> params = new HashMap<String, Object>();
-            params.put("username", username);
-            params.put("password", password);
             params.put("id", examId);
             
-            JSONObject recBookExamJSON = new APIConsumer().consume("getRecordBookExam", params);
+            JSONObject recBookExamJSON = new APIConsumer().consume("getRecordBookExam", username, password, params);
             
             out.println(recBookExamJSON);
             
         } catch (UnirestException e) {
-            response.sendError(200, "Internal Server Error");
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Internal Server Error");
         } finally {
             out.close();
         }

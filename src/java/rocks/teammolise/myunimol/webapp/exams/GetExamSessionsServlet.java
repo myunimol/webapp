@@ -24,7 +24,9 @@ import rocks.teammolise.myunimol.webapp.UserInfo;
  */
 @WebServlet(name = "GetExamSessionsServlet", urlPatterns = {"/GetExamSessionsServlet"})
 public class GetExamSessionsServlet extends HttpServlet {
-    /**
+	private static final long serialVersionUID = -1681472955867623768L;
+
+	/**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
@@ -41,7 +43,7 @@ public class GetExamSessionsServlet extends HttpServlet {
         
         try {
 			if (request.getSession().getAttribute("userInfo") == null) {
-				response.sendError(500, "Unauthorized");
+				response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized");
 				return;
 			}
 
@@ -53,7 +55,7 @@ public class GetExamSessionsServlet extends HttpServlet {
             JSONObject examSessionsJSON = new APIConsumer().consume("getExamSessions", username, password);
             out.print(examSessionsJSON);
         } catch (UnirestException ex) {        
-             response.sendError(200, "Internal server error");
+             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Internal server error");
         }finally{
             out.close();
         }

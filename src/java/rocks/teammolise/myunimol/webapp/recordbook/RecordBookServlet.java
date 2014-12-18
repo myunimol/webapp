@@ -1,12 +1,8 @@
 package rocks.teammolise.myunimol.webapp.recordbook;
 
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,7 +13,6 @@ import org.json.JSONObject;
 
 import rocks.teammolise.myunimol.api.APIConsumer;
 import rocks.teammolise.myunimol.webapp.UserInfo;
-import rocks.teammolise.myunimol.webapp.configuration.ConfigurationManagerHandler;
 
 /**
  *
@@ -26,8 +21,9 @@ import rocks.teammolise.myunimol.webapp.configuration.ConfigurationManagerHandle
 @WebServlet(name = "RecordBookServlet", urlPatterns = {"/RecordBookServlet"})
 
 public class RecordBookServlet extends HttpServlet {
+	private static final long serialVersionUID = 687911528076019418L;
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
         response.setContentType("text/html;charset=UTF-8");
@@ -35,7 +31,7 @@ public class RecordBookServlet extends HttpServlet {
                 
         try { 
         	if (request.getSession().getAttribute("userInfo") == null) {
-				response.sendError(500, "Unauthorized");
+				response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized");
 				return;
 			}
         	
@@ -49,7 +45,7 @@ public class RecordBookServlet extends HttpServlet {
             out.println(recBookJSON);
             
         } catch (UnirestException e) {
-            response.sendError(200, "Internal Server Error");
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Internal Server Error");
      
         } finally {
             out.close();

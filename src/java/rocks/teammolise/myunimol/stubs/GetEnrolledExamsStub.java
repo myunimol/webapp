@@ -21,8 +21,9 @@ import rocks.teammolise.myunimol.webapp.configuration.ConfigurationManagerHandle
  */
 @WebServlet(name = "getEnrolledExams", urlPatterns = {"/getEnrolledExams"})
 public class GetEnrolledExamsStub extends HttpServlet {
+	private static final long serialVersionUID = -2680278555148466285L;
 
-    /**
+	/**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *

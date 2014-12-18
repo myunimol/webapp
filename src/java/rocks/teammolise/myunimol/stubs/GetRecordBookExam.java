@@ -17,8 +17,9 @@ import rocks.teammolise.myunimol.webapp.configuration.ConfigurationManagerHandle
 @WebServlet(name = "getRecordBookExam", urlPatterns = {"/getRecordBookExam"})
 
 public class GetRecordBookExam extends HttpServlet {
+	private static final long serialVersionUID = 973581641895155357L;
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
         response.setContentType("text/html;charset=UTF-8");
