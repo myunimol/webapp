@@ -1,0 +1,31 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Author     : Christian
+*/
+.body {
+        background-color: rgb(1, 87, 155)
+      }
+.news-container {
+    position: relative;
+    border: 2px solid #bebebe;
+    padding: 16px;
+    margin: 16px 5px 16px 16px;
+    border-radius: 5px;
+    top: 4px;
+    background-color: #fff;
+    color: #0277BD;
+}
+
+#news-date {
+    font-size: 12px;
+    padding: 8px 0 16px;
+    color: #c00;
+}
+
+#news-text {
+    font-size: 16px;
+}
