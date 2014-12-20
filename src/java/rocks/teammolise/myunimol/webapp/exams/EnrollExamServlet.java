@@ -63,17 +63,15 @@ public class EnrollExamServlet extends HttpServlet {
             
             String username = userInfo.getUsername();
             String password = userInfo.getPassword();
-            String examId = request.getParameter("id");
-            String notes = request.getParameter("notes");
+            String examId = request.getParameter("enrollId");
             
-            if (examId == null || notes == null) {
+            if (examId == null) {
             	response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Bad request");
             	return;
             }
             	
             
-            params.put("id", examId);
-            params.put("notes", notes);
+            params.put("enrollId", examId);
             
             JSONObject enrollExamJSON = new APIConsumer().consume("enrollExam", username, password, params);
            
