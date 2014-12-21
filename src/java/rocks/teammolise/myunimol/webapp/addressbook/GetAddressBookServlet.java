@@ -19,83 +19,83 @@ import rocks.teammolise.myunimol.webapp.UserInfo;
 import rocks.teammolise.myunimol.webapp.configuration.ConfigurationManagerHandler;
 
 /**
- *
- * @author emilio
- */
+*
+* @author Pasquale
+*/
 @WebServlet(name = "GetAddressBookServlet", urlPatterns = {"/GetAddressBookServlet"})
 public class GetAddressBookServlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        try {
-            if (request.getSession().getAttribute("userInfo") == null) {
-				response.sendError(500, "Unauthorized");
-				return;
-			}
+   /**
+    * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+    * methods.
+    *
+    * @param request servlet request
+    * @param response servlet response
+    * @throws ServletException if a servlet-specific error occurs
+    * @throws IOException if an I/O error occurs
+    */
+  protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+           throws ServletException, IOException {
+       response.setContentType("application/json; charset=UTF-8");
+       PrintWriter out = response.getWriter();
 
-			UserInfo userInfo = (UserInfo) request.getSession().getAttribute("userInfo");
+       try {
+           if (request.getSession().getAttribute("userInfo") == null) {
+               response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized");
+               return;
+           }
 
-			String username = userInfo.getUsername();
-			String password = userInfo.getPassword();
+           UserInfo userInfo = (UserInfo) request.getSession().getAttribute("userInfo");
 
-			JSONObject addressBookJSON = new APIConsumer().consume("getAddressBook", username, password);
-		
-			out.print(addressBookJSON);
-		} catch (UnirestException ex) {
-			response.sendError(200, "Internal server error");
-		} finally {
-			out.close();
-		}
-    }
+           String username = userInfo.getUsername();
+           String password = userInfo.getPassword();
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
+           JSONObject examSessionsJSON = new APIConsumer().consume("getAddressBook", username, password);
+           out.print(examSessionsJSON);
+       } catch (UnirestException ex) {
+           response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Internal server error");
+       } finally {
+           out.close();
+       }
+   }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
+   // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+   /**
+    * Handles the HTTP <code>GET</code> method.
+    *
+    * @param request servlet request
+    * @param response servlet response
+    * @throws ServletException if a servlet-specific error occurs
+    * @throws IOException if an I/O error occurs
+    */
+   @Override
+   protected void doGet(HttpServletRequest request, HttpServletResponse response)
+           throws ServletException, IOException {
+       processRequest(request, response);
+   }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+   /**
+    * Handles the HTTP <code>POST</code> method.
+    *
+    * @param request servlet request
+    * @param response servlet response
+    * @throws ServletException if a servlet-specific error occurs
+    * @throws IOException if an I/O error occurs
+    */
+   @Override
+   protected void doPost(HttpServletRequest request, HttpServletResponse response)
+           throws ServletException, IOException {
+       processRequest(request, response);
+   }
+
+   /**
+    * Returns a short description of the servlet.
+    *
+    * @return a String containing servlet description
+    */
+   @Override
+   public String getServletInfo() {
+       return "Short description";
+   }// </editor-fold>
 
 }

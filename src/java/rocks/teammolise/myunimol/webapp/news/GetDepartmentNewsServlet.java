@@ -27,8 +27,8 @@ import rocks.teammolise.myunimol.webapp.UserInfo;
 *
 * @author Pasquale
 */
-@WebServlet(name = "GetNewsBoardServlet", urlPatterns = {"/GetNewsBoardServlet"})
-public class GetNewsBoardServlet extends HttpServlet {
+@WebServlet(name = "GetDepartmentNewsServlet", urlPatterns = {"/GetDepartmentNewsServlet"})
+public class GetDepartmentNewsServlet extends HttpServlet {
   /**
     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
     * methods.
@@ -54,12 +54,12 @@ public class GetNewsBoardServlet extends HttpServlet {
 
            String username = userInfo.getUsername();
            String password = userInfo.getPassword();
-           String cdl = request.getParameter("cdl");
+           String department = request.getParameter("department");
            
            Map<String, Object> parameters = new HashMap<String, Object>();
-           parameters.put("cdl", cdl);
+           parameters.put("department", department);
 
-           JSONObject examSessionsJSON = new APIConsumer().consume("getNewsBoard", username, password, parameters);
+           JSONObject examSessionsJSON = new APIConsumer().consume("getDepartmentNews", username, password, parameters);
            out.print(examSessionsJSON);
        } catch (UnirestException ex) {
            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Internal server error");
