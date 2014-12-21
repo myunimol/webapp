@@ -33,7 +33,7 @@ public class TestCredentialsStub extends HttpServlet {
             		&& request.getParameter("token").equals(ConfigurationManagerHandler.getInstance().getToken())
             		&& request.getParameter("username") != null 
             		&& request.getParameter("username").equals("pippo")) {
-            	out.println("{\"result\": \"positive\", \"name\": \"Matteo\", \"surname\": \"Bianchi\", \"studentID\": \"140000\", \"studentClass\": \"primo anno\", \"taxes\": \"situazione regolare\", \"careerPlan\": \"modificabile\", \"availableExams\": \"2 appelli disponibili\", \"enrolledExams\": \"0 prenotazioni\"}");
+            	out.println("{\"result\": \"positive\", \"name\": \"Matteo\", \"surname\": \"Bianchi\", \"studentID\": \"140000\", \"studentClass\": \"primo anno\", \"taxes\": \"situazione regolare\", \"careerPlan\": \"modificabile\", \"availableExams\": \"2 appelli disponibili\", \"enrolledExams\": \"0 prenotazioni\", \"course\": \"INFORMATICA\", \"department\": \"Bioscienze e territorio\", \"coursePath\": \"COMUNE\", \"courseLength\": 3, \"registrationDate\": \"13/09/2010\"}");
             } else {
             	out.println("{\"result\": \"failure\"}");
             }

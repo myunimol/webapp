@@ -63,7 +63,14 @@ public class LoginServlet extends HttpServlet {
                 userInfo.setAvailableExams(loginJSON.getString("availableExams"));
                 userInfo.setEnrolledExams(loginJSON.getString("enrolledExams"));
                 userInfo.setUsername(username);
-                userInfo.setPassword(password); //da inserire le altre info x la schermata di benvenuto
+                userInfo.setPassword(password);
+                
+                userInfo.setCourse(loginJSON.getString("course"));
+                userInfo.setDepartment(loginJSON.getString("department"));
+                userInfo.setCoursePath(loginJSON.getString("coursePath"));
+                userInfo.setCourseLength(loginJSON.getInt("courseLength"));
+                userInfo.setRegistrationDate(loginJSON.getString("registrationDate"));
+                
                 HttpSession session = request.getSession(true);
                 session.setAttribute("userInfo", userInfo);
                 

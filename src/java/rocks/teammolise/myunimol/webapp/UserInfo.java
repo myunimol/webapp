@@ -5,7 +5,22 @@ package rocks.teammolise.myunimol.webapp;
  * @author Federica Mauriello
  */
 public class UserInfo {
-    private String name, surname, studentId, studentClass, username, password, taxes, careerPlan, availableExams, enrolledExams ;
+    private String name;
+    private String surname;
+    private String studentId;
+    private String studentClass;
+    private String username;
+    private String password;
+    private String taxes;
+    private String careerPlan;
+    private String availableExams;
+    private String enrolledExams;
+    
+    private String course;
+    private String department;
+    private String coursePath;
+    private int courseLength;
+    private String registrationDate;
 
     public String getTaxes() {
         return taxes;
@@ -89,5 +104,48 @@ public class UserInfo {
     public void setStudentClass(String studentClass) {
         this.studentClass = studentClass;
     }
-    
+
+	public String getCourse() {
+		return course;
+	}
+
+	public void setCourse(String course) {
+		this.course = course;
+	}
+
+	public String getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(String department) {
+		this.department = department;
+	}
+
+	public String getCoursePath() {
+		return coursePath;
+	}
+
+	public void setCoursePath(String coursePath) {
+		this.coursePath = coursePath;
+	}
+
+	public int getCourseLength() {
+		return courseLength;
+	}
+
+	public void setCourseLength(int courseLength) {
+		this.courseLength = courseLength;
+	}
+
+	public String getRegistrationDate() {
+		return registrationDate;
+	}
+
+	public void setRegistrationDate(String registrationDate) {
+		this.registrationDate = registrationDate;
+	}
+	
+	public int getTotalCFU() {
+		return this.courseLength * 60;
+	}
 }
