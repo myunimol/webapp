@@ -54,8 +54,8 @@ public class HomeServlet extends HttpServlet {
             
             JSONObject recordBook = new APIConsumer().consume("getRecordBook", username, password);
             JSONObject result = new JSONObject();
-            result.append("average", recordBook.getString("average"));
-            result.append("weightedAverage", recordBook.getString("weightedAverage"));
+            result.put("average", recordBook.getString("average"));
+            result.put("weightedAverage", recordBook.getString("weightedAverage"));
             
             JSONArray exams = recordBook.getJSONArray("exams");
             float acquiredCFU = 0;
@@ -64,9 +64,10 @@ public class HomeServlet extends HttpServlet {
             	acquiredCFU += Integer.parseInt(exams.getJSONObject(i).getString("cfu"));
             	totalExams++;
             }
-            	
-            result.append("percentCFU", acquiredCFU/userInfo.getTotalCFU());
-            result.append("totalExams", totalExams);
+            result.put("totalCFU", (int)userInfo.getTotalCFU());
+            result.put("acquiredCFU", (int)acquiredCFU);
+            result.put("percentCFU", acquiredCFU/userInfo.getTotalCFU());
+            result.put("totalExams", totalExams);
             
             out.write(result.toString());
         } catch (UnirestException e) {
