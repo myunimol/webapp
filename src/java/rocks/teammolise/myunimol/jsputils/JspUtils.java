@@ -96,7 +96,7 @@ public class JspUtils {
 	}
 	
 	private void writeMainMenu() throws IOException {
-		out("<core-item id=home_item' icon='home' label='Home' horizontal center layout active><a href=''></a></core-item>");
+		out("<core-item id='home_item' icon='home' label='Home' horizontal center layout active><a href='Home.jsp'></a></core-item>");
 		out("<core-item id='libretto_item' icon='folder-shared' label='Libretto' horizontal center layout><a href='Libretto.jsp'></a></core-item>");
 		out("<core-item id='docenti_item' icon='mail' label='Rubrica' horizontal center layout><a href='Rubrica.jsp'></a></core-item>");
 		out("<core-item id='appelli_item' icon='assignment' label='Appelli' horizontal center layout><a href='Appelli.jsp'></a></core-item>");

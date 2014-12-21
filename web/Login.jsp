@@ -3,7 +3,7 @@
 <%
 	JspUtils utils = new JspUtils(request, response, session, out);
 	if (session.getAttribute("userInfo") != null) {
-		response.sendRedirect("Libretto.jsp");
+		response.sendRedirect("Home.jsp");
 		return;
 	}
 %>
@@ -157,9 +157,9 @@
 	                var json = event.detail.response;
 	
 	                if (json.result == 'failure') {
-	                    document.querySelector('#login_error_message').show()
+	                    document.querySelector('#login_error_message').show();
 	                } else if (json.result == 'correct') {
-	                    window.location.href = "Libretto.jsp"
+	                    window.location.href = "Home.jsp";
 	                }
 	            })
 	        });

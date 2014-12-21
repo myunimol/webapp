@@ -1,0 +1,20 @@
+<polymer-element name="gm-navigation-tab" attributes="color url text">
+    <template>
+        <!-- CSS -->
+        <link rel="stylesheet" href="style.css">
+        <a href="{{url}}" style="text-decoration: none">
+            <div class="gm-navigation-tab trim" style="background-color: {{color}}" vertical layout>
+                <h3>{{text}}</h3>
+            </div>
+        </a>
+    </template>
+
+    <script>
+        Polymer('gm-navigation-tab', {
+            //default properties
+            color: "#0943a0",
+            url: "#",
+            text: "SET YOUR TEXT"
+        });
+    </script>
+</polymer-element>
