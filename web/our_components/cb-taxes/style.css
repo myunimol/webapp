@@ -1,0 +1,27 @@
+.taxes-container {
+    border: 0px solid #bebebe;
+    padding: 16px;
+    margin: 16px;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.25);
+    color: #555;
+}
+
+#taxes-description {
+    font-size: 16px;
+}
+
+#taxes-expiring-date {
+    font-size: 16px;
+
+}
+
+#taxes-amount {
+    font-size: 16px;
+}
+
+#taxes-status-payment {
+    font-size: 16px;
+
+}
