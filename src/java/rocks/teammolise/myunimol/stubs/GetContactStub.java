@@ -43,7 +43,9 @@ public class GetContactStub extends HttpServlet {
         try {
             //Controllo del token
            if(token != null && token.equals(realToken)){
-        	   out.println("{\"contact\": [ { \"fullname\": \"Fausto Fasano\", \"Ruolo\": \"Pippafrusc\", \"Dipartimento\": \"Capobianco\", \"email\": \"pip@gm.com\" } ] }");     
+        	   out.println("{\"contact\": ["
+        	   		+ "{\"fullname\": \"Fausto Fasano\", \"Ruolo\": \"Pippafrusc\", \"Dipartimento\": \"Capobianco\", \"email\": \"pip@gm.com\" } "
+        	   		+ "]}");     
            } else {
         	   out.println("{\"result\": \"unauthorized\"}");
            }

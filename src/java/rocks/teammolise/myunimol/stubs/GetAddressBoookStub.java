@@ -43,7 +43,11 @@ public class GetAddressBoookStub extends HttpServlet {
         try {
              //Controllo del token
            if(token != null && token.equals(realToken)){
-        	   out.println("{\"contact\": [{\"fullname\": \"Matteo Merola\", \"role\": \"Studente\", \"building\": \"Università Degli Studi di Salerno\", \"internalTelephone\": \"2917\", \"externalTelephone\": \"+39 0874 404 917\", \"email\": \"mattmezza@gmail.com\"}, {\"fullname\": \"Simone Scalabrino\", \"role\": \"Studente\", \"building\": \"Università Degli Studi di Salerno\", \"internalTelephone\": \"23136\", \"externalTelephone\": \"+39 0869 404 417\", \"email\": \"intersimone999@gmail.com\"},{\"fullname\": \"Fausto Sfasato\", \"role\": \"Smanettone\", \"building\": \"Scienze Delle Pulizie\", \"internalTelephone\": \"0000\", \"externalTelephone\": \"+39 1234 404 917\", \"email\": \"stosfasatocostantemente@gmail.com\"}]}");     
+        	   out.println("{\"contact\": ["
+        	   		+ "{\"fullname\": \"Matteo Merola\", \"role\": \"Studente\", \"building\": \"Università Degli Studi di Salerno\", \"internalTelephone\": \"2917\", \"externalTelephone\": \"+39 0874 404 917\", \"email\": \"mattmezza@gmail.com\"},"
+        	   		+ "{\"fullname\": \"Simone Scalabrino\", \"role\": \"Studente\", \"building\": \"Università Degli Studi di Salerno\", \"internalTelephone\": \"23136\", \"externalTelephone\": \"+39 0869 404 417\", \"email\": \"intersimone999@gmail.com\"},"
+        	   		+ "{\"fullname\": \"Fausto Sfasato\", \"role\": \"Smanettone\", \"building\": \"Scienze Delle Pulizie\", \"internalTelephone\": \"0000\", \"externalTelephone\": \"+39 1234 404 917\", \"email\": \"stosfasatocostantemente@gmail.com\"}"
+        	   		+ "]}");     
            } else {
         	   out.println("{\"result\": \"unauthorized\"}");
            }

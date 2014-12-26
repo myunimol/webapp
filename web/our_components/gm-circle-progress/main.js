@@ -5,6 +5,11 @@ Polymer('gm-circle-progress', {
         $(this.$.pieProgress).asPieProgress({
             'namespace': 'pie_progress'
         });
-        $(this.$.pieProgress).asPieProgress('start');
-    }
+    },
+    
+	publish: {
+		go: function() {
+			$(this.$.pieProgress).asPieProgress('go', this.percentage);
+		},
+	}
 });

@@ -31,7 +31,11 @@ public class GetRecordBookExam extends HttpServlet {
         
         try {
             if (token != null && token.equals(realToken)) {
-                out.println("{\"name\":\"Matematica\", \"cfu\":\"12\", \"vote\":\"28\", \"date\":\"28/11/2014\", \"year\":\"2014/2015\", \"details\":[{\"name\":\"Matematica discreta\", \"cfu\":\"6\", \"hours\":\"48\", \"area\":\"MAT/01\"},{\"name\":\"Analisi matematica\", \"cfu\":\"6\", \"hours\":\"48\", \"area\":\"MAT/01\"}]}");
+                out.println("{\"name\":\"Matematica\", \"cfu\":\"12\", \"vote\":\"28\", \"date\":\"28/11/2014\", \"year\":\"2014/2015\", "
+                		+ "\"details\":["
+                		+ "{\"name\":\"Matematica discreta\", \"cfu\":\"6\", \"hours\":\"48\", \"area\":\"MAT/01\"},"
+                		+ "{\"name\":\"Analisi matematica\", \"cfu\":\"6\", \"hours\":\"48\", \"area\":\"MAT/01\"}"
+                		+ "]}");
             } else {
                 out.println("{\"result\": \"unauthorized\"}");
             }

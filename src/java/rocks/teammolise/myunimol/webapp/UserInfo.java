@@ -13,8 +13,8 @@ public class UserInfo {
     private String password;
     private String taxes;
     private String careerPlan;
-    private String availableExams;
-    private String enrolledExams;
+    private int availableExams;
+    private int enrolledExams;
     
     private String course;
     private String department;
@@ -38,19 +38,19 @@ public class UserInfo {
         this.careerPlan = careerPlan;
     }
 
-    public String getAvailableExams() {
+    public int getAvailableExams() {
         return availableExams;
     }
 
-    public void setAvailableExams(String availableExams) {
+    public void setAvailableExams(int availableExams) {
         this.availableExams = availableExams;
     }
 
-    public String getEnrolledExams() {
+    public int getEnrolledExams() {
         return enrolledExams;
     }
 
-    public void setEnrolledExams(String enrolledExams) {
+    public void setEnrolledExams(int enrolledExams) {
         this.enrolledExams = enrolledExams;
     }
     public UserInfo(){

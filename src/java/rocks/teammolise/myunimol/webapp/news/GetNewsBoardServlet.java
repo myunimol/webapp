@@ -57,10 +57,10 @@ public class GetNewsBoardServlet extends HttpServlet {
            String cdl = request.getParameter("cdl");
            
            Map<String, Object> parameters = new HashMap<String, Object>();
-           parameters.put("cdl", cdl);
+           parameters.put("course", cdl);
 
-           JSONObject examSessionsJSON = new APIConsumer().consume("getNewsBoard", username, password, parameters);
-           out.print(examSessionsJSON);
+           JSONObject newsBoardJSON = new APIConsumer().consume("getNewsBoard", username, password, parameters);
+           out.print(newsBoardJSON);
        } catch (UnirestException ex) {
            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Internal server error");
        } finally {

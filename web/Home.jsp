@@ -34,41 +34,49 @@
 
         <link rel='import' href='our_components/gm-circle-progress/gm-circle-progress.html' />
         <link rel='import' href='our_components/gm-navigation-tab/gm-navigation-tab.html' />
-        
+
         <style>
-        	.main-panel{
-			    background-color: #eee;
-			}
-			/* Home Style */
-			#studentInfo {
-			    text-align: center;
-			    color:#444;
-			}
-			
-			#studentProgress {
-			    border: 1px solid #bebebe;
-			    padding: 16px;
-			    margin: 16px;
-			    border-radius: 5px;
-			    background-color: #FFF;
-			    box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.25);
-			    color: #555;
-			    text-align: center;
-			}
-			
-			#studentProgress h2{
-			    margin: 5px 0px 15px 0px;
-			}
-			
-			#student-detail-button {
-			    margin-top: 15px;
-			    background: #7F8EB8;
-			    color: #FFF;
-			}
+            .main-panel{
+                background-color: #eee;
+            }
+            /* Home Style */
+            #studentInfo {
+                text-align: center;
+                color:#444;
+            }
+
+            #studentProgress {
+                border: 1px solid #bebebe;
+                padding: 16px;
+                margin: 16px;
+                border-radius: 5px;
+                background-color: #FFF;
+                box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.25);
+                color: #555;
+                text-align: center;
+            }
+
+            #studentProgress h2{
+                margin: 5px 0px 15px 0px;
+            }
+
+            #student-detail-button {
+                margin-top: 15px;
+                background: #7F8EB8;
+                color: #FFF;
+            }
         </style>
     </head>
 
     <body>
+    <core-ajax auto
+               id='ajax' 
+               method='POST'
+               url="HomeServlet" 
+               params='{}' 
+               handleAs='json'>
+    </core-ajax>
+    
     <core-drawer-panel id="drawerPanel">
         <% utils.writeLeftMenu("Home", 0);%>
 
@@ -81,8 +89,8 @@
             </core-toolbar>
             <div id='activeContentHandler' class="content">
                 <div id="studentInfo">
-                    <h1>Giuseppe Marasca</h1>
-                    <h3>148940</h3>
+                    <h1> <%= utils.getUser().getName()+" "+utils.getUser().getSurname() %> </h1>
+                    <h3> <%= utils.getUser().getStudentId() %> </h3>
                 </div>
                 <div id="studentProgress">
                     <h2>Progresso carriera</h2>
@@ -93,19 +101,19 @@
                     numcfu: numero di CFU conseguiti su CFU totali (default = 0/180)
                     color: colore di sfondo (default = ##0943a0)
                     -->
-                    <gm-circle-progress percentage="44.4" numcfu="80/180"></gm-circle-progress>
+                    <gm-circle-progress id="circleProgress" percentage="" numcfu=""></gm-circle-progress>
 
                     <core-collapse id="student-progress-info" style="text-align: center">
                         <div id="student-media-aritmetica">
-                            <h3>Media Aritmetica</h3 ><p>26.44/30</p>
+                            <h3>Media Aritmetica</h3 ><p id="average"></p>
                         </div>
                         <hr>
                         <div id="student-media-ponderata">
-                            <h3>Media Ponderata</h3><p>26.41/30</p>
+                            <h3>Media Ponderata</h3><p id="weightedAverage"></p>
                         </div>
                         <hr>
                         <div>
-                            <h3>Esami Registrati</h3><p>9</p>
+                            <h3>Esami Registrati</h3><p id="acquiredExams"></p>
                         </div>
                         <hr>
                     </core-collapse>
@@ -126,5 +134,19 @@
 
     </core-drawer-panel>
     <script src="scripts/home-scripts.js"></script>
+    <script>
+        document.addEventListener('polymer-ready', function() {
+            var ajax = document.getElementById("ajax");
+            ajax.addEventListener("core-response", function(event) {
+                var circleProgressBar = document.getElementsByTagName("gm-circle-progress")[0];
+                circleProgressBar.setAttribute("percentage", event.detail.response.percentCFU);
+                circleProgressBar.setAttribute("numcfu", event.detail.response.acquiredCFU+"/"+event.detail.response.totalCFU);
+                document.getElementById("average").innerHTML = event.detail.response.average;
+                document.getElementById("weightedAverage").innerHTML = event.detail.response.weightedAverage;
+                document.getElementById("acquiredExams").innerHTML = ""+event.detail.response.totalExams;
+                document.getElementById("circleProgress").go();
+            });
+        });
+    </script>
 </body>
 </html>

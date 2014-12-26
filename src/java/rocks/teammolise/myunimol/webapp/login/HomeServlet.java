@@ -54,19 +54,24 @@ public class HomeServlet extends HttpServlet {
             
             JSONObject recordBook = new APIConsumer().consume("getRecordBook", username, password);
             JSONObject result = new JSONObject();
-            result.put("average", recordBook.getString("average"));
-            result.put("weightedAverage", recordBook.getString("weightedAverage"));
+            result.put("average", recordBook.getDouble("average"));
+            result.put("weightedAverage", recordBook.getDouble("weightedAverage"));
             
             JSONArray exams = recordBook.getJSONArray("exams");
             float acquiredCFU = 0;
             int totalExams = 0;
             for (int i = 0; i < exams.length(); i++) {
-            	acquiredCFU += Integer.parseInt(exams.getJSONObject(i).getString("cfu"));
-            	totalExams++;
+            	if (!exams.getJSONObject(i).getString("vote").contains("/")) {
+            		acquiredCFU += exams.getJSONObject(i).getInt("cfu");
+            		totalExams++;
+            	}
             }
+            double percentCfuUgly = (acquiredCFU*100)/userInfo.getTotalCFU();
+            //Arrotonda la percentuale alla prima cifra decimale
+            double percentCfu = Math.round(percentCfuUgly*10D)/10D;
             result.put("totalCFU", (int)userInfo.getTotalCFU());
             result.put("acquiredCFU", (int)acquiredCFU);
-            result.put("percentCFU", acquiredCFU/userInfo.getTotalCFU());
+            result.put("percentCFU", percentCfu);
             result.put("totalExams", totalExams);
             
             out.write(result.toString());

@@ -60,8 +60,8 @@ public class LoginServlet extends HttpServlet {
                 userInfo.setStudentId(loginJSON.getString("studentID"));
                 userInfo.setTaxes(loginJSON.getString("taxes"));
                 userInfo.setCareerPlan(loginJSON.getString("careerPlan"));
-                userInfo.setAvailableExams(loginJSON.getString("availableExams"));
-                userInfo.setEnrolledExams(loginJSON.getString("enrolledExams"));
+                userInfo.setAvailableExams(loginJSON.getInt("availableExams"));
+                userInfo.setEnrolledExams(loginJSON.getInt("enrolledExams"));
                 userInfo.setUsername(username);
                 userInfo.setPassword(password);
                 
@@ -77,9 +77,9 @@ public class LoginServlet extends HttpServlet {
                 out.print("{\"result\": \"correct\"}");
             }
         } catch (UnirestException e) {
-        	response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Internal Server Error");
+        	response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Unirest Exception");
         } catch (JSONException e) {
-        	response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Internal Server Error");
+        	response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "JSON Exception");
         } finally {
             out.close();
         }
