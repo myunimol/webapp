@@ -1,4 +1,5 @@
 .taxes-container {
+    position:relative;
     border: 0px solid #bebebe;
     padding: 16px;
     margin: 16px;
@@ -19,9 +20,17 @@
 
 #taxes-amount {
     font-size: 16px;
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    font-weight: bold;
+
 }
 
 #taxes-status-payment {
+    position: absolute;
+    top: 16px;
+    right: 16px;
     font-size: 16px;
-
+    
 }

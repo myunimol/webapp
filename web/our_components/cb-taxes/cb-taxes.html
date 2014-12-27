@@ -3,22 +3,25 @@
         <!-- Foglio di stile per il singolo componente -->
         <link rel="stylesheet" href="style.css">
         <div class="content-item">
-            <!--Questo template itera tante volte quanti sono gli oggetti nell'array sessions.
+            <!--Questo template itera tante volte quanti sono gli oggetti nell'array taxes.
             L'array è creato nello script in fondo alla pagina.
             -->
             <template repeat="{{tax in taxes}}">
                 <div class="taxes-container">
-                    <div id="taxes-description">Descrizione: {{tax.description}}</div>
-                    <div id="taxes-expiring-date">Data scadenza: {{tax.expiringDate}}</div>
-                    <div id="taxes-amount">Importo: {{tax.amount}}</div>
-                    <div id="taxes-status-payment">Stato: {{tax.statusPayment}}</div>
+                    <div id="taxes-description">{{tax.description}}</div>
+                    <div id="taxes-expiring-date">Scadenza: {{tax.expiringDate}}</div>
+                    <div id="taxes-amount">€ {{tax.amount}}</div>
+                    <div id="taxes-status-payment">{{tax.statusPayment}}</div>
+                    <!-- 
+                    Fare in modo che se tax.statusPayment è uguale a "non pagato"
+                    allora mette il red dot:
+                    <img src="images/red_dot.png" width="16px" alt="non pagato">
+                    altrimenti mette il green dot:
+                    <img src="images/green_dot.png" width="16px" alt="pagato">
+                    -->
                 </div>
             </template>
         </div>
     </template>
-    <!--File javascript che crea l'array sessions.
-    session.js crea un array "a mano"; l'ho utilizzato per testare il corretto funzionamento della componente
-    session-json.js dovrebbe essere lo script che va a creare l'array sessions sulla base del json risultante dalla chiamata alla servlet.
-    -->
     <script src="taxes.js"></script>
 </polymer-element>
