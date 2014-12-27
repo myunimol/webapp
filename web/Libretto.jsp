@@ -94,7 +94,7 @@
 	    				$('#table tr:last').after(
 	    						'<tr><td id="td">'   + data.exams[i].name + 
 	    						'</td><td id="td1">' + data.exams[i].cfu + 
-	    						'</td><td id="td2">' + data.exams[i].grade + 
+	    						'</td><td id="td2">' + data.exams[i].vote + 
 	    						'</td><td id="td3">' + data.exams[i].date + 
 	    						'</td><td id="td4">' + data.exams[i].year + 
 	    						'</td></tr>');
