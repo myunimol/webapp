@@ -44,12 +44,12 @@
     </core-ajax>
 
     <core-drawer-panel id="drawerPanel">
-        <% utils.writeLeftMenu("Tasse", 6);%>
+        <% utils.writeLeftMenu("Pagamenti", 6);%>
 
         <core-header-panel main>
             <core-toolbar id="mainheader">
                 <paper-icon-button id="navicon" icon="menu"></paper-icon-button>
-                <span flex style="font-size: 28;">Tasse</span>
+                <span flex style="font-size: 28;">Pagamenti</span>
             </core-toolbar>
 
             <div id='activeContentHandler' class="content">
