@@ -62,6 +62,7 @@ public class GetNewsBoardServlet extends HttpServlet {
            JSONObject newsBoardJSON = new APIConsumer().consume("getNewsBoard", username, password, parameters);
            out.print(newsBoardJSON);
        } catch (UnirestException ex) {
+    	   ex.printStackTrace();
            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Internal server error");
        } finally {
            out.close();
