@@ -44,7 +44,7 @@
     </core-ajax>
 
     <core-drawer-panel id="drawerPanel">
-        <% utils.writeLeftMenu("Pagamenti", 5);%>
+        <% utils.writeLeftMenu("Pagamenti", 6);%>
 
         <core-header-panel main>
             <core-toolbar id="mainheader">

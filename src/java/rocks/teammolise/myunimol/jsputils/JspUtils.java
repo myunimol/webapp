@@ -100,7 +100,8 @@ public class JspUtils {
 		out("<core-item id='libretto_item' icon='folder-shared' label='Libretto' horizontal center layout><a href='Libretto.jsp'></a></core-item>");
 		out("<core-item id='docenti_item' icon='mail' label='Rubrica' horizontal center layout><a href='Rubrica.jsp'></a></core-item>");
 		out("<core-item id='appelli_item' icon='assignment' label='Appelli' horizontal center layout><a href='Appelli.jsp'></a></core-item>");
-		out("<core-item id='bacheca_item' icon='announcement' label='News' horizontal center layout><a href='Bacheca.jsp'></a></core-item>");
+		out("<core-item id='bacheca_item' icon='announcement' label='News' horizontal center layout><a href='News.jsp'></a></core-item>");
+                out("<core-item id='warning' icon='warning' label='Bacheca' horizontal center layout><a href='Bacheca.jsp'></a></core-item>");
                 out("<core-item id='tasse_item' icon='payment' label='Pagamenti' horizontal center layout><a href='Tasse.jsp'></a></core-item>");
 	}
 	
