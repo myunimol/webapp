@@ -44,8 +44,8 @@ public class GetExamSessionsStub extends HttpServlet {
             //Controllo del token
            if (token != null && token.equals(realToken)){
         	   out.println("{\"exams\": ["
-        	   		+ "{\"name\": \"Matematica\",\"cfu\": \"12\",\"professor\": \"Capobianco\",\"date\": \"12/12/2013\",\"expiringDate\": \"01/12/2013\",\"room\": \"Galileo Galilei\",\"notes\": \"\",\"enrolled\": \"12\",\"session\": \"2013/2014\"},"
-        	   		+ "{\"name\": \"Fisica\",\"cfu\": \"7\",\"professor\": \"Marmolino\",\"date\": \"12/11/2013\",\"expiringDate\": \"01/11/2013\",\"room\": \"Isernia II\",\"notes\": \"\",\"enrolled\": \"44\",\"session\": \"2013/2014\"}"
+        	   		+ "{\"name\": \"Matematica\",\"cfu\": \"12\",\"professor\": \"Capobianco\",\"date\": \"12/12/2013\",\"expiringDate\": \"01/12/2013\",\"room\": \"Galileo Galilei\",\"notes\": \"\",\"enrolled\": \"12\",\"session\": \"2013/2014\", \"id\": \"19#10010#3130517#1579806#2011#10019#9998#2011#2#2\"},"
+        	   		+ "{\"name\": \"Fisica\",\"cfu\": \"7\",\"professor\": \"Marmolino\",\"date\": \"12/11/2013\",\"expiringDate\": \"01/11/2013\",\"room\": \"Isernia II\",\"notes\": \"\",\"enrolled\": \"44\",\"session\": \"2013/2014\", \"id\": \"19#34010#3130517#1579806#2012#10019#9998#2011#2#2\"}"
         	   		+ "]}");     
            } else {
                out.println("{\"result\": \"unauthorized\"}");
