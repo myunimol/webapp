@@ -69,7 +69,7 @@
             var ajax = document.getElementById("ajax");
 
             ajax.addEventListener("core-response", function (event) {
-                document.getElementById("cdrnews").board = event.detail.response.newsList;
+                document.getElementById("cdrnews").newsList = event.detail.response.newsList;
             });
         });
     </script>

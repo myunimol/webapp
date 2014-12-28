@@ -6,11 +6,14 @@
             <!--Questo template itera tante volte quanti sono gli oggetti nell'array sessions.
             L'array è creato nello script in fondo alla pagina.
             -->
-            <template repeat="{{news in board}}">
-                <div class="news-container">
-                    <div id="news-date">{{news.date}}</div>
-                    <div id="news-text">{{news.text}}</div>
-                </div>
+            <template repeat="{{news in newsList}}">
+                <a href="{{news.link}}">
+                    <div class="news-container">
+                        <div id="news-date">{{news.date}}</div>
+                        <div id="news-title">{{news.title}}</div>
+                        <div id="news-text">{{news.text}}</div>                  
+                    </div>
+                </a>
             </template>
         </div>
     </template>
