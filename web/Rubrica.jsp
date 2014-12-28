@@ -109,15 +109,13 @@
         <core-header-panel main>
             <core-toolbar id="mainheader">
                 <paper-icon-button id="navicon" icon="menu"></paper-icon-button>
-                <span flex style="font-size: 28;">
-                    <strong>Rubrica Docenti</strong>
-                </span>
+                <span flex style="font-size: 28;">Rubrica</span>
+                <paper-icon-button id="searchbutton" icon="search"></paper-icon-button>
             </core-toolbar>
-            
+           
             <div id="maintoolbar" style="background-color: #4F7DC9; border-radius: 5px;" horizontal layout>
-                <paper-input style="margin-left: 50px; color: white" type="text"  label= "Nome" id= "nome_input" floatinglabel class= "my-input"></paper-input>
-                <paper-input style="margin-left: 50px; color: white" type="text" label= "Cognome" id= "cognome_input" floatinglabel class= "my-input"></paper-input>  
-                <paper-item  style="margin-top: 22px; margin-left: 20px; color: white" id="paper_item" label="Search..." icon="search"></paper-item>
+                <paper-input style="margin-left: 50px; color: white" type="text"  label= "Ricerca" id= "nome_input" floatinglabel class= "my-input"></paper-input>
+                <paper-item  style="margin-top: 22px; margin-left: 20px; color: white" id="paper_item" icon="search"></paper-item>
             </div>
             
             <div id='activeContentHandler' class="content">
@@ -132,7 +130,7 @@
             var ajax = document.getElementById("ajax");
 
             ajax.addEventListener("core-response", function (event) {
-                document.getElementById("efcontact").contacts = event.detail.response.contact;
+                document.getElementById("efcontact").contacts = event.detail.response.contacts;
             });
         });
     </script>

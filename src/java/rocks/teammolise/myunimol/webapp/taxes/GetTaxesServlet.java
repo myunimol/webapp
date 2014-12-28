@@ -21,7 +21,13 @@ import rocks.teammolise.myunimol.webapp.UserInfo;
 @WebServlet(name = "GetTaxesServlet", urlPatterns = {"/GetTaxesServlet"})
 
 public class GetTaxesServlet extends HttpServlet {
-
+    /**
+     * 
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException 
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
