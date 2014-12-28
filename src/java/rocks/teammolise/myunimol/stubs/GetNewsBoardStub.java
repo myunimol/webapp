@@ -37,24 +37,16 @@ public class GetNewsBoardStub extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         
-        String token = request.getParameter("token");
-        String realToken = ConfigurationManagerHandler.getInstance().getToken();
-        
         try {
-            //Controllo del token
-           if(token != null && token.equals(realToken)){
         	   out.println("{\"news\": ["
-        	   		+ "{\"date\": \"16/12/2014\", \"text\": \"La lezione di Tecnologie di Sviluppo per il Web del prof. Fasano prevista per il 18 dicembre p.v. è sospesa.\"},"
-        	   		+ "{ \"date\": \"14/12/2014\", \"text\": \"La lezione di Elettronica digitale del prof. Preite prevista per il 18 dicembre p.v. è sospesa.\"},"
-        	   		+ "{ \"date\": \"16/12/2014\", \"text\": \"La lezione di Tecnologie di Sviluppo per il Web del prof. Fasano prevista per il 18 dicembre p.v. è sospesa.\"},"
-        	   		+ "{ \"date\": \"16/12/2014\", \"text\": \"La lezione di Tecnologie di Sviluppo per il Web del prof. Fasano prevista per il 18 dicembre p.v. è sospesa.\"},"
-        	   		+ "{ \"date\": \"16/12/2014\", \"text\": \"La lezione di Tecnologie di Sviluppo per il Web del prof. Fasano prevista per il 18 dicembre p.v. è sospesa.\"},"
-        	   		+ "{ \"date\": \"16/12/2014\", \"text\": \"La lezione di Tecnologie di Sviluppo per il Web del prof. Fasano prevista per il 18 dicembre p.v. è sospesa.\"},"
-        	   		+ "{ \"date\": \"16/12/2014\", \"text\": \"La lezione di Tecnologie di Sviluppo per il Web del prof. Fasano prevista per il 18 dicembre p.v. è sospesa.\"}"
+        	   		+ "{\"date\": \"16/12/2014\", \"text\": \"La lezione di Tecnologie di Sviluppo per il Web del prof. Fasano prevista per il 18 dicembre p.v. �� sospesa.\"},"
+        	   		+ "{ \"date\": \"14/12/2014\", \"text\": \"La lezione di Elettronica digitale del prof. Preite prevista per il 18 dicembre p.v. �� sospesa.\"},"
+        	   		+ "{ \"date\": \"16/12/2014\", \"text\": \"La lezione di Tecnologie di Sviluppo per il Web del prof. Fasano prevista per il 18 dicembre p.v. �� sospesa.\"},"
+        	   		+ "{ \"date\": \"16/12/2014\", \"text\": \"La lezione di Tecnologie di Sviluppo per il Web del prof. Fasano prevista per il 18 dicembre p.v. �� sospesa.\"},"
+        	   		+ "{ \"date\": \"16/12/2014\", \"text\": \"La lezione di Tecnologie di Sviluppo per il Web del prof. Fasano prevista per il 18 dicembre p.v. �� sospesa.\"},"
+        	   		+ "{ \"date\": \"16/12/2014\", \"text\": \"La lezione di Tecnologie di Sviluppo per il Web del prof. Fasano prevista per il 18 dicembre p.v. �� sospesa.\"},"
+        	   		+ "{ \"date\": \"16/12/2014\", \"text\": \"La lezione di Tecnologie di Sviluppo per il Web del prof. Fasano prevista per il 18 dicembre p.v. �� sospesa.\"}"
         	   		+ "]}");     
-           } else {
-        	   out.println("{\"result\": \"unauthorized\"}");
-           }
         } finally {
             out.close();
         }
