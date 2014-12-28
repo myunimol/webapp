@@ -1,0 +1,88 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 8-dic-2014, 15.00.52
+    Author     : Giuseppe
+*/
+.exam-container1 {
+    border: 0px solid #bebebe;
+    padding: 16px;
+    margin: 16px;
+    border-radius: 5px;
+    background-color: whitesmoke;
+    box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.25);
+    color: #555;
+}
+
+#weighted {
+    
+}
+.exam-container {
+    border: 0px solid #bebebe;
+    padding: 16px;
+    margin: 16px;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.25);
+    color: #555;
+}
+
+#exam-matter {
+    font-size: 26px;
+    padding: 8px 0 16px;
+    color: #888;
+}
+
+#exam-vote {
+    display: inline-block;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    background: #ddd;
+    line-height: 32px;
+    font-size: 16px;
+    color: #666; 
+    text-align: center;
+}
+
+#exam-vote-text {
+    font-size: 16px;
+    padding-bottom: 15px;
+    color: black;
+}
+
+#exam-date {
+    font-size: 16px;
+    padding-bottom: 8px;
+}
+
+#exam-year {
+    font-size: 16px;
+    padding-bottom: 8px;
+}
+
+#exam-cfu-text {
+    font-size: 16px;
+    padding-bottom: 15px;
+    color: black;
+}
+
+#exam-cfu {
+    display: inline-block;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    background: #ddd;
+    line-height: 32px;
+    font-size: 16px;
+    color: #666; 
+    text-align: center;
+}
+
+.spinner {
+	display: block;
+	position: relative;
+}

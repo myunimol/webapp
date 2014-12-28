@@ -32,11 +32,11 @@ public class GetRecordBook extends HttpServlet {
         try {
             if (token != null && token.equals(realToken)) {
                 out.println("{\"exams\": ["
-                		+ "{\"name\":\"Matematica\", \"cfu\":12, \"vote\":\"IDO\", \"date\":\"28/11/2014\", \"year\":\"2014/2015\"},"
-                		+ "{\"name\":\"Biologia\", \"cfu\":6, \"vote\":\"30\", \"date\":\"12/9/2014\", \"year\":\"2014/2015\"},"
-                		+ "{\"name\":\"Anatomia\", \"cfu\":2, \"vote\":\"18\", \"date\":\"5/05/2014\", \"year\":\"2013/2014\"},"
-                		+ "{\"name\":\"Fisica\", \"cfu\":12, \"vote\":\"27\", \"date\":\"11/09/2013\", \"year\":\"2013/2014\"},"
-                		+ "{\"name\":\"Cardiologia\", \"cfu\":20, \"vote\":\"24\", \"date\":\"17/02/2013\", \"year\":\"2013/2014\"}"
+                		+ "{\"id\": \"121212\", \"name\":\"Matematica\", \"cfu\":12, \"vote\":\"IDO\", \"date\":\"28/11/2014\", \"year\":\"2014/2015\"},"
+                		+ "{\"id\": \"121512\", \"name\":\"Biologia\", \"cfu\":6, \"vote\":\"30\", \"date\":\"12/9/2014\", \"year\":\"2014/2015\"},"
+                		+ "{\"id\": \"121362\", \"name\":\"Anatomia\", \"cfu\":2, \"vote\":\"18\", \"date\":\"5/05/2014\", \"year\":\"2013/2014\"},"
+                		+ "{\"id\": \"131312\", \"name\":\"Fisica\", \"cfu\":12, \"vote\":\"27\", \"date\":\"11/09/2013\", \"year\":\"2013/2014\"},"
+                		+ "{\"id\": \"121382\", \"name\":\"Cardiologia\", \"cfu\":20, \"vote\":\"24\", \"date\":\"17/02/2013\", \"year\":\"2013/2014\"}"
                 		+ "], \"average\":25.4, \"weightedAverage\":26.0}");
             } else {
                 out.println("{\"result\": \"unauthorized\"}");

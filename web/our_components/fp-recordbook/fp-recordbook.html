@@ -1,0 +1,42 @@
+<link rel="import" href="fp-recordbookexam.html">
+<link rel="import" href="../../bower_components/core-collapse/core-collapse.html">
+<link rel="import" href="../../bower_components/paper-spinner/paper-spinner.html">
+<polymer-element name="fp-recordbook">
+	<template>
+		<!-- Foglio di stile per il singolo componente -->
+		<link rel="stylesheet" href="style.css">
+		<div class="content-item">
+			<paper-spinner class='centerSpinner' id='fprecordbookSpinner' active></paper-spinner>
+			<template bind="{{averages}}">
+				<div class="exam-container1">
+					<core-item id="weighted" icon="trending-up" label="Media Pesata" horizontal center layout>: {{weightedAverage}}</core-item>
+					<core-item id="media" icon="assessment" label="Media" horizontal center layout>: {{average}}</core-item>
+				</div>
+			</template>
+			<!-- Questo template itera tante volte quanti sono gli oggetti nell'array sessions.
+				 L'array è creato nello script in fondo alla pagina. -->
+			<template repeat="{{exam, index in exams}}">
+				<core-ajax id='fpSingleRetriever{{exam.id}}' method='POST'
+			           url="../../RecordBookExamServlet" 
+			           params=''
+			           handleAs='json'></core-ajax>
+				<div id='exam-container{{index}}' class="exam-container">
+					<div id='fpexpandible{{index}}'>
+						<div class='exam-name'>{{exam.name}}</div>
+						<span class='exam-cfus-text'>CFU: </span>
+						<div class="exam-cfus">{{exam.cfu}}</div>
+						<span class="exam-vote-text">Voto: {{exam.vote}}</span>
+					</div>
+					<core-collapse class='collapse-element' id='collapse-element{{exam.id}}'>
+						<fp-recordbookexam id="fp-details{{exam.id}}"></fp-recordbookexam>
+		            </core-collapse>
+		        </div>
+		    </template>
+		</div>
+	    <!--File javascript che crea l'array sessions.
+	    session.js crea un array "a mano"; l'ho utilizzato per testare il corretto funzionamento della componente
+	    session-json.js dovrebbe essere lo script che va a creare l'array sessions sulla base del json risultante dalla chiamata alla servlet.
+	    -->
+	</template>
+    <script src="recordbook.js"></script>
+</polymer-element>
