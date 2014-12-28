@@ -33,9 +33,10 @@ Polymer('gw-session', {
     },
     
     enrollResponse: function(event) {
-    	if (event.details.result == 'success')
+    	if (event.details.result == 'success') {
     		//TODO: cosa fa se va bene la prenotazione
-    	else
+    	} else {
     		//TODO: messaggio di errore
+    	}
     }
 });
