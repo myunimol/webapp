@@ -41,8 +41,8 @@
     <core-ajax auto
                id='ajax' 
                method='POST'
-               url="getNewsBoard" 
-               params='{}' 
+               url="GetNewsBoardServlet" 
+               params='{"cdl":"informatica"}' 
                handleAs='json'>
     </core-ajax>
 
@@ -69,7 +69,7 @@
             var ajax = document.getElementById("ajax");
 
             ajax.addEventListener("core-response", function (event) {
-                document.getElementById("cdrnews").board = event.detail.response.news;
+                document.getElementById("cdrnews").board = event.detail.response.newsList;
             });
         });
     </script>
