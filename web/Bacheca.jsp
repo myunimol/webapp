@@ -79,19 +79,15 @@
     </core-ajax>
 
     <core-drawer-panel id="drawerPanel">
-        <% utils.writeLeftMenu("Avvisi", 4);%>
+        <% utils.writeLeftMenu("Bacheca", 5);%>
         <core-header-panel main>
             <core-toolbar id="mainheader">
                 <paper-icon-button id="navicon" icon="menu"></paper-icon-button>
-                <span flex style="font-size: 28;">
-                    <strong>News</strong>
+                <span flex style="font-size: 28;">Bacheca
                 </span>
             </core-toolbar>
-            
+
             <div id='activeContentHandler' class="content">
-                <core-toolbar id="core_toolbar" center-justified center>
-                    <h3>Bacheca degli avvisi</h3>
-                </core-toolbar> 
                 <div id="news-lav">
                     <cdr-news id='cdrnews'></cdr-news>
                 </div>
