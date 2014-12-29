@@ -7,29 +7,14 @@ Polymer('fp-recordbook', {
     },
     
     reloadSessions: function() {
+    	this.$.examsContainer.innerHTML = "";
+    	for (var i = 0; i < this.exams.length; i++) {
+    		var element = document.createElement("fp-recordbookel");
+    		element.exam = this.exams[i];
+    		
+    		this.$.examsContainer.appendChild(element);
+    	}
     	this.spin(false);
-    	this.async(function() {
-    		var i = 0;
-	    	var container = document.getElementById('fpexpandible'+i);
-	    	while (container != null) {
-	    		container.exam = this.exams[i];
-	    		container.ajaxResponse = this.loadexamResponse;
-	    		container.addEventListener('click', function() {
-	    			var ajax = document.getElementById('fpSingleRetriever'+this.exam.id);
-	    			if (!ajax.loaded) {
-	    				document.getElementById('collapse-element' + this.exam.id).toggle();
-		    			ajax.params = '{"id":"' + this.exam.id + '"}';
-		    			ajax.addEventListener('core-response', this.ajaxResponse);
-		    			ajax.go();
-	    			} else {
-	    				document.getElementById('collapse-element' + this.exam.id).toggle();
-	    			}
-	    		})
-	    		
-	    		i++;
-	    		container = document.getElementById('fpexpandible'+i);
-	    	}
-    	}, null, 1000);
     },
     
     loadexamResponse: function(event) {
