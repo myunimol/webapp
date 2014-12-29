@@ -1,42 +1,9 @@
-<link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="../../bower_components/core-collapse/core-collapse.html">
-<link rel="import" href="../../bower_components/paper-button/paper-button.html">
-<link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
+<link rel="import" href="gw-sessionel.html">
 <polymer-element name="gw-session">
     <template>
         <!-- Foglio di stile per il singolo componente -->
         <link rel="stylesheet" href="style.css">
-        <div class="content-item">
-            <!--Questo template itera tante volte quanti sono gli oggetti nell'array sessions.
-            L'array è creato nello script in fondo alla pagina.
-            -->
-            <template repeat="{{session, index in sessions}}">
-                <div class="session-container" id='session-container{{index}}'>
-                <div class='gwexpandible' id='gwexpandible{{index}}'>
-                    <div class='session-matter' id="session-matter{{index}}">{{session.name}}</div>
-                    <div class="session-data" id="session-data{{index}}">Data: {{session.date}}</div>
-                    <div class="session-professor" id="session-professor{{index}}">Professore: {{session.professor}}</div>
-                     <span class="session-cfu-text">CFU: </span> 
-                    <div class="session-cfu" id="session-cfu{{index}}">{{session.cfu}}</div> 
-                
-                </div>
-                <core-collapse id='collapse-element{{index}}' class="collapse-element">
-                <div class="content">
-                 <div class="session-expiring-date" id="session-expiring-date{{index}}">Scadenza: {{session.expiringDate}}</div>
-                 <div class="session-room" id="session-room{{index}}">Aula: {{session.room}}</div>
-                 <div class="session-session" id="session-session{{index}}">Sessione: {{session.session}}</div>
-                 <div class="session-notes" id="session-notes{{index}}">Note: {{session.notes}}</div>
-                 <span class="session-enrolled-text" id="session-enrolled-text{{index}}">Prenotati: </span>
-                 <div class="session-enrolled" id="session-enrolled{{index}}">{{session.enrolled}}</div>
-                 <paper-button class="enrolled-button" id="enrolled-button{{index}}" raised recenteringtouch >Prenota</paper-button>
-                </div>
-                </core-collapse>
-                
-                </div>
-            </template>
-            <core-ajax id='gwsession-request' method='POST' url='EnrollExamServlet'
-	               params = '{"enrollId":""}'
-	               handleAs='json'></core-ajax>
+        <div class="content-item" id='sessionsContainer'>
         </div>
     </template>
     <!-- toggle setta opened da false a true -->
