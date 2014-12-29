@@ -110,10 +110,10 @@
             <core-toolbar id="mainheader">
                 <paper-icon-button id="navicon" icon="menu"></paper-icon-button>
                 <span flex style="font-size: 28;">Rubrica</span>
-                <paper-icon-button id="searchbutton" icon="search"></paper-icon-button>
+                <!-- <paper-icon-button id="searchbutton" icon="search"></paper-icon-button> -->
             </core-toolbar>
            
-            <div id="maintoolbar" style="background-color: #4F7DC9; border-radius: 5px;" horizontal layout>
+            <div id="maintoolbar" style="background-color: #4F7DC9;" horizontal layout>
                 <paper-input style="margin-left: 50px; color: white" type="text"  label= "Ricerca" id= "nome_input" floatinglabel class= "my-input"></paper-input>
                 <paper-item  style="margin-top: 22px; margin-left: 20px; color: white" id="paper_item" icon="search"></paper-item>
             </div>
