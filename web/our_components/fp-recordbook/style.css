@@ -81,6 +81,12 @@ and open the template in the editor.
     color: #666; 
     text-align: center;
 }
+.examdetail-year, .examdetail-details {
+	font-size: smaller;
+}
+.exam-name {
+	font-size: larger;
+}
 
 .spinner {
 	display: block;

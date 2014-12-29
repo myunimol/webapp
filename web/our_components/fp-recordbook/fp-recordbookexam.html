@@ -5,13 +5,13 @@
 		<link rel="stylesheet" href="style.css">
 		<paper-spinner class='spinner' id='fprecordbookSpinner' active></paper-spinner>
 		<template bind="{{exam}}">
-			<div class='examdetail-year'>{{year}}</div>
+			<div class='examdetail-year'><strong>Anno di corso:</strong> {{year}}°</div>
 			<div class='examdetail-details'>
 				<template repeat="{{detail in details}}">
-					<div class='examdetail-name'>{{detail.name}}</div>
-					<div class='examdetail-cfu'>{{detail.cfu}}</div>
-					<div class='examdetail-hours'>{{detail.hours}}</div>
-					<div class='examdetail-area'>{{detail.area}}</div>
+					<div class='examdetail-name'><strong>Nome:</strong> {{detail.name}}</div>
+					<div class='examdetail-cfu'><strong>CFU:</strong> {{detail.cfu}}</div>
+					<div class='examdetail-hours'><strong>Durata:</strong> {{detail.hours}} hh</div>
+					<div class='examdetail-area'><strong>Settore:</strong> {{detail.area}}</div>
 				</template>
 			</div>
 		</template>

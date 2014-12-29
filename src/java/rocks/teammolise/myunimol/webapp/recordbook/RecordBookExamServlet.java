@@ -29,7 +29,7 @@ public class RecordBookExamServlet extends HttpServlet {
             throws ServletException, IOException {
         
 
-    	response.setContentType("text/html;charset=UTF-8");
+    	response.setContentType("application/json;charset=UTF-8");
         PrintWriter out = response.getWriter();
                 
         try {
@@ -56,6 +56,7 @@ public class RecordBookExamServlet extends HttpServlet {
             out.println(recBookExamJSON);
             
         } catch (UnirestException e) {
+        	e.printStackTrace();
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Internal Server Error");
         } finally {
             out.close();
