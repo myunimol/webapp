@@ -8,10 +8,12 @@
             -->
             <template repeat="{{tax in taxes}}">
                 <div class="taxes-container">
-                    <div id="taxes-description">{{tax.description}}</div>
-                    <div id="taxes-expiring-date">Scadenza: {{tax.expiringDate}}</div>
+                    <div id="taxes-description">{{tax.billId}} - {{tax.description}}</div>
+                    <div id="taxes-year">Anno accademico: {{tax.year}}</div>
+                    <div id="taxes-expiring-date">Data scadenza: {{tax.expiringDate}}</div>
                     <div id="taxes-amount">€ {{tax.amount}}</div>
                     <div id="taxes-status-payment">{{tax.statusPayment}}</div>
+
                     <!-- 
                     Fare in modo che se tax.statusPayment è uguale a "non pagato"
                     allora mette il red dot:
