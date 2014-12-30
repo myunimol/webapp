@@ -21,8 +21,8 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>MyUnimol</title>
-
+        <title>Rubrica</title>
+		<meta name="apple-mobile-web-app-capable" content="yes" />
         <%
             utils.writeStandardImports();
 
