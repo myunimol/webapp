@@ -12,15 +12,7 @@
                     <div id="taxes-year">Anno accademico: {{tax.year}}</div>
                     <div id="taxes-expiring-date">Data scadenza: {{tax.expiringDate}}</div>
                     <div id="taxes-amount">€ {{tax.amount}}</div>
-                    <div id="taxes-status-payment">{{tax.statusPayment}}</div>
-
-                    <!-- 
-                    Fare in modo che se tax.statusPayment è uguale a "non pagato"
-                    allora mette il red dot:
-                    <img src="images/red_dot.png" width="16px" alt="non pagato">
-                    altrimenti mette il green dot:
-                    <img src="images/green_dot.png" width="16px" alt="pagato">
-                    -->
+                    <div id="taxes-status-payment"><div class="{{tax.statusPayment}}" id="status-dot"></div></div>
                 </div>
             </template>
         </div>
