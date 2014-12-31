@@ -1,15 +1,18 @@
 <link rel="import" href="../../bower_components/core-collapse/core-collapse.html">
+<link rel="import" href="../../bower_components/core-icons/communication-icons.html">
 <polymer-element name="ef-contactel">
     <template>
         <link rel="stylesheet" href="style.css">
 	        <div class="contact-container" id='contact'>
-	            <div id="contact-fullname">{{contact.fullname}}</div>
-	            <div id="contact-email">Email: {{contact.email}}</div>
+	            <div class="contact-fullname"><core-icon icon="account-box"></core-icon> {{contact.fullname}}</div>
+	            <div class="contact-email"><core-icon icon="communication:email"></core-icon> <a href="mailto:{{contact.email}}">{{contact.email}}</a></div>
 	            <core-collapse id='collapsable'>
-	            	<div id="contact-role">Ruolo: {{contact.role}}</div>
-		            <div id="contact-building">Dipartimento: {{contact.building}}</div>
-		            <div id="contact-internalTelephone">Telefono Interno: {{contact.internalTelephone}}</div>
-		            <div id="contact-externalTelephone">Telefono Esterno: {{contact.externalTelephone}}</div>
+	            	<div class="contact-info">
+	            	{{contact.role}} presso {{contact.building}}
+	            	<br><br>
+	            	Interno telefonico {{contact.internalTelephone}}
+	            	</div>
+		            <div class="contact-phone"><core-icon icon="communication:phone"></core-icon> <a href="tel://{{contact.externalTelephone}}">{{contact.externalTelephone}}</a></div>
 		        </core-collapse>
 	        </div>
         </div>
