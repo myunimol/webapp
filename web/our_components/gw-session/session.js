@@ -1,6 +1,5 @@
 Polymer('gw-session', {
 	ready: function() {
-		
 	},
 	
 	observe: {
