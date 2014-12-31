@@ -38,7 +38,7 @@
     <core-ajax auto 
                id='ajax' 
                method='POST' 
-               url='GetTaxesStub'
+               url='GetTaxesServlet'
                params = '{}'
                handleAs='json'>
     </core-ajax>

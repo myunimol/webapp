@@ -7,6 +7,18 @@ Polymer('fp-recordbookel', {
     },
     
     reloadExam: function() {
+    	if (this.exam.vote == 'SUP' || this.exam.vote == 'IDO')
+    		this.$.container.setAttribute("kind", "ido");
+    	else if (this.exam.vote == "/")
+    		this.$.container.setAttribute("kind", "notPassed");
+    	else {
+    		this.$.container.setAttribute("kind", "passed");
+    		if (this.exam.vote == "30L")
+    			this.exam.vote = "30 / 30 e lode"
+			else
+    			this.exam.vote = this.exam.vote + " / 30"
+    	}
+    	
 		this.$.ajax.addEventListener('core-response', this.loadexamResponse);
 		this.$.container.ajax = this.$.ajax;
 		this.$.container.collapse = this.$.collapse;
