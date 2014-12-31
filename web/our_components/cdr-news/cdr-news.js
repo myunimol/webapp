@@ -1,4 +1,4 @@
 Polymer('cdr-news', {
-	ready : function() {
-	}
+	ready: function() {
+    }
 });

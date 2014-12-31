@@ -14,7 +14,6 @@ Polymer('fp-recordbook', {
     		
     		this.$.examsContainer.appendChild(element);
     	}
-    	this.spin(false);
     },
     
     loadexamResponse: function(event) {
@@ -24,9 +23,5 @@ Polymer('fp-recordbook', {
     	fpexam.exam = event.detail.response;
     	fpexam.details = event.detail.response.details;
     	//document.getElementById('collapse-element' + event.detail.response.id).toggle();
-    },
-    
-    spin: function(status) {
-    	this.$.fprecordbookSpinner.active = status;
     }
 });

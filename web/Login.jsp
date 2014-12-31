@@ -25,6 +25,7 @@
         utils.writePolymerImport("paper-input");
         utils.writePolymerImport("core-ajax");
         utils.writePolymerImport("paper-toast");
+        utils.writePolymerImport("paper-spinner");
         %>
         <link rel="import" href="bower_components/paper-input/paper-input-decorator.html">
 
@@ -137,7 +138,7 @@
 	
 	                reqst.params = '{"username": "' + username + '", "password":"' + password + '"}';
 	                reqst.go();
-	
+					freeze();
 	            }
 	
 	            var $d = document.getElementById('body_id').querySelectorAll('paper-input-decorator');
@@ -157,6 +158,7 @@
 	                var json = event.detail.response;
 	
 	                if (json.result == 'failure') {
+	                	unfreeze();
 	                    document.querySelector('#login_error_message').show();
 	                } else if (json.result == 'correct') {
 	                    window.location.href = "Home.jsp";

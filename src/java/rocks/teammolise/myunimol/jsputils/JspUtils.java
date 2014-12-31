@@ -58,6 +58,7 @@ public class JspUtils {
 		out("<script src='//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>");
 		out("<script src='scripts/main.js'></script>");
 		out("<link rel='import' href='bower_components/font-roboto/roboto.html'>");
+		out("<link rel='import' href='bower_components/paper-spinner/paper-spinner.html'>");
 	}
 	
 	/**
@@ -103,6 +104,8 @@ public class JspUtils {
 		out("<core-item id='bacheca_item' icon='announcement' label='News' horizontal center layout><a href='News.jsp'></a></core-item>");
                 out("<core-item id='warning' icon='warning' label='Bacheca' horizontal center layout><a href='Bacheca.jsp'></a></core-item>");
                 out("<core-item id='tasse_item' icon='payment' label='Pagamenti' horizontal center layout><a href='Tasse.jsp'></a></core-item>");
+                
+                out("<core-item id='logout_item' icon='exit-to-app' label='Logout' horizontal center layout><a href='LogoutServlet'></a></core-item>");
 	}
 	
 	private void writeStudentInfo() throws IOException {

@@ -58,7 +58,7 @@
     </core-drawer-panel>
     <script>
         document.addEventListener('polymer-ready', function () {
-
+			freeze();
             var ajax = document.getElementById("ajax");
 
             ajax.addEventListener("core-response", function (event) {
@@ -68,6 +68,7 @@
             	}
             	
                 document.getElementById("fprecordbook").exams = event.detail.response.exams;
+            	unfreeze();
             });
         });
     </script>

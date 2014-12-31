@@ -136,6 +136,7 @@
     <script src="scripts/home-scripts.js"></script>
     <script>
         document.addEventListener('polymer-ready', function() {
+        	freeze();
             var ajax = document.getElementById("ajax");
             ajax.addEventListener("core-response", function(event) {
                 var circleProgressBar = document.getElementsByTagName("gm-circle-progress")[0];
@@ -145,6 +146,7 @@
                 document.getElementById("weightedAverage").innerHTML = event.detail.response.weightedAverage;
                 document.getElementById("acquiredExams").innerHTML = ""+event.detail.response.totalExams;
                 document.getElementById("circleProgress").go();
+                unfreeze();
             });
         });
     </script>

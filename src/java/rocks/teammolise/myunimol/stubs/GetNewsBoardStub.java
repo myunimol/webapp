@@ -13,8 +13,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import rocks.teammolise.myunimol.webapp.configuration.ConfigurationManagerHandler;
-
 /**
  *
  * @author Christian
@@ -38,14 +36,14 @@ public class GetNewsBoardStub extends HttpServlet {
         PrintWriter out = response.getWriter();
         
         try {
-        	   out.println("{\"news\": ["
-        	   		+ "{\"date\": \"16/12/2014\", \"text\": \"La lezione di Tecnologie di Sviluppo per il Web del prof. Fasano prevista per il 18 dicembre p.v. �� sospesa.\"},"
-        	   		+ "{ \"date\": \"14/12/2014\", \"text\": \"La lezione di Elettronica digitale del prof. Preite prevista per il 18 dicembre p.v. �� sospesa.\"},"
-        	   		+ "{ \"date\": \"16/12/2014\", \"text\": \"La lezione di Tecnologie di Sviluppo per il Web del prof. Fasano prevista per il 18 dicembre p.v. �� sospesa.\"},"
-        	   		+ "{ \"date\": \"16/12/2014\", \"text\": \"La lezione di Tecnologie di Sviluppo per il Web del prof. Fasano prevista per il 18 dicembre p.v. �� sospesa.\"},"
-        	   		+ "{ \"date\": \"16/12/2014\", \"text\": \"La lezione di Tecnologie di Sviluppo per il Web del prof. Fasano prevista per il 18 dicembre p.v. �� sospesa.\"},"
-        	   		+ "{ \"date\": \"16/12/2014\", \"text\": \"La lezione di Tecnologie di Sviluppo per il Web del prof. Fasano prevista per il 18 dicembre p.v. �� sospesa.\"},"
-        	   		+ "{ \"date\": \"16/12/2014\", \"text\": \"La lezione di Tecnologie di Sviluppo per il Web del prof. Fasano prevista per il 18 dicembre p.v. �� sospesa.\"}"
+        	   out.println("{\"newsList\": ["
+        	   		+ "{\"date\": \"16/12/2014\", \"title\":\"\", \"link\":\"unimol.it\", \"text\": \"La lezione di Tecnologie di Sviluppo per il Web del prof. Fasano prevista per il 18 dicembre p.v. &egrave; sospesa.\"},"
+        	   		+ "{\"date\": \"14/12/2014\", \"title\":\"\", \"link\":\"unimol.it\", \"text\": \"La lezione di Elettronica digitale del prof. Preite prevista per il 18 dicembre p.v. &egrave; sospesa.\"},"
+        	   		+ "{\"date\": \"16/12/2014\", \"title\":\"\", \"link\":\"unimol.it\", \"text\": \"La lezione di Tecnologie di Sviluppo per il Web del prof. Fasano prevista per il 18 dicembre p.v. &egrave; sospesa.\"},"
+        	   		+ "{\"date\": \"16/12/2014\", \"title\":\"\", \"link\":\"unimol.it\", \"text\": \"La lezione di Tecnologie di Sviluppo per il Web del prof. Fasano prevista per il 18 dicembre p.v. &egrave; sospesa.\"},"
+        	   		+ "{\"date\": \"16/12/2014\", \"title\":\"\", \"link\":\"unimol.it\", \"text\": \"La lezione di Tecnologie di Sviluppo per il Web del prof. Fasano prevista per il 18 dicembre p.v. &egrave; sospesa.\"},"
+        	   		+ "{\"date\": \"16/12/2014\", \"title\":\"\", \"link\":\"unimol.it\", \"text\": \"La lezione di Tecnologie di Sviluppo per il Web del prof. Fasano prevista per il 18 dicembre p.v. &egrave; sospesa.\"},"
+        	   		+ "{\"date\": \"16/12/2014\", \"title\":\"\", \"link\":\"unimol.it\", \"text\": \"La lezione di Tecnologie di Sviluppo per il Web del prof. Fasano prevista per il 18 dicembre p.v. &egrave; sospesa.\"}"
         	   		+ "]}");     
         } finally {
             out.close();

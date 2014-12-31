@@ -1,15 +1,24 @@
 Polymer('gm-circle-progress', {
-    percentage: "0",
+    percentage: 0,
     numcfu: "0/180",
-    ready: function() {
-        $(this.$.pieProgress).asPieProgress({
-            'namespace': 'pie_progress'
-        });
+    observe: {
+    	percentage: 'go'
     },
     
-	publish: {
-		go: function() {
-			$(this.$.pieProgress).asPieProgress('go', this.percentage);
-		},
+    ready: function() {
+    },
+    
+    go: function() {
+    	this.$.pieProgress.percentage = this.$.percentage;
+		$(this.$.pieProgress).circleProgress({
+            value: this.percentage/100,
+            size: 140,
+            startAngle: -Math.PI/2,
+            fill: {
+            	color: ['#0943a0']
+            }
+        }).on('circle-animation-progress', function(event, progress, stepValue) {
+            $(this.percentage).html(parseInt(100 * stepValue) + '%');
+        });
 	}
 });

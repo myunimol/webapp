@@ -3,12 +3,12 @@
         <!-- CSS -->
         <link rel="stylesheet" href="circular-progress/progress.css">
         <div id="pieProgress" class="pie_progress" role="progressbar" data-goal="{{percentage}}" style="margin-bottom: 20px;" data-speed="35" data-barsize="7" data-barcolor="#0943a0">
-            <div class="pie_progress__number">{{percentage}}</div>
-            <div class="pie_progress__label">{{numcfu}} CFU</div>
+            <div id='percentage' class="pie_progress__number">{{percentage}}</div>
+            <div id='numcfu' class="pie_progress__label">{{numcfu}} CFU</div>
         </div>
     </template>
     
     <!-- JS -->
-    <script src="circular-progress/jquery-asPieProgress.js"></script>
+    <script src="../../bower_components/jquery-circle-progress/dist/circle-progress.js"></script>
     <script src="main.js"></script>
 </polymer-element>

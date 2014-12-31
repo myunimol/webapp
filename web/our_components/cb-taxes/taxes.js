@@ -1,4 +1,4 @@
 Polymer('cb-taxes', {
-    ready: function() {
-    },
+	ready: function() {
+    }
 });

@@ -5,5 +5,5 @@
  */
 Polymer('ef-contact', {
     ready: function() {
-    },
+    }
 });
