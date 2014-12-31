@@ -49,6 +49,17 @@
 		    paper-tabs paper-tab::shadow #ink {
 		      color: #526E9C;
 		    }
+		    #no-items {
+		    	position: relative;
+		    	display: block;
+		    	width: 60%;
+		    	margin: 20%;
+		    	color: #526E9C;
+		    	text-align: center;
+		    }
+		    #no-items > img {
+		    	width: 50px;
+		    }
 		</style>
     </head>
 
@@ -92,6 +103,10 @@
             <div id='activeContentHandler' class="content">
 				<div id="news-lav">
                     <cdr-news id='cdrnews'></cdr-news>
+                    <div id="no-items" style="display: none;">
+                    	<img src="img/sad.png" alt="sad emoji" />
+                    	<p id="default-msg"></p>
+                    </div>
                 </div>
             </div>
         </core-header-panel>
@@ -101,7 +116,14 @@
         document.addEventListener('polymer-ready', function () {
 			freeze();
 			document.ajaxAction = function (event) {
-                document.getElementById("cdrnews").newsList = event.detail.response.newsList;
+				if(event.detail.response.result=="failure") {
+					document.getElementById("default-msg").innerHTML = event.detail.response.msg;
+					document.getElementById("no-items").style.display = "block";
+					document.getElementById("cdrnews").newsList = null;
+				} else {
+					document.getElementById("no-items").style.display = "none";
+                	document.getElementById("cdrnews").newsList = event.detail.response.newsList;
+				}
                 unfreeze();
             }
 			

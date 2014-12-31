@@ -54,7 +54,17 @@ public class GetDepartmentNewsServlet extends HttpServlet {
 
            String username = userInfo.getUsername();
            String password = userInfo.getPassword();
-           String department = "bioscienzeTerritorio";
+           String department = "";
+           if(userInfo.getDepartment().matches("(?i:.*bioscienze.*)")) {
+        	   department = "bioscienzeTerritorio";
+           } else {
+	           JSONObject noCourse = new JSONObject();
+	           noCourse.put("result", "failure");
+	           noCourse.put("msg", "Spiacenti ma MyUnimol non supporta l'estrazione delle notizie per "+userInfo.getDepartment()+"...");
+	           out.print(noCourse);
+	           return;
+           }
+           
            
            Map<String, Object> parameters = new HashMap<String, Object>();
            parameters.put("department", department);
