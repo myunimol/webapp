@@ -54,7 +54,7 @@ public class GetNewsBoardServlet extends HttpServlet {
 
            String username = userInfo.getUsername();
            String password = userInfo.getPassword();
-           String cdl = request.getParameter("cdl");
+           String cdl = "informatica";
            
            Map<String, Object> parameters = new HashMap<String, Object>();
            parameters.put("course", cdl);

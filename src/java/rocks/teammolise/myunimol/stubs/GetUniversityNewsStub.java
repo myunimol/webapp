@@ -39,13 +39,9 @@ public class GetUniversityNewsStub extends HttpServlet {
         
         try {
         	   out.println("{\"newsList\": ["
-        	   		+ "{\"date\": \"16/12/2014\", \"title\":\"\", \"link\":\"unimol.it\", \"text\": \"La lezione di Tecnologie di Sviluppo per il Web del prof. Fasano prevista per il 18 dicembre p.v. &egrave; sospesa.\"},"
-        	   		+ "{ \"date\": \"14/12/2014\", \"title\":\"\", \"link\":\"unimol.it\", \"text\": \"La lezione di Elettronica digitale del prof. Preite prevista per il 18 dicembre p.v. &egrave; sospesa.\"},"
-        	   		+ "{ \"date\": \"16/12/2014\", \"title\":\"\", \"link\":\"unimol.it\", \"text\": \"La lezione di Tecnologie di Sviluppo per il Web del prof. Fasano prevista per il 18 dicembre p.v. &egrave; sospesa.\"},"
-        	   		+ "{ \"date\": \"16/12/2014\", \"title\":\"\", \"link\":\"unimol.it\", \"text\": \"La lezione di Tecnologie di Sviluppo per il Web del prof. Fasano prevista per il 18 dicembre p.v. &egrave; sospesa.\"},"
-        	   		+ "{ \"date\": \"16/12/2014\", \"title\":\"\", \"link\":\"unimol.it\", \"text\": \"La lezione di Tecnologie di Sviluppo per il Web del prof. Fasano prevista per il 18 dicembre p.v. &egrave; sospesa.\"},"
-        	   		+ "{ \"date\": \"16/12/2014\", \"title\":\"\", \"link\":\"unimol.it\", \"text\": \"La lezione di Tecnologie di Sviluppo per il Web del prof. Fasano prevista per il 18 dicembre p.v. &egrave; sospesa.\"},"
-        	   		+ "{ \"date\": \"16/12/2014\", \"title\":\"\", \"link\":\"unimol.it\", \"text\": \"La lezione di Tecnologie di Sviluppo per il Web del prof. Fasano prevista per il 18 dicembre p.v. &egrave; sospesa.\"}"
+        	   		+ "{\"date\": \"16/12/2014\", \"title\":\"\", \"link\":\"unimol.it\", \"text\": \"L'università resterà chiusa dal giorno 22/12/2014 al giorno 6/01/2015\"},"
+        	   		+ "{\"date\": \"16/12/2014\", \"title\":\"\", \"link\":\"unimol.it\", \"text\": \"L'università resterà chiusa dal giorno 22/12/2014 al giorno 6/01/2015\"},"
+        	   		+ "{\"date\": \"16/12/2014\", \"title\":\"\", \"link\":\"unimol.it\", \"text\": \"L'università resterà chiusa dal giorno 22/12/2014 al giorno 6/01/2015\"}"
         	   		+ "]}");     
         } finally {
             out.close();

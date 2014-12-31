@@ -33,18 +33,47 @@
             utils.writePolymerImport("core-icon");
             utils.writePolymerImport("paper-icon-button");
             utils.writePolymerImport("core-ajax");
+            utils.writePolymerImport("paper-tabs");
         %>
 
         <link rel="import" href="our_components/cdr-news/cdr-news.html">
-
+		<style shim-shadowdom>
+			paper-tabs {
+		      background-color: transparent;
+		      color: #000';
+		      box-shadow: none;
+		    }
+		    paper-tabs::shadow #selectionBar {
+		      background-color: #526E9C;
+		    }
+		    paper-tabs paper-tab::shadow #ink {
+		      color: #526E9C;
+		    }
+		</style>
     </head>
 
     <body>
-    <core-ajax auto
-               id='ajax' 
+    <core-ajax
+               id='ajaxAteneo' 
                method='POST'
                url="GetUniversityNewsServlet" 
                params='{}' 
+               handleAs='json'>
+    </core-ajax>
+    
+    <core-ajax
+               id='ajaxDip' 
+               method='POST'
+               url="GetDepartmentNewsServlet" 
+               params='{}' 
+               handleAs='json'>
+    </core-ajax>
+    
+    <core-ajax auto
+               id='ajaxAvvisi' 
+               method='POST'
+               url="GetNewsBoardServlet" 
+               params=''
                handleAs='json'>
     </core-ajax>
 
@@ -55,12 +84,15 @@
                 <paper-icon-button id="navicon" icon="menu"></paper-icon-button>
                 <span flex style="font-size: 28;">News</span>
             </core-toolbar>
-
+			<paper-tabs selected='0'>
+         		<paper-tab id='avvisi'>Avvisi</paper-tab>
+         		<paper-tab id='ateneo'>Ateneo</paper-tab>
+         		<paper-tab id='dipartimento'>Dipartimento</paper-tab>
+            </paper-tabs>
             <div id='activeContentHandler' class="content">
-                <div id="news-lav">
+				<div id="news-lav">
                     <cdr-news id='cdrnews'></cdr-news>
                 </div>
-
             </div>
         </core-header-panel>
 
@@ -68,12 +100,37 @@
     <script>
         document.addEventListener('polymer-ready', function () {
 			freeze();
-            var ajax = document.getElementById("ajax");
-
-            ajax.addEventListener("core-response", function (event) {
+			document.ajaxAction = function (event) {
                 document.getElementById("cdrnews").newsList = event.detail.response.newsList;
                 unfreeze();
-            });
+            }
+			
+            document.ajaxAteneo = document.getElementById("ajaxAteneo");
+            document.ajaxDip = document.getElementById("ajaxDip");
+            document.ajaxAvvisi = document.getElementById("ajaxAvvisi");
+
+            document.ajaxAteneo.addEventListener("core-response", document.ajaxAction);
+            document.ajaxDip.addEventListener("core-response", document.ajaxAction);
+            document.ajaxAvvisi.addEventListener("core-response", document.ajaxAction);
+            
+            var avvisi = document.getElementById('avvisi');
+            var ateneo = document.getElementById('ateneo');
+            var dipartimento = document.getElementById('dipartimento');
+            
+            avvisi.addEventListener('click', function() {
+            	freeze();
+            	document.ajaxAvvisi.go();
+            })
+            
+            ateneo.addEventListener('click', function() {
+            	freeze();
+            	document.ajaxAteneo.go();
+            })
+            
+            dipartimento.addEventListener('click', function() {
+            	freeze();
+            	document.ajaxDip.go();
+            })
         });
     </script>
 </body>

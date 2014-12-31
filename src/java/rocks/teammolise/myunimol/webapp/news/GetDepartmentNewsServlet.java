@@ -54,7 +54,7 @@ public class GetDepartmentNewsServlet extends HttpServlet {
 
            String username = userInfo.getUsername();
            String password = userInfo.getPassword();
-           String department = request.getParameter("department");
+           String department = "bioscienzeTerritorio";
            
            Map<String, Object> parameters = new HashMap<String, Object>();
            parameters.put("department", department);
