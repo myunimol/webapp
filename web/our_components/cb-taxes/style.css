@@ -49,7 +49,7 @@
 
 #taxes-description {
     font-size: 16px;
-  font-weight: bold;
+    font-weight: bold;
 }
 
 #taxes-expiring-date {
@@ -70,7 +70,21 @@
 
 #taxes-status-payment {
     position: absolute;
-    top: 8px;
-    right: 8px;
+    top: 16px;
+    right: 16px;
     font-size: 16px;    
+}
+
+.pagato {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #00CC00;
+}
+
+.non.pagato {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #CC0000;
 }
