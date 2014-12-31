@@ -19,8 +19,8 @@ import rocks.teammolise.myunimol.webapp.configuration.ConfigurationManagerHandle
  *
  * @author emilio
  */
-@WebServlet(name = "getContact", urlPatterns = {"/getContact"})
-public class GetContactStub extends HttpServlet {
+@WebServlet(name = "searchContacts", urlPatterns = {"/searchContacts"})
+public class SearchContactsStub extends HttpServlet {
 	private static final long serialVersionUID = 6182573943289145857L;
 
 	/**
@@ -42,15 +42,15 @@ public class GetContactStub extends HttpServlet {
         
         try {
             //Controllo del token
-           if(token != null && token.equals(realToken)){
-        	   out.println("{\"contact\": ["
-        	   		+ "{\"fullname\": \"Fausto Fasano\", \"Ruolo\": \"Pippafrusc\", \"Dipartimento\": \"Capobianco\", \"email\": \"pip@gm.com\" } "
-        	   		+ "]}");     
-           } else {
-        	   out.println("{\"result\": \"unauthorized\"}");
-           }
+        	if(token != null && token.equals(realToken)){
+        		out.println("{\"result\":\"success\", \"contacts\": ["
+        				+ "{\"fullname\": \"Fausto Fasano\", \"role\": \"Ricercatore\", \"building\": \"Pesche\", \"email\": \"fausto.fasano@unimol.it\", \"internalTelephone\":\"1234\", \"externalTelephone\":\"08744041234\"}"
+        				+ "]}");
+        	} else {
+        		out.println("{\"result\": \"unauthorized\"}");
+        	}
         } finally {
-            out.close();
+        	out.close();
         }
     }
 

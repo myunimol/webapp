@@ -20,8 +20,8 @@ import rocks.teammolise.myunimol.webapp.configuration.ConfigurationManagerHandle
  * @author emilio
  */
 @WebServlet(name = "getAddressBook", urlPatterns = {"/getAddressBook"})
-public class GetAddressBoookStub extends HttpServlet {
-	private static final long serialVersionUID = 7825410218885935233L;
+public class GetAddressBookStub extends HttpServlet {
+	private static final long serialVersionUID = 6182573943289145857L;
 
 	/**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,12 +41,13 @@ public class GetAddressBoookStub extends HttpServlet {
         String realToken = ConfigurationManagerHandler.getInstance().getToken();
         
         try {
-             //Controllo del token
+            //Controllo del token
            if(token != null && token.equals(realToken)){
-        	   out.println("{\"contact\": ["
-        	   		+ "{\"fullname\": \"Matteo Merola\", \"role\": \"Studente\", \"building\": \"Università Degli Studi di Salerno\", \"internalTelephone\": \"2917\", \"externalTelephone\": \"+39 0874 404 917\", \"email\": \"mattmezza@gmail.com\"},"
-        	   		+ "{\"fullname\": \"Simone Scalabrino\", \"role\": \"Studente\", \"building\": \"Università Degli Studi di Salerno\", \"internalTelephone\": \"23136\", \"externalTelephone\": \"+39 0869 404 417\", \"email\": \"intersimone999@gmail.com\"},"
-        	   		+ "{\"fullname\": \"Fausto Sfasato\", \"role\": \"Smanettone\", \"building\": \"Scienze Delle Pulizie\", \"internalTelephone\": \"0000\", \"externalTelephone\": \"+39 1234 404 917\", \"email\": \"stosfasatocostantemente@gmail.com\"}"
+        	   out.println("{\"result\":\"success\", \"contacts\": ["
+        			+ "{\"fullname\": \"Matteo Merola\", \"role\": \"Studente\", \"building\": \"Università Degli Studi di Salerno\", \"internalTelephone\": \"2917\", \"externalTelephone\": \"+39 0874 404 917\", \"email\": \"mattmezza@gmail.com\"},"
+           	   		+ "{\"fullname\": \"Simone Scalabrino\", \"role\": \"Studente\", \"building\": \"Università Degli Studi di Salerno\", \"internalTelephone\": \"23136\", \"externalTelephone\": \"+39 0869 404 417\", \"email\": \"intersimone999@gmail.com\"},"
+        	   		+ "{\"fullname\": \"Fausto Fasano\", \"role\": \"Ricercatore\", \"building\": \"Pesche\", \"email\": \"fausto.fasano@unimol.it\", \"internalTelephone\":\"1234\", \"externalTelephone\":\"08744041234\"},"
+        	   		+ "{\"fullname\": \"Giovanni Capobianco\", \"role\": \"Ricercatore\", \"building\": \"Pesche\", \"email\": \"giocapobianco@unimol.it\", \"internalTelephone\":\"4321\", \"externalTelephone\":\"08744044321\"}"
         	   		+ "]}");     
            } else {
         	   out.println("{\"result\": \"unauthorized\"}");

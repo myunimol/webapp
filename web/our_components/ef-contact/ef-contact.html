@@ -1,21 +1,9 @@
+<link rel="import" href="ef-contactel.html">
 <polymer-element name="ef-contact">
     <template>
         <!-- Foglio di stile per il singolo componente -->
         <link rel="stylesheet" href="style.css">
-        <div class="content-item">
-            <!--Questo template itera tante volte quanti sono gli oggetti nell'array sessions.
-            L'array è creato nello script in fondo alla pagina.
-            -->
-            <template repeat="{{contact in contacts}}">
-                <div class="contact-container">
-                    <div id="contact-fullname">{{contact.fullname}}</div>
-                    <div id="contact-role">Ruolo: {{contact.role}}</div>
-                    <div id="contact-building">Dipartimento: {{contact.building}}</div>
-                    <div id="contact-internalTelephone">Telefono Interno: {{contact.internalTelephone}}</div>
-                    <div id="contact-externalTelephone">Telefono Esterno: {{contact.externalTelephone}}</div>
-                    <div id="contact-email">Email: {{contact.email}}</div>
-                </div>
-            </template>
+        <div id='container' class="content-item">
         </div>
     </template>
     <!--File javascript che crea l'array sessions.

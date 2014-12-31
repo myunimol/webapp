@@ -4,9 +4,8 @@ function standardPolymerLoad() {
 
 function setMenuAction() {
 	var navicon = document.getElementById('navicon');
-	drawerPanel = document.getElementById('drawerPanel');
 	navicon.addEventListener('click', function() {
-		drawerPanel.togglePanel();
+		document.getElementById('drawerPanel').togglePanel();
 	});
 }
 
@@ -31,6 +30,12 @@ function unfreeze() {
 	document.body.removeChild(div);
 	document.body.removeChild(spinner);
 	document.isFreezed = false;
+}
+
+function removeAllListeners(element) {
+    var elClone = element.cloneNode(true);
+    element.parentNode.replaceChild(elClone, element);
+    return elClone;
 }
 
 document.addEventListener("polymer-ready", standardPolymerLoad);

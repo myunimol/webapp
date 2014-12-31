@@ -1,0 +1,22 @@
+<link rel="import" href="../../bower_components/core-collapse/core-collapse.html">
+<polymer-element name="ef-contactel">
+    <template>
+        <link rel="stylesheet" href="style.css">
+	        <div class="contact-container" id='contact'>
+	            <div id="contact-fullname">{{contact.fullname}}</div>
+	            <div id="contact-email">Email: {{contact.email}}</div>
+	            <core-collapse id='collapsable'>
+	            	<div id="contact-role">Ruolo: {{contact.role}}</div>
+		            <div id="contact-building">Dipartimento: {{contact.building}}</div>
+		            <div id="contact-internalTelephone">Telefono Interno: {{contact.internalTelephone}}</div>
+		            <div id="contact-externalTelephone">Telefono Esterno: {{contact.externalTelephone}}</div>
+		        </core-collapse>
+	        </div>
+        </div>
+    </template>
+    <!--File javascript che crea l'array sessions.
+    session.js crea un array "a mano"; l'ho utilizzato per testare il corretto funzionamento della componente
+    session-json.js dovrebbe essere lo script che va a creare l'array sessions sulla base del json risultante dalla chiamata alla servlet.
+    -->
+    <script src="contactel.js"></script>
+</polymer-element>

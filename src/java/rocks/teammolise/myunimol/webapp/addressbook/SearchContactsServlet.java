@@ -27,8 +27,8 @@ import rocks.teammolise.myunimol.webapp.UserInfo;
 *
 * @author Pasquale
 */
-@WebServlet(name = "GetContactServlet", urlPatterns = {"/GetContactServlet"})
-public class GetContactServlet extends HttpServlet {
+@WebServlet(name = "SearchContactsServlet", urlPatterns = {"/SearchContactsServlet"})
+public class SearchContactsServlet extends HttpServlet {
   /**
     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
     * methods.
@@ -54,15 +54,13 @@ public class GetContactServlet extends HttpServlet {
 
            String username = userInfo.getUsername();
            String password = userInfo.getPassword();
-           String name = request.getParameter("name");
-           String surname = request.getParameter("surname");
+           String name = request.getParameter("search");
            
            Map<String, Object> parameters = new HashMap<String, Object>();
-           parameters.put("name", name);
-           parameters.put("surname", surname);
+           parameters.put("search", name);
 
-       //Inserire servlet da richiamare
-           JSONObject examSessionsJSON = new APIConsumer().consume("getContact", username, password, parameters);
+           JSONObject examSessionsJSON = new APIConsumer().consume("searchContacts", username, password, parameters);
+           
            out.print(examSessionsJSON);
        } catch (UnirestException ex) {
            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Internal server error");
