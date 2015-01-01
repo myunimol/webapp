@@ -122,11 +122,15 @@ and open the template in the editor.
     text-align: center;
 }
 .enrolled-button {
-                display: block;
-                margin-top:5.5%;
-                margin-left: auto;
-                margin-right: auto;
-                width: 80px;
-                height: 30px;
-                background-color: rgb(182, 222, 243);
-            }
+    display: block;
+    margin-top:5.5%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80px;
+    height: 30px;
+    background-color: rgb(182, 222, 243);
+}
+
+.noSessions {
+	color: #FGFGFG;
+}

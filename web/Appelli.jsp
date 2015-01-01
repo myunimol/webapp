@@ -36,7 +36,7 @@
     	<core-ajax auto
     		id='ajax' 
     		method='POST'
-    		url="getExamSessions" 
+    		url="GetExamSessionsServlet" 
     		params='{}' 
     		handleAs='json'>
     	</core-ajax>
@@ -52,7 +52,7 @@
 		      		</span>
 		    	</core-toolbar>
 		    	<div id='activeContentHandler' class="content">
-                             <gw-session id='gwsession'></gw-session> 
+					<gw-session id='gwsession'></gw-session> 
 		    	</div>
 		  	</core-header-panel>
 		  	
