@@ -19,22 +19,38 @@
     cursor: pointer;
     padding: 10px 15px;
     background-color: #fff;
+    text-align: center;
 }
 
 #news-date {
-    font-size: 12px;
+    font-size: 11px;
     padding: 8px 0 8px;
     color: #c00;
 }
 
 #news-title {
-    font-size: 16px;
+    font-size: 18px;
     padding: 8px 0 8px;
 }
 
 #news-text {
-    font-size: 16px;
+    font-size: 14px;
     padding: 8px 0 8px;
+    font-style: italic;
+}
+
+#news-text:before {
+	content: "“";
+}
+#news-text:after {
+	content: "”";
+}
+
+hr {
+	border: 0;
+	height: 1px;
+	background: #c1c1c1;
+	width: 90%;
 }
 
 a {

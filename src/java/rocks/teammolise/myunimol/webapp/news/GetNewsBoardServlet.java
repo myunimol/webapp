@@ -54,11 +54,21 @@ public class GetNewsBoardServlet extends HttpServlet {
 
            String username = userInfo.getUsername();
            String password = userInfo.getPassword();
-           String cdl = "informatica";
+           String cdl = "";
+           if(userInfo.getCourse().matches("(?i:.*informatica.*)")) {
+        	   cdl = "informatica";
+           } else if(userInfo.getCourse().matches("(?i:.*scienze biologiche.*)")) {
+        	   cdl = "scienzeBiologiche";
+           } else {
+	           JSONObject noCourse = new JSONObject();
+	           noCourse.put("result", "failure");
+	           noCourse.put("msg", "Spiacenti ma MyUnimol non supporta l'estrazione delle notizie per "+userInfo.getCourse()+"...");
+	           out.print(noCourse);
+	           return;
+           }
            
            Map<String, Object> parameters = new HashMap<String, Object>();
            parameters.put("course", cdl);
-
            JSONObject newsBoardJSON = new APIConsumer().consume("getNewsBoard", username, password, parameters);
            out.print(newsBoardJSON);
        } catch (UnirestException ex) {

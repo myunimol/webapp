@@ -55,6 +55,21 @@
 			width: 80%;
 			flex: 1 0 0px;
 		}
+		#no-contacts {
+	    	position: relative;
+	    	display: block;
+	    	width: 60%;
+	    	margin: 20%;
+	    	color: #526E9C;
+	    	text-align: center;
+		    }
+	    #no-contacts > img {
+	    	width: 50px;
+	    }
+	    #no-contacts > p > span {
+	    	font-style: italic;
+	    	font-weight: bold;
+	    }
         </style>
         <!--<style>    
             #design_host {
@@ -140,6 +155,10 @@
             
             <div id='activeContentHandler' class="content">
                 <ef-contact id='efcontact'></ef-contact>
+                <div id="no-contacts" style="display: none;">
+                	<img src="img/sad.png" alt="sad emoji" />
+                	<p>Spiacente ma non riesco a trovare contatti cercando "<span></span>"...</p>
+                </div>
             </div>
         </core-header-panel>	
     </core-drawer-panel>    
@@ -149,7 +168,9 @@
 			freeze();
             var ajax = document.getElementById("ajax");
             
-            document.efcontact = document.getElementById("efcontact")
+            document.efcontact = document.getElementById("efcontact");
+            document.noContacts = document.getElementById("no-contacts");
+            document.searchedTerm = document.noContacts.children[1].children[0];
 
             ajax.addEventListener("core-response", function (event) {
                 document.efcontact.contacts = event.detail.response.contacts;
@@ -164,7 +185,13 @@
             document.ricercaInput = document.getElementById('ricercaInput');
             
             document.ricercaResults = function(event) {
-            	document.efcontact.contacts = event.detail.response.contacts;
+            	if(event.detail.response.contacts.length <= 0) {
+            		document.efcontact.contacts = null;
+            		document.noContacts.style.display = "block";
+            	} else {
+            		document.noContacts.style.display = "none";
+            		document.efcontact.contacts = event.detail.response.contacts;
+            	}
             }
             
             document.ricercaDoAction = function() {
@@ -172,7 +199,7 @@
             	ajax.params = '{"search":"' + document.ricercaInput.value + '"}'
             	ajax.addEventListener('core-response', document.ricercaResults);
             	ajax.go();
-            	
+            	document.searchedTerm.innerHTML = document.ricercaInput.value;
             	document.backAction();
             }
             

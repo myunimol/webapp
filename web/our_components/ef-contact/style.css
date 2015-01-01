@@ -18,33 +18,27 @@ and open the template in the editor.
     color: #555;
 }
 
-#contact-fullname {
+.contact-fullname {
     font-size: 26px;
     padding: 8px 0 16px;
     color: black;
 }
 
-#contact-role {
+.contact-info {
+    font-size: 12px;
+    padding-bottom: 8px;
+    font-style: italic;
+}
+
+.contact-phone {
     font-size: 16px;
     padding-bottom: 8px;
 }
 
-#contact-building {
+.contact-email {
     font-size: 16px;
     padding-bottom: 8px;
 }
-
-#contact-internalTelephone {
-    font-size: 16px;
-    padding-bottom: 8px;
-}
-
-#contact-externalTelephone {
-    font-size: 16px;
-    padding-bottom: 8px;
-}
-
-#contact-email {
-    font-size: 16px;
-    padding-bottom: 8px;
+a {
+	text-decoration: none;
 }
