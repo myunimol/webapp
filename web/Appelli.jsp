@@ -30,6 +30,19 @@
         <link rel='import' href='bower_components/core-ajax/core-ajax.html' />
         
         <link rel="import" href="our_components/gw-session/gw-session.html">
+        <style type="text/css">
+        	#no-sessions {
+		    	position: relative;
+		    	display: block;
+		    	width: 60%;
+		    	margin: 20%;
+		    	color: #526E9C;
+		    	text-align: center;
+		    }
+		    #no-sessions > img {
+		    	width: 50px;
+		    }
+        </style>
     </head>
 
 	<body>
@@ -53,6 +66,10 @@
 		    	</core-toolbar>
 		    	<div id='activeContentHandler' class="content">
 					<gw-session id='gwsession'></gw-session> 
+                    <div id="no-sessions" style="display: none;">
+                    	<img src="img/swag.png" alt="swag emoji" />
+                    	<p>Al momento non sono disponibili appelli...</p>
+                    </div>
 		    	</div>
 		  	</core-header-panel>
 		  	
