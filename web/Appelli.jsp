@@ -52,7 +52,11 @@
 		      		</span>
 		    	</core-toolbar>
 		    	<div id='activeContentHandler' class="content">
-					<gw-session id='gwsession'></gw-session> 
+					<gw-session id='gwsession'></gw-session>
+					<div class="centeredMessage" id="no-sessions" style="display: none;">
+                		<!-- <img src="img/sad.png" alt="sad emoji" /> -->
+                	<p> 	</p>
+                </div>
 		    	</div>
 		  	</core-header-panel>
 		  	
@@ -63,7 +67,12 @@
 	            var ajax = document.getElementById("ajax");
 	            
 	            ajax.addEventListener("core-response", function (event) {
-	            	document.getElementById("gwsession").sessions = event.detail.response.exams;
+	            	if (event.detail.response.exams.length == 0) {
+	            		document.getElementById("no-sessions").style.display = "block";
+	            	} else {
+	            		document.getElementById("no-sessions").style.display = "none";
+	            		document.getElementById("gwsession").sessions = event.detail.response.exams;
+	            	}
 	            	unfreeze();
 	            });
 	        });
