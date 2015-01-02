@@ -31,51 +31,21 @@
 
         <style shim-shadowdom>    
             body {
-                position: absolute;
-                width: 100%;
-                height: 100%;
                 min-height: 500px;
-                box-sizing: border-box;
-                background-color: rgb(53, 164, 223);
                 font-family: 'RobotoDraft', sans-serif;
             }
             #icona_myunimol {
-                display: block;
-                margin-top: 0.3%;
-                margin-left: auto;
-                margin-right: auto;
                 width: 20%;
-                height: auto;
             }
             #username_input {
-                display: block;
-                margin-top: 1%;
-                margin-left: auto;
-                margin-right: auto;
-                width: auto;
-                height: auto;
-                min-height: 5%;
-                min-width: 50%;
+                margin: 0 auto;
                 max-height: 5%;
                 max-width: 55%;
-                opacity: 0.9;
-                //background-color: rgb(225, 242, 251);
-                color: #ffffff;
             }
             #password_input {
-                display: block;
-                margin-top: 1%;
-                margin-left: auto;
-                margin-right: auto;
-                width: auto;
-                height: auto;
-                min-height: 5%;
-                min-width: 50%;
+            	margin: 0 auto;
                 max-height: 5%;
                 max-width: 55%;
-                opacity: 0.9;
-                //background-color: rgb(225, 242, 251);
-                color: #ffffff;
             }
             #login {
                 display: block;
@@ -94,34 +64,46 @@
                 width: 35%;
                 height: auto;
             }
-            .my-input /deep/ .focused-underline {
-                background-color: #5264AE;
+/*             .my-input /deep/ .focused-underline { */
+/*                 background-color: #5264AE; */
+/*             } */
+/*             .my-input /deep/ .unfocused-underline { */
+/*                 background-color: #ffffff; */
+/*             } */
+/*             .my-input /deep/ .cursor { */
+/*                 background-color: #1a237e; */
+/*             } */
+/*             .my-input /deep/ ::-webkit-input-placeholder  { */
+/*                 color: #ffffff; */
+/*             } */
+/*             .my-input /deep/ .floated-label .label-text { */
+/*                 color: #5264AE; */
+/*             } */
+            #header {
+            	margin-top: 10%;
+            	text-align: center;
             }
-            .my-input /deep/ .unfocused-underline {
-                background-color: #ffffff;
-            }
-            .my-input /deep/ .cursor {
-                background-color: #1a237e;
-            }
-            .my-input /deep/ ::-webkit-input-placeholder  {
-                color: #ffffff;
-            }
-            .my-input /deep/ .floated-label .label-text {
-                color: #5264AE;
+            #content {
+            	margin-top: 10%;
             }
         </style>
     </head>
     <body id="body_id">
-    	<img id="icona_myunimol" src="img/MyUnimolLogo.png" centered></img>
-        <img id="titolo_myunimol" src="img/MyUnimolTitle.png" centered></img>
-        <div id="contentProcessing" style="display: block;">
-		    <paper-input-decorator type="text"  label= "Username" id= "username_input" floatinglabel class= "my-input"  error="Inserisci il nome utente!">
+    	<div id="header">
+    		<img id="icona_myunimol" src="img/android.png" centered></img>
+    		<h1>MyUnimol</h1>
+    	</div>
+<!--     	<img id="icona_myunimol" src="img/MyUnimolLogo.png" centered></img> -->
+<!--         <img id="titolo_myunimol" src="img/MyUnimolTitle.png" centered></img> -->
+		
+        <div id="content">
+		    <paper-input-decorator type="text"  label= "Username" id= "username_input" floatinglabel class="my-input"  error="Inserisci il nome utente!">
 		        <input is="core-input" id= "username_input_field" required>
 		    </paper-input-decorator>
-		    <paper-input-decorator type="password" id= "password_input" label= "Password" floatinglabel class= "my-input" error="Inserisci la password!">
+		    <paper-input-decorator type="password" id= "password_input" label= "Password" floatinglabel class="my-input" error="Inserisci la password!">
 		        <input is="core-input" id="password_input_field" type="password" required>
 		    </paper-input-decorator>
-		    <paper-button  onclick="sendData()" raised recenteringtouch id="login">login</paper-button>
+		    <paper-button  onclick="sendData()" raised recenteringtouch id="login" raised>login</paper-button>
 	    </div>
 	    <paper-toast id="login_error_message" text="Dati di accesso non validi."></paper-toast>
 	    <core-ajax 
@@ -143,7 +125,7 @@
 	                //modifico i parametri e faccio partire la richiesta
 	
 	                reqst.params = '{"username": "' + username + '", "password":"' + password + '"}';
-	                freeze("contentProcessing");
+	                freeze("content");
 	                reqst.go();
 	            }
 	
@@ -164,7 +146,7 @@
 	                var json = event.detail.response;
 	
 	                if (json.result == 'failure') {
-	                	unfreeze("contentProcessing");
+	                	unfreeze("content");
 	                    document.querySelector('#login_error_message').show();
 	                } else if (json.result == 'correct') {
 	                    window.location.href = "Home.jsp";

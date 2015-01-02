@@ -17,12 +17,24 @@ function freeze(contentId) {
 	var spinner = document.createElement("paper-spinner");
 	var div = document.createElement("div");
 	var content = document.getElementById(contentId);
-	content.style.display = "none";
 	div.id = 'FREEZEDIV';
-	div.style = "position: fixed; background-color: rgba(0, 0, 0, 0.5); width:100%; height:100%; top:0; left:0";
+	div.style.position = "absolute";
+	div.style.textAlign = "center";
+	div.style.width = content.offsetWidth+"px";
+	div.style.height = content.offsetHeight+"px";
+	console.log(content.offsetWidth)
+	var pos = getPosition(content);
+	console.log(pos);
+	div.style.top = pos.y;
+	div.style.left = pos.x;
 	spinner.id = 'FREEZESPINNER';
 	spinner.className = 'centerSpinner';
+	var spinnerTop = ((content.offsetHeight-spinner.offsetHeight)/2);
+	var spinnerLeft = ((content.offsetWidth-spinner.offsetWidth)/2);
+	spinner.style.top = spinnerTop+"px";
+	spinner.style.left = spinnerLeft+"px";
 	spinner.active = true;
+	content.style.display = "none";
 	document.body.appendChild(div);
 	div.appendChild(spinner);
 	document.isFreezed = true;
@@ -44,6 +56,18 @@ function removeAllListeners(element) {
     var elClone = element.cloneNode(true);
     element.parentNode.replaceChild(elClone, element);
     return elClone;
+}
+
+function getPosition(element) {
+    var xPosition = 0;
+    var yPosition = 0;
+  
+    while(element) {
+        xPosition += (element.offsetLeft - element.scrollLeft + element.clientLeft);
+        yPosition += (element.offsetTop - element.scrollTop + element.clientTop);
+        element = element.offsetParent;
+    }
+    return { x: xPosition, y: yPosition };
 }
 
 document.addEventListener("polymer-ready", standardPolymerLoad);
