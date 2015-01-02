@@ -9,12 +9,14 @@ function setMenuAction() {
 	});
 }
 
-function freeze() {
+function freeze(contentId) {
 	if (document.isFreezed)
 		return;
+	if (contentId == "" || contentId == null)
+		contentId = "activeContentHandler";
 	var spinner = document.createElement("paper-spinner");
 	var div = document.createElement("div");
-	var content = document.getElementById("activeContentHandler");
+	var content = document.getElementById(contentId);
 	content.style.display = "none";
 	div.id = 'FREEZEDIV';
 	div.style = "position: fixed; background-color: rgba(0, 0, 0, 0.5); width:100%; height:100%; top:0; left:0";
@@ -26,10 +28,12 @@ function freeze() {
 	document.isFreezed = true;
 }
 
-function unfreeze() {
+function unfreeze(contentId) {
+	if (contentId == "" || contentId == null)
+		contentId = "activeContentHandler";
 	var div = document.getElementById('FREEZEDIV');
 	var spinner = document.getElementById('FREEZESPINNER');
-	var content = document.getElementById("activeContentHandler");
+	var content = document.getElementById(contentId);
 	div.removeChild(spinner);
 	document.body.removeChild(div);
 	content.style.display = "block";
