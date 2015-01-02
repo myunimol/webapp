@@ -126,9 +126,9 @@
                     text: testo all'interno della componente (default = SET YOUR TEXT)
                     color: colore di sfondo (default = ##0943a0)
                     -->
-                    <gm-navigation-tab url="Libretto.jsp" text="LIBRETTO ESAMI"></gm-navigation-tab>
-                    <gm-navigation-tab url="Appelli.jsp" text="LISTA APPELLI"></gm-navigation-tab>
-                    <gm-navigation-tab text="RUBRICA"></gm-navigation-tab>
+<!--                     <gm-navigation-tab url="Libretto.jsp" text="LIBRETTO ESAMI"></gm-navigation-tab> -->
+<!--                     <gm-navigation-tab url="Appelli.jsp" text="LISTA APPELLI"></gm-navigation-tab> -->
+<!--                     <gm-navigation-tab text="RUBRICA"></gm-navigation-tab> -->
                 </div>
             </div>
         </core-header-panel>

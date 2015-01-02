@@ -28,7 +28,7 @@ public class APIConsumer {
 		String apiUrl = config.getWebServicesRoot() + pAPI;
 		String token = config.getToken();
 
-		Unirest.setHttpClient(InsecureHttpClientFactory.getInsecureClient());
+//		Unirest.setHttpClient(InsecureHttpClientFactory.getInsecureClient());
 		HttpRequestWithBody temp = Unirest.post(apiUrl).header("accept",
 				"application/json");
 
@@ -39,7 +39,7 @@ public class APIConsumer {
 
 		HttpResponse<String> response = body.asString();
 		String responseBody = response.getBody();
-
+		
 		return new JSONObject(responseBody);
 	}
 

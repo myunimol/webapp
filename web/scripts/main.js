@@ -14,21 +14,25 @@ function freeze() {
 		return;
 	var spinner = document.createElement("paper-spinner");
 	var div = document.createElement("div");
+	var content = document.getElementById("activeContentHandler");
+	content.style.display = "none";
 	div.id = 'FREEZEDIV';
 	div.style = "position: fixed; background-color: rgba(0, 0, 0, 0.5); width:100%; height:100%; top:0; left:0";
 	spinner.id = 'FREEZESPINNER';
 	spinner.className = 'centerSpinner';
 	spinner.active = true;
 	document.body.appendChild(div);
-	document.body.appendChild(spinner);
+	div.appendChild(spinner);
 	document.isFreezed = true;
 }
 
 function unfreeze() {
 	var div = document.getElementById('FREEZEDIV');
 	var spinner = document.getElementById('FREEZESPINNER');
+	var content = document.getElementById("activeContentHandler");
+	div.removeChild(spinner);
 	document.body.removeChild(div);
-	document.body.removeChild(spinner);
+	content.style.display = "block";
 	document.isFreezed = false;
 }
 

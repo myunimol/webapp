@@ -55,21 +55,6 @@
 			width: 80%;
 			flex: 1 0 0px;
 		}
-		#no-contacts {
-	    	position: relative;
-	    	display: block;
-	    	width: 60%;
-	    	margin: 20%;
-	    	color: #526E9C;
-	    	text-align: center;
-		    }
-	    #no-contacts > img {
-	    	width: 50px;
-	    }
-	    #no-contacts > p > span {
-	    	font-style: italic;
-	    	font-weight: bold;
-	    }
         </style>
         <!--<style>    
             #design_host {
@@ -155,7 +140,7 @@
             
             <div id='activeContentHandler' class="content">
                 <ef-contact id='efcontact'></ef-contact>
-                <div id="no-contacts" style="display: none;">
+                <div class="centeredMessage" id="no-contacts" style="display: none;">
                 	<img src="img/sad.png" alt="sad emoji" />
                 	<p>Spiacente ma non riesco a trovare contatti cercando "<span></span>"...</p>
                 </div>
