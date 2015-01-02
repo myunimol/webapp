@@ -31,17 +31,17 @@
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <link rel="import" href="our_components/cb-taxes/cb-taxes.html">
-
+        <link rel='import' href='our_components/myunimol-ajax/myunimol-ajax.html' />
     </head>
 
     <body>
-    <core-ajax auto 
+    <myunimol-ajax auto 
                id='ajax' 
                method='POST' 
                url='GetTaxesServlet'
                params = '{}'
                handleAs='json'>
-    </core-ajax>
+    </myunimol-ajax>
 
     <core-drawer-panel id="drawerPanel">
         <% utils.writeLeftMenu("Pagamenti", 6);%>
@@ -60,12 +60,10 @@
     </core-drawer-panel>
     <script>
         document.addEventListener('polymer-ready', function () {
-			freeze();
             var ajax = document.getElementById("ajax");
 
             ajax.addEventListener("core-response", function (event) {
                 document.getElementById("cbtaxes").taxes = event.detail.response.taxes;
-                unfreeze();
             });
         });
     </script>

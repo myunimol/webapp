@@ -27,9 +27,9 @@
         <link rel='import' href='bower_components/core-icons/core-icons.html' />
         <link rel='import' href='bower_components/core-icon/core-icon.html' />
         <link rel='import' href='bower_components/paper-icon-button/paper-icon-button.html' />
-        <link rel='import' href='bower_components/core-ajax/core-ajax.html' />
+        <link rel="import" href="our_components/gw-session/gw-session.html" />
+        <link rel='import' href='our_components/myunimol-ajax/myunimol-ajax.html' />
         
-        <link rel="import" href="our_components/gw-session/gw-session.html">
         <style type="text/css">
         	#no-sessions {
 		    	position: relative;
@@ -46,13 +46,13 @@
     </head>
 
 	<body>
-    	<core-ajax auto
+    	<myunimol-ajax auto
     		id='ajax' 
     		method='POST'
     		url="GetExamSessionsServlet" 
     		params='{}' 
     		handleAs='json'>
-    	</core-ajax>
+    	</myunimol-ajax>
 
 		<core-drawer-panel id="drawerPanel">
 			<% utils.writeLeftMenu("Appelli", 3); %>
@@ -76,7 +76,6 @@
 		</core-drawer-panel>
 	    <script>
 	    	document.addEventListener('polymer-ready', function() {
-	    		freeze();
 	            var ajax = document.getElementById("ajax");
 	            
 	            ajax.addEventListener("core-response", function (event) {
@@ -86,7 +85,6 @@
 	            		document.getElementById("no-sessions").style.display = "none";
 	            		document.getElementById("gwsession").sessions = event.detail.response.exams;
 	            	}
-	            	unfreeze();
 	            });
 	        });
 	    </script>

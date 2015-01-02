@@ -2,6 +2,7 @@
 <link rel="import" href="../../bower_components/core-collapse/core-collapse.html">
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
+<link rel='import' href='../myunimol-ajax/myunimol-ajax.html' />
 <polymer-element name="gw-sessionel">
     <template>
         <!-- Foglio di stile per il singolo componente -->
@@ -25,9 +26,9 @@
             		<paper-button class="enrolled-button" id="enrollButton" raised recenteringtouch >Prenota</paper-button>
             	</div>
             </core-collapse>
-            <core-ajax id='ajaxEnroll' method='POST' url='EnrollExamServlet'
+            <myunimol-ajax id='ajaxEnroll' method='POST' url='EnrollExamServlet'
 	               params = '{"id":""}'
-	               handleAs='json'></core-ajax>
+	               handleAs='json'></myunimol-ajax>
         </div>
     </template>
     <!-- toggle setta opened da false a true -->

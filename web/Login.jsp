@@ -7,6 +7,7 @@
 		return;
 	}
 %>
+
 <!DOCTYPE html>
 
 <html>
@@ -28,6 +29,7 @@
         utils.writePolymerImport("paper-spinner");
         %>
         <link rel="import" href="bower_components/paper-input/paper-input-decorator.html">
+        <link rel="import" href="our_components/myunimol-ajax/myunimol-ajax.html">
 
         <style shim-shadowdom>    
             body {
@@ -121,7 +123,7 @@
 	    </paper-input-decorator>
 	    <paper-button  onclick="sendData()" raised recenteringtouch id="login">login</paper-button>
 	    <paper-toast id="login_error_message" text="Dati di accesso non validi."></paper-toast>
-	    <core-ajax id='ajaxData' method='POST' url='LoginServlet'
+	    <myunimol-ajax id='ajaxData' method='POST' url='LoginServlet'
 	               params = '{"username":"", "password":""}'
 	               handleAs='json'></core-ajax>
 	    <script>
@@ -138,7 +140,7 @@
 	
 	                reqst.params = '{"username": "' + username + '", "password":"' + password + '"}';
 	                reqst.go();
-					freeze();
+					//freeze();
 	            }
 	
 	            var $d = document.getElementById('body_id').querySelectorAll('paper-input-decorator');
@@ -158,7 +160,6 @@
 	                var json = event.detail.response;
 	
 	                if (json.result == 'failure') {
-	                	unfreeze();
 	                    document.querySelector('#login_error_message').show();
 	                } else if (json.result == 'correct') {
 	                    window.location.href = "Home.jsp";

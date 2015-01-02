@@ -15,7 +15,8 @@ function freeze() {
 	var spinner = document.createElement("paper-spinner");
 	var div = document.createElement("div");
 	var content = document.getElementById("activeContentHandler");
-	content.style.display = "none";
+	if (content != null)
+		content.style.display = "none";
 	div.id = 'FREEZEDIV';
 	div.style = "position: fixed; background-color: rgba(0, 0, 0, 0.5); width:100%; height:100%; top:0; left:0";
 	spinner.id = 'FREEZESPINNER';
@@ -32,7 +33,8 @@ function unfreeze() {
 	var content = document.getElementById("activeContentHandler");
 	div.removeChild(spinner);
 	document.body.removeChild(div);
-	content.style.display = "block";
+	if (content != null)
+		content.style.display = "block";
 	document.isFreezed = false;
 }
 
