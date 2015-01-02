@@ -27,10 +27,12 @@ function freeze() {
 	document.isFreezed = true;
 }
 
-function unfreeze() {
+function unfreeze(contentId) {
+	if (contentId == "" || contentId == null)
+		contentId = "activeContentHandler";
 	var div = document.getElementById('FREEZEDIV');
 	var spinner = document.getElementById('FREEZESPINNER');
-	var content = document.getElementById("activeContentHandler");
+	var content = document.getElementById(contentId);
 	div.removeChild(spinner);
 	document.body.removeChild(div);
 	if (content != null)
@@ -42,6 +44,18 @@ function removeAllListeners(element) {
     var elClone = element.cloneNode(true);
     element.parentNode.replaceChild(elClone, element);
     return elClone;
+}
+
+function getPosition(element) {
+    var xPosition = 0;
+    var yPosition = 0;
+  
+    while(element) {
+        xPosition += (element.offsetLeft - element.scrollLeft + element.clientLeft);
+        yPosition += (element.offsetTop - element.scrollTop + element.clientTop);
+        element = element.offsetParent;
+    }
+    return { x: xPosition, y: yPosition };
 }
 
 document.addEventListener("polymer-ready", standardPolymerLoad);
