@@ -1,6 +1,6 @@
 {
   "name": "jquery-circle-progress",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "authors": [
     "Rostyslav Bryzgunov <kottenator@gmail.com>"
   ],
@@ -26,14 +26,14 @@
     "qunit": "1.15.0",
     "modernizr": "*"
   },
-  "_release": "1.1.1",
+  "_release": "1.1.2",
   "_resolution": {
     "type": "version",
-    "tag": "1.1.1",
-    "commit": "eef429efa67e699e28a02b1d60db983866d7ffe0"
+    "tag": "1.1.2",
+    "commit": "3ef03bd74e7207ed673a36d7f2e38da28b8670b7"
   },
   "_source": "git://github.com/kottenator/jquery-circle-progress.git",
-  "_target": "~1.1.1",
+  "_target": "~1.1.2",
   "_originalSource": "jquery-circle-progress",
   "_direct": true
 }
