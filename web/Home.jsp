@@ -120,16 +120,16 @@
                     </core-collapse>
                     <paper-button id="student-detail-button" value="1">MOSTRA DETTAGLI</paper-button>
                 </div>
-                <div id="app-navigation">
-                    <!-- gm-navigation-tab ha 3 parametri:
-                    url: link a cui deve indirizzare la componente (default = #)
-                    text: testo all'interno della componente (default = SET YOUR TEXT)
-                    color: colore di sfondo (default = ##0943a0)
-                    -->
-                    <gm-navigation-tab url="Libretto.jsp" text="LIBRETTO ESAMI"></gm-navigation-tab>
-                    <gm-navigation-tab url="Appelli.jsp" text="LISTA APPELLI"></gm-navigation-tab>
-                    <gm-navigation-tab text="RUBRICA"></gm-navigation-tab>
-                </div>
+<!--                 <div id="app-navigation"> -->
+<!--                     gm-navigation-tab ha 3 parametri:
+<!--                     url: link a cui deve indirizzare la componente (default = #) -->
+<!--                     text: testo all'interno della componente (default = SET YOUR TEXT) -->
+<!--                     color: colore di sfondo (default = ##0943a0) -->
+<!--                     --> -->
+<!--                     <gm-navigation-tab url="Libretto.jsp" text="LIBRETTO ESAMI"></gm-navigation-tab> -->
+<!--                     <gm-navigation-tab url="Appelli.jsp" text="LISTA APPELLI"></gm-navigation-tab> -->
+<!--                     <gm-navigation-tab text="RUBRICA"></gm-navigation-tab> -->
+<!--                 </div> -->
             </div>
         </core-header-panel>
 
