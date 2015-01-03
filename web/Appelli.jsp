@@ -27,7 +27,9 @@
         <link rel='import' href='bower_components/core-icons/core-icons.html' />
         <link rel='import' href='bower_components/core-icon/core-icon.html' />
         <link rel='import' href='bower_components/paper-icon-button/paper-icon-button.html' />
+        <link rel='import' href='bower_components/paper-tabs/paper-tabs.html' />
         <link rel="import" href="our_components/gw-session/gw-session.html" />
+        <link rel="import" href="our_components/ss-enrolled/ss-enrolled.html" />
         <link rel='import' href='our_components/myunimol-ajax/myunimol-ajax.html' />
         
         <style type="text/css">
@@ -53,6 +55,14 @@
     		params='{}' 
     		handleAs='json'>
     	</myunimol-ajax>
+    	
+    	<myunimol-ajax
+    		id='ajaxEnrolled' 
+    		method='POST'
+    		url="GetEnrolledExamsServlet" 
+    		params='{}' 
+    		handleAs='json'>
+    	</myunimol-ajax>
 
 		<core-drawer-panel id="drawerPanel">
 			<% utils.writeLeftMenu("Appelli", 3); %>
@@ -64,28 +74,66 @@
 		      			<strong>Appelli</strong>
 		      		</span>
 		    	</core-toolbar>
+		    	<paper-tabs selected='0'>
+		    		<paper-tab id='available'>Disponibili</paper-tab>
+		    		<paper-tab id='enrolled'>Prenotati</paper-tab>
+		    	</paper-tabs>
 		    	<div id='activeContentHandler' class="content">
-					<gw-session id='gwsession'></gw-session>
-					<div class="centeredMessage" id="no-sessions" style="display: none;">
-                		<img src="img/swag.png" alt="swag emoji" />
-                	<p>Al momento non sono disponibili appelli...</p>
+		    		<div id='availableContent'>
+						<gw-session id='gwsession'></gw-session>
+						<div class="centeredMessage" id="no-sessions-av" style="display: none;">
+	                		<img src="img/swag.png" alt="swag emoji" />
+	                		<p>Al momento non sono disponibili appelli...</p>
+	                	</div>
+	                </div>
+	                <div id='enrolledContent' style="display: none;">
+						<ss-enrolled id='ssenrolled'></ss-enrolled>
+						<div class="centeredMessage" id="no-sessions-en" style="display: none;">
+	                		<img src="img/swag.png" alt="swag emoji" />
+	                		<p>Non sei prenotato a nessun appello</p>
+	                	</div>
+	                </div>
                 </div>
-		    	</div>
 		  	</core-header-panel>
 		  	
 		</core-drawer-panel>
 	    <script>
 	    	document.addEventListener('polymer-ready', function() {
 	            var ajax = document.getElementById("ajax");
+	            var ajaxEnrolled = document.getElementById("ajaxEnrolled");
+	            var tabAvailable = document.getElementById("available");
+	            var tabEnrolled = document.getElementById("enrolled");
+	            
+	            tabAvailable.addEventListener("click", function() {
+	            	document.getElementById("enrolledContent").style.display = 'none';
+	            	document.getElementById("availableContent").style.display = 'block';
+	            	document.getElementById("ajax").go();
+	            });
+	            
+	            tabEnrolled.addEventListener("click", function() {
+	            	document.getElementById("availableContent").style.display = 'none';
+	            	document.getElementById("enrolledContent").style.display = 'block';
+	            	document.getElementById("ajaxEnrolled").go();
+	            });
+	            
 	            
 	            ajax.addEventListener("core-response", function (event) {
 	            	if (event.detail.response.exams.length == 0) {
-	            		document.getElementById("no-sessions").style.display = "block";
+	            		document.getElementById("no-sessions-av").style.display = "block";
 	            	} else {
-	            		document.getElementById("no-sessions").style.display = "none";
+	            		document.getElementById("no-sessions-av").style.display = "none";
 	            		document.getElementById("gwsession").sessions = event.detail.response.exams;
 	            	}
 	            });
+	            
+	            ajaxEnrolled.addEventListener("core-response", function(event) {
+	            	if (event.detail.response.exams.length == 0) {
+	            		document.getElementById("no-sessions-en").style.display = "block";
+	            	} else {
+	            		document.getElementById("no-sessions-en").style.display = "none";
+	            		document.getElementById("ssenrolled").sessions = event.detail.response.exams;
+	            	}
+	            })
 	        });
 	    </script>
 </body>

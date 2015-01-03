@@ -1,0 +1,35 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/core-collapse/core-collapse.html">
+<link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
+<polymer-element name="ss-enrolledel">
+    <template>
+        <!-- Foglio di stile per il singolo componente -->
+        <link rel="stylesheet" href="style.css">
+		<div class="session-container" id='session-container'>
+			<div class='gwexpandible' id='gwexpandible'>
+				<div class='session-matter' id="session-matter">{{session.name}}</div>
+				<div class="session-data" id="session-data">Data: {{session.date}}</div>
+				<div class="session-professor" id="session-professor">Professore: {{session.professor}}</div>
+				<span class="session-cfu-text">CFU: </span> 
+				<div class="session-cfu" id="session-cfu">{{session.cfu}}</div> 
+				<div class="enrolled-position">Posizione: {{session.enrollmentPosition}}° su {{session.enrolled}}</div>
+            </div>
+            <core-collapse id='collapse' class="collapse-element">
+            	<div class="content">
+            		<div class="session-expiring-date" id="session-expiring-date">Scadenza: {{session.expiringDate}}</div>
+            		<div class="session-room" id="session-room">Aula: {{session.room}}</div>
+            		<div class="session-session" id="session-session">Sessione: {{session.session}}</div>
+            		<div class="session-notes" id="session-notes">Note: {{session.notes}}</div>
+            		<span class="session-enrolled-text" id="session-enrolled-text">Prenotati: </span>
+            		<div class="session-enrolled" id="session-enrolled">{{session.enrolled}}</div>
+            	</div>
+            </core-collapse>
+        </div>
+    </template>
+    <!-- toggle setta opened da false a true -->
+    <!--File javascript che crea l'array sessions.
+    session.js crea un array "a mano"; l'ho utilizzato per testare il corretto funzionamento della componente
+    session-json.js dovrebbe essere lo script che va a creare l'array sessions sulla base del json risultante dalla chiamata alla servlet.
+    -->
+    <script src="enrolledel.js"></script>
+</polymer-element>
