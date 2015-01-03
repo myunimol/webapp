@@ -29,10 +29,10 @@
         %>
         <link rel="import" href="bower_components/paper-input/paper-input-decorator.html">
 
-        <style shim-shadowdom>    
+        <style shim-shadowdom>  	 
             body {
                 min-height: 500px;
-                font-family: 'RobotoDraft', sans-serif;
+                font-family: 'RobotoDraft', sans-serif;     
             }
             #icona_myunimol {
                 width: 20%;
@@ -48,13 +48,10 @@
                 max-width: 55%;
             }
             #login {
-                display: block;
-                margin-top:5.5%;
-                margin-left: auto;
-                margin-right: auto;
-                width: 80px;
-                height: 30px;
-                background-color: rgb(182, 222, 243);
+            	display: block;
+                margin: 50px auto;
+                max-width: 55%;
+                background: #03A9F4;
             }
             #titolo_myunimol {
                 display: block;
@@ -64,21 +61,6 @@
                 width: 35%;
                 height: auto;
             }
-/*             .my-input /deep/ .focused-underline { */
-/*                 background-color: #5264AE; */
-/*             } */
-/*             .my-input /deep/ .unfocused-underline { */
-/*                 background-color: #ffffff; */
-/*             } */
-/*             .my-input /deep/ .cursor { */
-/*                 background-color: #1a237e; */
-/*             } */
-/*             .my-input /deep/ ::-webkit-input-placeholder  { */
-/*                 color: #ffffff; */
-/*             } */
-/*             .my-input /deep/ .floated-label .label-text { */
-/*                 color: #5264AE; */
-/*             } */
             #header {
             	margin-top: 10%;
             	text-align: center;
@@ -93,9 +75,6 @@
     		<img id="icona_myunimol" src="img/android.png" centered></img>
     		<h1>MyUnimol</h1>
     	</div>
-<!--     	<img id="icona_myunimol" src="img/MyUnimolLogo.png" centered></img> -->
-<!--         <img id="titolo_myunimol" src="img/MyUnimolTitle.png" centered></img> -->
-		
         <div id="content">
 		    <paper-input-decorator type="text"  label= "Username" id= "username_input" floatinglabel class="my-input"  error="Inserisci il nome utente!">
 		        <input is="core-input" id= "username_input_field" required>
@@ -103,7 +82,7 @@
 		    <paper-input-decorator type="password" id= "password_input" label= "Password" floatinglabel class="my-input" error="Inserisci la password!">
 		        <input is="core-input" id="password_input_field" type="password" required>
 		    </paper-input-decorator>
-		    <paper-button  onclick="sendData()" raised recenteringtouch id="login" raised>login</paper-button>
+		    <paper-button  onclick="sendData()" id="login" raised>login</paper-button>
 	    </div>
 	    <paper-toast id="login_error_message" text="Dati di accesso non validi."></paper-toast>
 	    <core-ajax 
@@ -123,28 +102,20 @@
 	            // Se i campi non sono vuoti
 	            if (username != '' && password != '') {
 	                //modifico i parametri e faccio partire la richiesta
-	
 	                reqst.params = '{"username": "' + username + '", "password":"' + password + '"}';
 	                freeze("content");
 	                reqst.go();
 	            }
-	
 	            var $d = document.getElementById('body_id').querySelectorAll('paper-input-decorator');
 	            Array.prototype.forEach.call($d, function (d) {
 	                d.isInvalid = !d.querySelector('input').validity.valid;
 	            });
-	            //campou.setAttribute("required", "");
-	            //alert("Riempi i campi vuoti!");
 	        }
 	
 	        document.addEventListener("polymer-ready", function () {
-	
 	            var reqst = document.getElementById("ajaxData");
-	
 	            reqst.addEventListener("core-response", function (event) {
-	
 	                var json = event.detail.response;
-	
 	                if (json.result == 'failure') {
 	                	unfreeze("content");
 	                    document.querySelector('#login_error_message').show();
