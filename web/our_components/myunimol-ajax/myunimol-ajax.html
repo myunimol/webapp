@@ -1,10 +1,10 @@
 <link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
 <link rel="import" href="../../bower_components/paper-toast/paper-toast.html">
-<polymer-element name="myunimol-ajax" extends='core-ajax' attributes="nofreeze">
+<polymer-element name="myunimol-ajax" extends='core-ajax' attributes="nofreeze contentId">
 <script>
 Polymer('myunimol-ajax', {
 	nofreeze: false,
-	
+	contentId: "activeContentHandler",
 	ready : function() {
 		this.super();
 		
@@ -29,7 +29,7 @@ Polymer('myunimol-ajax', {
 		
 		this.addEventListener('core-complete', function() {
 			if (!this.nofreeze)
-				unfreeze();
+				unfreeze(this.contentId);
 		});
 	},
 	
@@ -37,7 +37,7 @@ Polymer('myunimol-ajax', {
 		this.super();
 		
 		if (!this.nofreeze)
-			freeze();
+			freeze(this.contentId);
 	}
 });
 </script>
