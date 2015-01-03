@@ -29,8 +29,9 @@ function freeze(contentId) {
 	div.style.left = pos.x;
 	spinner.id = 'FREEZESPINNER';
 	spinner.className = 'centerSpinner';
-	var spinnerTop = ((content.offsetHeight-spinner.offsetHeight)/2);
-	var spinnerLeft = ((content.offsetWidth-spinner.offsetWidth)/2);
+	var spinnerSize = {width: 28, height: 28};
+	var spinnerTop = ((content.offsetHeight-spinnerSize.height)/2);
+	var spinnerLeft = ((content.offsetWidth-spinnerSize.width)/2);
 	spinner.style.top = spinnerTop+"px";
 	spinner.style.left = spinnerLeft+"px";
 	spinner.active = true;
