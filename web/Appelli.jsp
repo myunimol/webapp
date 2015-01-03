@@ -32,8 +32,20 @@
         <link rel="import" href="our_components/ss-enrolled/ss-enrolled.html" />
         <link rel='import' href='our_components/myunimol-ajax/myunimol-ajax.html' />
         
-        <style type="text/css">
-        	#no-sessions {
+        <style shim-shadowdom>
+        	paper-tabs {
+		      background-color: transparent;
+		      color: #000';
+		      box-shadow: none;
+		    }
+		    paper-tabs::shadow #selectionBar {
+		      background-color: #526E9C;
+		    }
+		    paper-tabs paper-tab::shadow #ink {
+		      color: #526E9C;
+		    }
+		    
+        	.no-sessions {
 		    	position: relative;
 		    	display: block;
 		    	width: 60%;
@@ -41,7 +53,7 @@
 		    	color: #526E9C;
 		    	text-align: center;
 		    }
-		    #no-sessions > img {
+		    .no-sessions > img {
 		    	width: 50px;
 		    }
         </style>
@@ -81,14 +93,14 @@
 		    	<div id='activeContentHandler' class="content">
 		    		<div id='availableContent'>
 						<gw-session id='gwsession'></gw-session>
-						<div class="centeredMessage" id="no-sessions-av" style="display: none;">
+						<div class="centeredMessage" class='no-sessions' id="no-sessions-av" style="display: none;">
 	                		<img src="img/swag.png" alt="swag emoji" />
 	                		<p>Al momento non sono disponibili appelli...</p>
 	                	</div>
 	                </div>
 	                <div id='enrolledContent' style="display: none;">
 						<ss-enrolled id='ssenrolled'></ss-enrolled>
-						<div class="centeredMessage" id="no-sessions-en" style="display: none;">
+						<div class="centeredMessage" class='no-sessions' id="no-sessions-en" style="display: none;">
 	                		<img src="img/swag.png" alt="swag emoji" />
 	                		<p>Non sei prenotato a nessun appello</p>
 	                	</div>

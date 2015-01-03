@@ -65,6 +65,7 @@ public class JspUtils {
 		out("<script src='scripts/main.js'></script>");
 		out("<link rel='import' href='bower_components/font-roboto/roboto.html'>");
 		out("<link rel='import' href='bower_components/paper-spinner/paper-spinner.html'>");
+		out("<link rel='import' href='bower_components/paper-toast/paper-toast.html'>");
 	}
 	
 	/**

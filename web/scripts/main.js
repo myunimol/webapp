@@ -1,12 +1,16 @@
 function standardPolymerLoad() {
 	setMenuAction();
+	var toast = document.createElement("paper-toast");
+	document.errorHandlerToast = toast;
+	document.body.appendChild(toast);
 }
 
 function setMenuAction() {
 	var navicon = document.getElementById('navicon');
-	navicon.addEventListener('click', function() {
-		document.getElementById('drawerPanel').togglePanel();
-	});
+	if (navicon != null)
+		navicon.addEventListener('click', function() {
+			document.getElementById('drawerPanel').togglePanel();
+		});
 }
 
 function freeze() {
@@ -57,5 +61,14 @@ function getPosition(element) {
     }
     return { x: xPosition, y: yPosition };
 }
+
+function showError(message) {
+	
+}
+
+window.onerror = function(error, url, line) {
+    document.errorHandlerToast.text = "Ooops, errore imprevisto!";
+    document.errorHandlerToast.show();
+};
 
 document.addEventListener("polymer-ready", standardPolymerLoad);
