@@ -44,6 +44,7 @@
         <link rel="import" href="bower_components/paper-input/paper-input-decorator.html">
         <link rel="import" href="bower_components/paper-item/paper-item.html">
         <link rel="import" href="our_components/ef-contact/ef-contact.html">
+        <link rel='import' href='our_components/myunimol-ajax/myunimol-ajax.html' />
         
         <style>
         .my-input {
@@ -106,21 +107,21 @@
     </head>
     <body>
         
-    <core-ajax auto
+    <myunimol-ajax auto
                id='ajax' 
                method='POST'
                url="GetAddressBookServlet" 
                params='{}' 
                handleAs='json'>
-    </core-ajax>
+    </myunimol-ajax>
     
-    <core-ajax
+    <myunimol-ajax
                id='ajaxSearch' 
                method='POST'
                url="SearchContactsServlet" 
                params='{}' 
                handleAs='json'>
-    </core-ajax>
+    </myunimol-ajax>
 
     <core-drawer-panel id="drawerPanel">
         <% utils.writeLeftMenu("Rubrica", 2);%>
@@ -150,7 +151,6 @@
 
     <script>
         document.addEventListener('polymer-ready', function () {
-			freeze();
             var ajax = document.getElementById("ajax");
             
             document.efcontact = document.getElementById("efcontact");
@@ -159,7 +159,6 @@
 
             ajax.addEventListener("core-response", function (event) {
                 document.efcontact.contacts = event.detail.response.contacts;
-                unfreeze();
             });
             
             document.ricercaShow = document.getElementById("buttonRicercaShow");

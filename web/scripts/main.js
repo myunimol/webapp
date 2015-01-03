@@ -4,9 +4,11 @@ function standardPolymerLoad() {
 
 function setMenuAction() {
 	var navicon = document.getElementById('navicon');
-	navicon.addEventListener('click', function() {
-		document.getElementById('drawerPanel').togglePanel();
-	});
+	if(navicon != null) {
+		navicon.addEventListener('click', function() {
+			document.getElementById('drawerPanel').togglePanel();
+		});
+	}
 }
 
 function freeze(contentId) {
@@ -22,9 +24,7 @@ function freeze(contentId) {
 	div.style.textAlign = "center";
 	div.style.width = content.offsetWidth+"px";
 	div.style.height = content.offsetHeight+"px";
-	console.log(content.offsetWidth)
 	var pos = getPosition(content);
-	console.log(pos);
 	div.style.top = pos.y;
 	div.style.left = pos.x;
 	spinner.id = 'FREEZESPINNER';

@@ -37,6 +37,7 @@
         %>
 
         <link rel="import" href="our_components/cdr-news/cdr-news.html">
+        <link rel='import' href='our_components/myunimol-ajax/myunimol-ajax.html' />
 		<style shim-shadowdom>
 			paper-tabs {
 		      background-color: transparent;
@@ -64,29 +65,29 @@
     </head>
 
     <body>
-    <core-ajax
+    <myunimol-ajax
                id='ajaxAteneo' 
                method='POST'
                url="GetUniversityNewsServlet" 
                params='{}' 
                handleAs='json'>
-    </core-ajax>
+    </myunimol-ajax>
     
-    <core-ajax
+    <myunimol-ajax
                id='ajaxDip' 
                method='POST'
                url="GetDepartmentNewsServlet" 
                params='{}' 
                handleAs='json'>
-    </core-ajax>
+    </myunimol-ajax>
     
-    <core-ajax auto
+    <myunimol-ajax auto
                id='ajaxAvvisi' 
                method='POST'
                url="GetNewsBoardServlet" 
                params=''
                handleAs='json'>
-    </core-ajax>
+    </myunimol-ajax>
 
     <core-drawer-panel id="drawerPanel">
         <% utils.writeLeftMenu("News", 4);%>
@@ -114,7 +115,6 @@
     </core-drawer-panel>
     <script>
         document.addEventListener('polymer-ready', function () {
-			freeze();
 			document.ajaxAction = function (event) {
 				if(event.detail.response.result=="failure") {
 					document.getElementById("default-msg").innerHTML = event.detail.response.msg;
@@ -124,7 +124,6 @@
 					document.getElementById("no-items").style.display = "none";
                 	document.getElementById("cdrnews").newsList = event.detail.response.newsList;
 				}
-                unfreeze();
             }
 			
             document.ajaxAteneo = document.getElementById("ajaxAteneo");
@@ -140,17 +139,14 @@
             var dipartimento = document.getElementById('dipartimento');
             
             avvisi.addEventListener('click', function() {
-            	freeze();
             	document.ajaxAvvisi.go();
             })
             
             ateneo.addEventListener('click', function() {
-            	freeze();
             	document.ajaxAteneo.go();
             })
             
             dipartimento.addEventListener('click', function() {
-            	freeze();
             	document.ajaxDip.go();
             })
         });

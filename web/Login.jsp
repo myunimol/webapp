@@ -7,6 +7,7 @@
 		return;
 	}
 %>
+
 <!DOCTYPE html>
 
 <html>
@@ -28,22 +29,27 @@
         utils.writePolymerImport("paper-spinner");
         %>
         <link rel="import" href="bower_components/paper-input/paper-input-decorator.html">
+        <link rel="import" href="our_components/myunimol-ajax/myunimol-ajax.html">
 
         <style shim-shadowdom>  	 
             body {
                 min-height: 500px;
-                font-family: 'RobotoDraft', sans-serif;     
+                font-family: 'RobotoDraft', sans-serif;
             }
             #icona_myunimol {
+                display: block;
+                margin: 5% auto;
                 width: 20%;
             }
             #username_input {
+                display: block;
                 margin: 0 auto;
                 max-height: 5%;
                 max-width: 55%;
             }
             #password_input {
-            	margin: 0 auto;
+                display: block;
+                margin: 0 auto;
                 max-height: 5%;
                 max-width: 55%;
             }
@@ -53,20 +59,9 @@
                 max-width: 55%;
                 background: #03A9F4;
             }
-            #titolo_myunimol {
-                display: block;
-                margin-top: 0.5%;
-                margin-left: auto;
-                margin-right: auto;
-                width: 35%;
-                height: auto;
-            }
             #header {
             	margin-top: 10%;
             	text-align: center;
-            }
-            #content {
-            	margin-top: 10%;
             }
         </style>
     </head>
@@ -85,12 +80,10 @@
 		    <paper-button  onclick="sendData()" id="login" raised>login</paper-button>
 	    </div>
 	    <paper-toast id="login_error_message" text="Dati di accesso non validi."></paper-toast>
-	    <core-ajax 
-	    	id='ajaxData' 
-	    	method='POST' 
-	    	url='LoginServlet'
-	        params = '{"username":"", "password":""}'
-           	handleAs='json'></core-ajax>
+	    <myunimol-ajax id='ajaxData' method='POST' url='LoginServlet'
+	               params = '{"username":"", "password":""}'
+	               handleAs='json'
+	               contentId="content"></core-ajax>
 	    <script>
 	        function sendData() {
 	            //prendo il core-ajax
@@ -103,7 +96,6 @@
 	            if (username != '' && password != '') {
 	                //modifico i parametri e faccio partire la richiesta
 	                reqst.params = '{"username": "' + username + '", "password":"' + password + '"}';
-	                freeze("content");
 	                reqst.go();
 	            }
 	            var $d = document.getElementById('body_id').querySelectorAll('paper-input-decorator');
@@ -117,7 +109,6 @@
 	            reqst.addEventListener("core-response", function (event) {
 	                var json = event.detail.response;
 	                if (json.result == 'failure') {
-	                	unfreeze("content");
 	                    document.querySelector('#login_error_message').show();
 	                } else if (json.result == 'correct') {
 	                    window.location.href = "Home.jsp";
