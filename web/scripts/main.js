@@ -68,7 +68,7 @@ function showError(message) {
 
 window.onerror = function(error, url, line) {
     document.errorHandlerToast.text = "Ooops, errore imprevisto!";
-    document.errorHandlerToast.show();
+    //document.errorHandlerToast.show();
 };
 
 document.addEventListener("polymer-ready", standardPolymerLoad);
