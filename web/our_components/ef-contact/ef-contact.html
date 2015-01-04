@@ -1,14 +1,9 @@
 <link rel="import" href="ef-contactel.html">
-<polymer-element name="ef-contact">
-    <template>
-        <!-- Foglio di stile per il singolo componente -->
-        <link rel="stylesheet" href="style.css">
-        <div id='container' class="content-item">
-        </div>
-    </template>
-    <!--File javascript che crea l'array sessions.
-    session.js crea un array "a mano"; l'ho utilizzato per testare il corretto funzionamento della componente
-    session-json.js dovrebbe essere lo script che va a creare l'array sessions sulla base del json risultante dalla chiamata alla servlet.
-    -->
+<link rel="import" href="../ss-multiple/ss-multiple.html">
+<polymer-element name="ef-contact" extends="ss-multiple">
+	<template>
+		<link rel="stylesheet" href="style.css">
+		<shadow></shadow>
+	</template>
     <script src="contact.js"></script>
 </polymer-element>
