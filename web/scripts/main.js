@@ -63,7 +63,16 @@ function freeze(contentId) {
 	                 "Perch&eacute; in America fa freddo? Perch&eacute; &egrave; stata scoperta.",
 	                 "Papa Leone visse anni ruggenti?",
 	                 'No: il contrario di "melodia" non &egrave; "Se-lo-tenga"...',
-	                 "Aperta a Cattolica chiesa protestante..."
+	                 "Aperta a Cattolica chiesa protestante...",
+	                 "Nuova lavatrice lanciata sul mercato: 10 morti e 6 feriti...",
+	                 "Elettricista impazzito d&agrave; alla luce un figlio...",
+	                 "Bimbo scoppia di salute: i genitori in prognosi riservata...",
+	                 "Disegnatore fa cadere mina per terra: 22 morti...",
+	                 "Cosa nasce tra un elettricista ed una domestica? Un elettrodomestico...",
+	                 "Catastrofi del secolo scorso: Hiroshima 45, Cernobyl 86, Windows 95...",
+	                 "Le uniche cose che girano sotto Windows 95 sono le palle.",
+	                 "Lo stitico quando muore va in purgatorio?",
+	                 "\"Gestante\": participio presente o preservativo imperfetto?"
 	                 ];
 	var randomNumber = Math.floor(Math.random()*loadingMsgArray.length);
 	
