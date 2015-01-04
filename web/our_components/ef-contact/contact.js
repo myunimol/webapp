@@ -13,7 +13,7 @@ Polymer('ef-contact', {
 	},
 	
 	ready: function() {
-		this.mainContainer = document.getElementById('mainContainer');
+		this.mainContainer = document.querySelector('core-header-panel[main]');
 	},
 	
     reloadContacts: function() {
@@ -22,29 +22,58 @@ Polymer('ef-contact', {
     		this.ready();
     	
     	this.$.container.innerHTML = "";
-    	this.more();
+    	this.update();
+    },
+    
+    update: function() {
+    	/*var addressBook = this;
+    	if (!this.more()) {
+			setTimeout(function() {
+	    		addressBook.update();
+	    	}, 1000);
+    	}*/
     	
-    	this.mainContainer.addressBookElement = this;
-    	this.mainContainer.addEventListener('scroll', function() {
-    		var actual = this.scrollTop;
-    		var total = this.scrollHeight - this.clientHeight;
-    		var percent = actual / total;
-    		
-    		if (total - actual <= 100) {
-    			this.addressBookElement.more();
-    		}
-    	});
+    	var element = this.oneMore();
+
+    	var addressBook = this;
+    	if (element != null)
+    		setTimeout(function() {
+    			addressBook.update();
+    		}, 100);
+    },
+    
+    createContact: function(i) {
+    	var element = document.createElement("ef-contactel");
+		element.contact = this.contacts[i];
+		this.$.container.appendChild(element);
+		
+		return element;
     },
     
     more: function() {
     	var max = this.actualNumber + this.contactsAtTime;
     	if (max > this.contacts.length)
     		max = this.contacts.length;
-    		for (var i = this.actualNumber; i < max; i++) {
-    		var element = document.createElement("ef-contactel");
-    		element.contact = this.contacts[i];
-    		this.$.container.appendChild(element);
-    		this.actualNumber++;
+    	
+		for (var i = this.actualNumber; i < max; i++) {
+			this.createContact(i);
+			this.actualNumber++;
     	}
+		
+		if (this.actualNumber >= this.contacts.length)
+			return true;
+		else
+			return false;
+    },
+    
+    oneMore: function() {
+    	if (this.contacts[this.actualNumber] == null)
+    		return null;
+    	
+    	var i = this.actualNumber;
+    	var element = this.createContact(i);
+    	this.actualNumber++;
+    	
+    	return element
     }
 });
