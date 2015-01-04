@@ -50,7 +50,7 @@ function freeze(contentId) {
 	                 "Cosa faceva uno sputo su una scala? Saliva.",
 	                 '"Non so se mi spiego..." disse il paracadute.',
 	                 '"Non so se mi spiedo..." disse un pollo sul girarrosto.',
-	                 "Il marinaio spiegò le vele al vento, ma il vento non capì...",
+	                 "Il marinaio spiegò le vele al vento, ma il vento non capì",
 	                 'Misticismo di uno Streptococcus termophilus: "Ecce Yomo."',
 	                 "Ragazzo scoppia di salute: 9 morti e 3 feriti.",
 	                 '"Mi hanno messo in cinta!", disse una fibbia.',
