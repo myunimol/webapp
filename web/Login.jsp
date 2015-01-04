@@ -72,10 +72,10 @@
     	</div>
         <div id="content">
 		    <paper-input-decorator type="text"  label= "Username" id= "username_input" floatinglabel class="my-input"  error="Inserisci il nome utente!">
-		        <input is="core-input" id= "username_input_field" required>
+		        <input is="core-input" id= "username_input_field"  onkeypress="return keyPressed(event)" required>
 		    </paper-input-decorator>
 		    <paper-input-decorator type="password" id= "password_input" label= "Password" floatinglabel class="my-input" error="Inserisci la password!">
-		        <input is="core-input" id="password_input_field" type="password" required>
+		        <input is="core-input" id="password_input_field" type="password"  onkeypress="return keyPressed(event)" required>
 		    </paper-input-decorator>
 		    <paper-button  onclick="sendData()" id="login" raised>login</paper-button>
 	    </div>
@@ -115,6 +115,13 @@
 	                }
 	            })
 	        });
+	        
+	        function keyPressed(event) {
+	        	if (event.keyCode == 13) {
+	                sendData();
+	                return false;
+	            }
+	        }
 	
 	    </script>
 	</body>
