@@ -48,7 +48,7 @@ a {
 
 @-webkit-keyframes animate-contact {
 	from {
-		margin-left: 100%;
+		margin-top: 300px;
 		opacity: 0;
 	}
 	
@@ -57,14 +57,14 @@ a {
 	}
 	
 	to {
-		margin-left:16px;
+		margin-top:16px;
 		opacity:1;
 	}
 }
 
 @keyframes animate-contact {
 	from {
-		margin-left: 100%;
+		margin-top: 300px;
 		opacity: 0;
 	}
 	
@@ -73,7 +73,7 @@ a {
 	}
 	
 	to {
-		margin-left:16px;
+		margin-top:16px;
 		opacity:1;
 	}
 }
