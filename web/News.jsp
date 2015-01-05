@@ -130,9 +130,9 @@
             document.ajaxDip = document.getElementById("ajaxDip");
             document.ajaxAvvisi = document.getElementById("ajaxAvvisi");
 
-            document.ajaxAteneo.addEventListener("core-response", document.ajaxAction);
-            document.ajaxDip.addEventListener("core-response", document.ajaxAction);
-            document.ajaxAvvisi.addEventListener("core-response", document.ajaxAction);
+            document.ajaxAteneo.addEventListener("myunimol-response", document.ajaxAction);
+            document.ajaxDip.addEventListener("myunimol-response", document.ajaxAction);
+            document.ajaxAvvisi.addEventListener("myunimol-response", document.ajaxAction);
             
             var avvisi = document.getElementById('avvisi');
             var ateneo = document.getElementById('ateneo');

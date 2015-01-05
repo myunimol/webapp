@@ -139,7 +139,7 @@
     <script>
         document.addEventListener('polymer-ready', function() {
             var ajax = document.getElementById("ajax");
-            ajax.addEventListener("core-response", function(event) {
+            ajax.addEventListener("myunimol-response", function(event) {
                 var circleProgressBar = document.getElementsByTagName("gm-circle-progress")[0];
                 circleProgressBar.setAttribute("percentage", event.detail.response.percentCFU);
                 circleProgressBar.setAttribute("numcfu", event.detail.response.acquiredCFU+"/"+event.detail.response.totalCFU);

@@ -157,7 +157,7 @@
             document.noContacts = document.getElementById("no-contacts");
             document.searchedTerm = document.noContacts.children[1].children[0];
 
-            ajax.addEventListener("core-response", function (event) {
+            ajax.addEventListener("myunimol-response", function (event) {
                 document.efcontact.contacts = event.detail.response.contacts;
             });
             
@@ -181,7 +181,7 @@
             document.ricercaDoAction = function() {
             	var ajax = document.getElementById('ajaxSearch');
             	ajax.params = '{"search":"' + document.ricercaInput.value + '"}'
-            	ajax.addEventListener('core-response', document.ricercaResults);
+            	ajax.addEventListener('myunimol-response', document.ricercaResults);
             	ajax.go();
             	document.searchedTerm.innerHTML = document.ricercaInput.value;
             	document.backAction();

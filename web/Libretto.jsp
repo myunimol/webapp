@@ -61,7 +61,7 @@
         document.addEventListener('polymer-ready', function () {
             var ajax = document.getElementById("ajax");
 
-            ajax.addEventListener("core-response", function (event) {
+            ajax.addEventListener("myunimol-response", function (event) {
             	document.getElementById("fprecordbook").averages = {
             		weightedAverage: event.detail.response.weightedAverage,
             		average: event.detail.response.average,

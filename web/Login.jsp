@@ -108,7 +108,7 @@
 	        document.addEventListener("polymer-ready", function () {
 	        	var ajax = document.getElementById("ajaxData");
 	        	
-	        	ajax.addEventListener("core-response", function (event) {
+	        	ajax.addEventListener("myunimol-response", function (event) {
 	                var json = event.detail.response;
 	                
 	                if (json.result == 'failure') {

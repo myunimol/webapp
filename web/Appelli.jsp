@@ -129,7 +129,7 @@
 	            });
 	            
 	            
-	            ajax.addEventListener("core-response", function (event) {
+	            ajax.addEventListener("myunimol-response", function (event) {
 	            	if (event.detail.response.exams.length == 0) {
 	            		document.getElementById("no-sessions-av").style.display = "block";
 	            	} else {
@@ -138,7 +138,7 @@
 	            	}
 	            });
 	            
-	            ajaxEnrolled.addEventListener("core-response", function(event) {
+	            ajaxEnrolled.addEventListener("myunimol-response", function(event) {
 	            	if (event.detail.response.exams.length == 0) {
 	            		document.getElementById("no-sessions-en").style.display = "block";
 	            	} else {

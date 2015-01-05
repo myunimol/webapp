@@ -19,7 +19,7 @@ Polymer('fp-recordbookel', {
     			this.exam.vote = this.exam.vote + " / 30"
     	}
     	
-		this.$.ajax.addEventListener('core-response', this.loadexamResponse);
+		this.$.ajax.addEventListener('myunimol-response', this.loadexamResponse);
 		this.$.container.ajax = this.$.ajax;
 		this.$.container.collapse = this.$.collapse;
 		this.$.container.exam = this.exam;
