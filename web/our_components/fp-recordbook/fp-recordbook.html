@@ -1,5 +1,6 @@
 <link rel="import" href="fp-recordbookel.html">
-<polymer-element name="fp-recordbook">
+<link rel="import" href="../ss-multiple/ss-multiple.html">
+<polymer-element name="fp-recordbook" extends="ss-multiple">
 	<template>
 		<!-- Foglio di stile per il singolo componente -->
 		<link rel="stylesheet" href="style.css">
@@ -7,16 +8,11 @@
 			<div class="exam-container1">
 				<core-item id="weighted" icon="trending-up" label="Media Pesata" horizontal center layout>: {{averages.weightedAverage}}</core-item>
 				<core-item id="media" icon="assessment" label="Media" horizontal center layout>: {{averages.average}}</core-item>
+				<core-item id="base" icon="flag" label="Base di laurea" horizontal center layout>: {{averages.base}}</core-item>
 			</div>
-			<!-- Questo template itera tante volte quanti sono gli oggetti nell'array sessions.
-				 L'array è creato nello script in fondo alla pagina. -->
-			<div id='examsContainer'>
-			</div>
+			
+			<shadow></shadow>
 		</div>
-	    <!--File javascript che crea l'array sessions.
-	    session.js crea un array "a mano"; l'ho utilizzato per testare il corretto funzionamento della componente
-	    session-json.js dovrebbe essere lo script che va a creare l'array sessions sulla base del json risultante dalla chiamata alla servlet.
-	    -->
 	</template>
     <script src="recordbook.js"></script>
 </polymer-element>

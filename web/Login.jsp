@@ -126,10 +126,10 @@
 		</div>
         <div id="content">
 		    <paper-input-decorator type="text"  label= "Username" id= "username_input" floatinglabel class="my-input"  error="Inserisci il nome utente!">
-		        <input is="core-input" id= "username_input_field"  onkeypress="return keyPressed(event)" required>
+		        <input is="core-input" id= "username_input_field" required>
 		    </paper-input-decorator>
 		    <paper-input-decorator type="password" id= "password_input" label= "Password" floatinglabel class="my-input" error="Inserisci la password!">
-		        <input is="core-input" id="password_input_field" type="password"  onkeypress="return keyPressed(event)" required>
+		        <input is="core-input" id="password_input_field" type="password" required>
 		    </paper-input-decorator>
 		    <div id="buttons">
 		    	<paper-button  onclick="showDialog('privacy')" id="privacy">Privacy</paper-button>
@@ -148,7 +148,7 @@
 		  <p>Le informazioni base come le credenziali d'accesso, il nome, il cognome, l'anno di corso e le medie esami sono memorizzate in modo sicuro temporaneamente per questioni di risparmio di traffico dati e di performance.</p>
 		  <p>Effettuando l'accesso si esprime il proprio consenso al download automatico dei propri dati (quali nome, cognome, voto degli esami, corso di studi...) dalla piattaforma ESSE3 a proprio rischio e pericolo.</p>
 		</paper-dialog>
-	    <myunimol-ajax id='ajaxData' method='POST' url='LoginServlet'
+	    <myunimol-ajax nofreeze id='ajaxData' method='POST' url='LoginServlet'
 	               params = '{"username":"", "password":""}'
 	               handleAs='json'
 	               contentId="content"></core-ajax>
@@ -165,6 +165,7 @@
 	                //modifico i parametri e faccio partire la richiesta
 	                reqst.params = '{"username": "' + username + '", "password":"' + password + '"}';
 	                reqst.go();
+	                freeze("content");
 	            }
 	            var $d = document.getElementById('body_id').querySelectorAll('paper-input-decorator');
 	            Array.prototype.forEach.call($d, function (d) {
@@ -180,15 +181,25 @@
 	        }
 	
 	        document.addEventListener("polymer-ready", function () {
-	            var reqst = document.getElementById("ajaxData");
-	            reqst.addEventListener("core-response", function (event) {
+	        	var ajax = document.getElementById("ajaxData");
+	        	
+	        	ajax.addEventListener("core-response", function (event) {
 	                var json = event.detail.response;
+	                
 	                if (json.result == 'failure') {
 	                    document.querySelector('#login_error_message').show();
+	                    unfreeze("content");
 	                } else if (json.result == 'correct') {
 	                    window.location.href = "Home.jsp";
 	                }
 	            })
+	            
+	            ajax.addEventListener("core-error", function(event) {
+	            	unfreeze("content");
+	            })
+	            
+	            document.getElementById("username_input_field").addEventListener("keypress", keyPressed)
+	            document.getElementById("password_input_field").addEventListener("keypress", keyPressed)
 	        });
 	        
 	        function keyPressed(event) {

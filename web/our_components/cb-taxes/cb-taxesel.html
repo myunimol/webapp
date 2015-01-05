@@ -1,0 +1,16 @@
+<polymer-element name="cb-taxesel">
+    <template>
+        <!-- Foglio di stile per il singolo componente -->
+        <link rel="stylesheet" href="style.css">
+        <div class="animated-container">
+	        <div class="taxes-container">
+	            <div id="taxes-description">{{tax.billId}} - {{tax.description}}</div>
+	            <div id="taxes-year">Anno accademico: {{tax.year}}</div>
+	            <div id="taxes-expiring-date">Data scadenza: {{tax.expiringDate}}</div>
+	            <div id="taxes-amount">€ {{tax.amount}}</div>
+	            <div id="taxes-status-payment"><div class="{{tax.statusPayment}}" id="status-dot"></div></div>
+	        </div>
+	    </div>
+    </template>
+    <script>Polymer();</script>
+</polymer-element>

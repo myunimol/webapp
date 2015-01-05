@@ -10,15 +10,17 @@
 			           url="../../RecordBookExamServlet" 
 			           params=''
 			           handleAs='json'></myunimol-ajax>
-		<div id='container' class="exam-container">
-			<div id='fpexpandible'>
-				<div class='exam-name'>{{exam.name}}</div>
-				<div class="exam-cfus">{{exam.cfu}} CFU</div>
-				<span class="exam-vote-text">Voto: {{exam.vote}}</span>
-			</div>
-			<core-collapse class='collapse-element' id='collapse'>
-				<fp-recordbookexam id="details"></fp-recordbookexam>
-            </core-collapse>
+		<div class="animated-container">
+			<div id='container' class="exam-container">
+				<div id='fpexpandible'>
+					<div class='exam-name'>{{exam.name}}</div>
+					<div class="exam-cfus">{{exam.cfu}} CFU</div>
+					<span class="exam-vote-text">Voto: {{exam.vote}}</span>
+				</div>
+				<core-collapse class='collapse-element' id='collapse'>
+					<fp-recordbookexam id="details"></fp-recordbookexam>
+	            </core-collapse>
+	        </div>
         </div>
 		<!--File javascript che crea l'array sessions.
 		session.js crea un array "a mano"; l'ho utilizzato per testare il corretto funzionamento della componente
