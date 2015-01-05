@@ -64,7 +64,8 @@
             ajax.addEventListener("core-response", function (event) {
             	document.getElementById("fprecordbook").averages = {
             		weightedAverage: event.detail.response.weightedAverage,
-            		average: event.detail.response.average
+            		average: event.detail.response.average,
+            		base: event.detail.response.base
             	}
             	
                 document.getElementById("fprecordbook").exams = event.detail.response.exams;

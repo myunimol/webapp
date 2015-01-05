@@ -42,6 +42,10 @@ public class RecordBookServlet extends HttpServlet {
             
             JSONObject recBookJSON = new APIConsumer().consume("getRecordBook", username, password);
             
+            float weightedAverage = (float)recBookJSON.getDouble("weightedAverage");
+            int base = Math.round((weightedAverage / 30.0F) * 110);
+            
+            recBookJSON.put("base", base);
             out.println(recBookJSON);
             
         } catch (UnirestException e) {
