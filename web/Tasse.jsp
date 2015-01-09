@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Pagamenti</title>
+        <title>MyUnimol</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,7 +50,9 @@
         <core-header-panel main>
             <core-toolbar id="mainheader">
                 <paper-icon-button id="navicon" icon="menu"></paper-icon-button>
-                <span flex style="font-size: 28;">Pagamenti</span>
+                <span flex style="font-size: 28;">
+                	Pagamenti
+                </span>
             </core-toolbar>
 
             <div id='activeContentHandler' class="content">

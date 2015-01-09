@@ -21,7 +21,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Rubrica</title>
+        <title>MyUnimol</title>
 		<meta name="apple-mobile-web-app-capable" content="yes" />
         <%
             utils.writeStandardImports();
@@ -129,7 +129,9 @@
                 <paper-icon-button id="navicon" icon="menu"></paper-icon-button>
                 <paper-icon-button id="backButton" icon="arrow-back" style='display:none; '></paper-icon-button>
                 <span id='mainToolbar' flex style="font-size: 28;">
-                	<span id='labelRubrica'>Rubrica</span>
+                	<span id='labelRubrica'>
+                		Rubrica
+                	</span>
                 	<input style='color: white; display:none;' type='text' label='' id='ricercaInput' class='my-input'></paper-input>
                 </span>
                 <paper-icon-button id='buttonRicercaShow' style="color: white;" id="paper_item" icon="search"></paper-icon-button>

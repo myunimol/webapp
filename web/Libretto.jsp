@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Libretto</title>
+        <title>MyUnimol</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,7 +50,7 @@
             <core-toolbar id="mainheader">
                 <paper-icon-button id="navicon" icon="menu"></paper-icon-button>
                 <span flex style="font-size: 28;">
-                    <strong>Libretto</strong>
+                    Libretto
                 </span>
             </core-toolbar>
             
