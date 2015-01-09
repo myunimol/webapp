@@ -59,13 +59,17 @@ public class JspUtils {
 	 * @throws IOException
 	 */
 	public void writeStandardImports() throws IOException {
-		out("<link rel='stylesheet' type='text/css' href='style/style.css'>");
+		out("<meta name='mobile-web-app-capable' content='yes'>");
+		out("<link rel='manifest' href='style/chromeManifest.json'>");
+		
+		out("<link rel='stylesheet' type='text/css' href='style/style.css' />");
 		out("<script src='bower_components/platform/platform.js'></script>");
 		out("<script src='//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>");
 		out("<script src='scripts/main.js'></script>");
-		out("<link rel='import' href='bower_components/font-roboto/roboto.html'>");
-		out("<link rel='import' href='bower_components/paper-spinner/paper-spinner.html'>");
-		out("<link rel='import' href='bower_components/paper-toast/paper-toast.html'>");
+		out("<link rel='icon' sizes='192x192' href='img/Android/logo4x.png'>");
+		out("<link rel='import' href='bower_components/font-roboto/roboto.html' />");
+		out("<link rel='import' href='bower_components/paper-spinner/paper-spinner.html' />");
+		out("<link rel='import' href='bower_components/paper-toast/paper-toast.html' />");
 	}
 	
 	/**
