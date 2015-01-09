@@ -8,6 +8,7 @@
     }
 %>
 
+<!DOCTYPE html>
 <html>
     <head>
         <title>MyUnimol</title>

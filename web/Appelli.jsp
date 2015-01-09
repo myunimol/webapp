@@ -7,6 +7,7 @@
         return;
 %>
 
+<!DOCTYPE html>
 <html>
     <head>
         <title>Appelli</title>

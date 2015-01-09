@@ -38,8 +38,6 @@
             utils.writePolymerImport("core-ajax");
         %>
 
-
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <link rel="import" href="bower_components/paper-input/paper-input.html">
         <link rel="import" href="bower_components/paper-input/paper-input-decorator.html">
         <link rel="import" href="bower_components/paper-item/paper-item.html">

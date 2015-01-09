@@ -8,6 +8,7 @@
     }
 %>
 
+<!DOCTYPE html>
 <html>
     <head>
         <title>Libretto</title>
@@ -28,6 +29,7 @@
             utils.writePolymerImport("paper-icon-button");
             utils.writePolymerImport("core-ajax");
         %>
+        
         <link rel="import" href="our_components/fp-recordbook/fp-recordbook.html">
         <link rel='import' href='our_components/myunimol-ajax/myunimol-ajax.html' />
     </head>
@@ -51,6 +53,7 @@
                     <strong>Libretto</strong>
                 </span>
             </core-toolbar>
+            
             <div id='activeContentHandler' class="content"> 
                 <fp-recordbook id='fprecordbook'></fp-recordbook>    
             </div>

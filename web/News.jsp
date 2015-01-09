@@ -14,6 +14,7 @@
     }
 %>
 
+<!DOCTYPE html>
 <html>
     <head>
         <title>News</title>
