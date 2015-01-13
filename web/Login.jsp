@@ -121,10 +121,10 @@
 		</div>
         <div id="content">
 		    <paper-input-decorator type="text"  label= "Username" id= "username_input" floatinglabel class="my-input"  error="Inserisci il nome utente!">
-		        <input is="core-input" id= "username_input_field" required>
+		        <input is="core-input" id= "username_input_field" autocapitalize="off" required>
 		    </paper-input-decorator>
 		    <paper-input-decorator type="password" id= "password_input" label= "Password" floatinglabel class="my-input" error="Inserisci la password!">
-		        <input is="core-input" id="password_input_field" type="password" required>
+		        <input is="core-input" id="password_input_field" type="password" autocapitalize="off" required>
 		    </paper-input-decorator>
 		    <div id="buttons">
 		    	<paper-button  onclick="showDialog('privacy')" id="privacy">Privacy</paper-button>

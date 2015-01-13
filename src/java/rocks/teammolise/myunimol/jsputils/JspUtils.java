@@ -67,6 +67,11 @@ public class JspUtils {
 		out("<script src='//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>");
 		out("<script src='scripts/main.js'></script>");
 		out("<link rel='icon' sizes='192x192' href='img/Android/logo4x.png'>");
+		out("<link rel=\"apple-touch-icon\" href=\"img/ios/2x.png\" />");
+		out("<link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"img/ios/3x.png\" />");
+		out("<link rel=\"apple-touch-icon\" sizes=\"76x76\" href=\"img/ios/1x.png\" />");
+		out("<link rel=\"apple-touch-icon\" sizes=\"152x152\" href=\"img/ios/2-2x.png\" />");
+		out("<link rel=\"apple-touch-icon\" sizes=\"58x58\" href=\"img/ios/0x.png\" />");
 		out("<link rel='import' href='bower_components/font-roboto/roboto.html' />");
 		out("<link rel='import' href='bower_components/paper-spinner/paper-spinner.html' />");
 		out("<link rel='import' href='bower_components/paper-toast/paper-toast.html' />");
