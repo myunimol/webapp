@@ -37,39 +37,34 @@
 
         <style shim-shadowdom>  	 
             body {
-                min-height: 500px;
+                min-height: 568px;
                 font-family: 'RobotoDraft', sans-serif;
-            }
-            #icona_myunimol {
-                display: block;
-                margin: 5% auto;
-                width: 20%;
             }
             #username_input {
                 display: block;
                 margin: 0 auto;
                 max-height: 5%;
-                max-width: 55%;
+                max-width: 58%;
             }
             #password_input {
                 display: block;
                 margin: 0 auto;
                 max-height: 5%;
-                max-width: 55%;
+                max-width: 58%;
             }
             #buttons {
             	margin: 50px auto;
-                max-width: 55%;
+                max-width: 60%;
                 text-align: center;
             }
             #privacy {
             	display: inline;
-            	width: 10%;
+            	width: 5%;
             	float: left;
             }
             #login {
             	display: inline-block;
-                width: 40%;
+                width: 35%;
                 background: #526E9C;
                 color: #fff;
                 float: right;
@@ -88,13 +83,13 @@
             }
             #header img {
             	position: relative;
-				height: 6em;
+				height: 145%;
 				top: -.2em;
             }
             #footer {
-            	position: fixed;
+            	position: relative;
             	bottom: 0;
-            	height: 20%;
+            	height: 8em;
             	width: 100%;
             	text-align: center;
             	background: #526E9C;
@@ -136,6 +131,7 @@
 		    	<paper-button  onclick="sendData()" id="login" raised>Login</paper-button>
 		    	<div class="clear"></div>
 		    </div>
+		    <div id="push"></div>
 	    </div>
 	    <div id="footer">
 	    	<p><a href="http://teammolise.rocks/MyUnimol">MyUnimol</a> &egrave; un'applicazione sviluppata da alcuni studenti dell'<a href="http://unimol.it">Universit&agrave; degli Studi del Molise</a> e dell'<a href="http://unisa.it">Universit&agrave; degli Studi di Salerno</a>.</p>
@@ -181,6 +177,12 @@
 	        }
 	
 	        document.addEventListener("polymer-ready", function () {
+	        	var pushDiv = document.getElementById("push");
+	        	var footerDiv = document.getElementById("footer");
+	        	var footerBox = footerDiv.getBoundingClientRect();
+	        	var pageHeight = window.innerHeight;
+	        	var pushHeight = pageHeight - footerBox.bottom;
+	        	pushDiv.style.height = pushHeight+"px";
 	        	var ajax = document.getElementById("ajaxData");
 	        	
 	        	ajax.addEventListener("myunimol-response", function (event) {

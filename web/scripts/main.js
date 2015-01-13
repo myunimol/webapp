@@ -24,13 +24,10 @@ function freeze(contentId) {
 	var content = document.getElementById(contentId);
 	var spinnerSize = {width: 28, height: 28};
 	div.id = 'FREEZEDIV';
-	div.style.position = "absolute";
+	div.style.position = "block";
 	div.style.textAlign = "center";
 	div.style.width = content.offsetWidth+"px";
 	div.style.height = content.offsetHeight+"px";
-	var pos = getPosition(content);
-	div.style.top = pos.y;
-	div.style.left = pos.x;
 	p.id = "FREEZEP";
 	p.style.margin = "0 auto";
 	p.style.position = "relative";
@@ -78,16 +75,15 @@ function freeze(contentId) {
 	
 	p.innerHTML = loadingMsgArray[randomNumber];
 	spinner.id = 'FREEZESPINNER';
-	spinner.className = 'centerSpinner';
+	spinner.style.position = "relative";
+	spinner.style.margin = "0 auto";
 	var spinnerTop = ((content.offsetHeight-spinnerSize.height)/2);
-	var spinnerLeft = ((content.offsetWidth-spinnerSize.width)/2);
 	spinner.style.top = spinnerTop+"px";
-	spinner.style.left = spinnerLeft+"px";
 	spinner.active = true;
 	content.style.display = "none";
-	document.body.appendChild(div);
 	div.appendChild(spinner);
 	div.appendChild(p);
+	content.parentNode.insertBefore(div, content.nextSibling);
 	document.isFreezed = true;
 }
 
@@ -98,7 +94,7 @@ function unfreeze(contentId) {
 	var spinner = document.getElementById('FREEZESPINNER');
 	var content = document.getElementById(contentId);
 	div.removeChild(spinner);
-	document.body.removeChild(div);
+	content.parentNode.removeChild(div);
 	if (content != null)
 		content.style.display = "block";
 	document.isFreezed = false;
