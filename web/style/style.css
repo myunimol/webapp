@@ -28,11 +28,6 @@ core-toolbar {
 #activeContentHandler {
 	min-height: 300px;
 }
-.centerSpinner {
-	position: absolute;
-	left:50%;
-	top:50%;
-}
 .centeredMessage {
 	position: relative;
 	display: block;
