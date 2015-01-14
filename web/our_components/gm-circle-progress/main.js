@@ -14,8 +14,9 @@ Polymer('gm-circle-progress', {
             value: this.percentage/100,
             size: 140,
             startAngle: -Math.PI/2,
+            lineCap: 'round',
             fill: {
-            	color: ['#0943a0']
+            	color: '#0943a0'
             }
         }).on('circle-animation-progress', function(event, progress, stepValue) {
             $(this.percentage).html(parseInt(100 * stepValue) + '%');
