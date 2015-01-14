@@ -134,8 +134,8 @@
 		    <div id="push"></div>
 	    </div>
 	    <div id="footer">
-	    	<p><a href="http://teammolise.rocks/MyUnimol">MyUnimol</a> &egrave; un'applicazione sviluppata da alcuni studenti dell'<a href="http://unimol.it">Universit&agrave; degli Studi del Molise</a> e dell'<a href="http://unisa.it">Universit&agrave; degli Studi di Salerno</a>.</p>
-	    	<h6>Copyright <a href="http://teammolise.rocks/MyUnimol">MyUnimol</a> <% out.print(Calendar.getInstance().get(Calendar.YEAR)); %> &copy; &mdash; Tutti i diritti riservati</h6>
+	    	<p><a href="http://teammolise.rocks/MyUnimol" target="__BLANK">MyUnimol</a> &egrave; un'applicazione sviluppata da alcuni studenti dell'<a href="http://unimol.it" target="__BLANK">Universit&agrave; degli Studi del Molise</a> e dell'<a href="http://unisa.it" target="__BLANK">Universit&agrave; degli Studi di Salerno</a>.</p>
+	    	<h6>Copyright <a href="http://teammolise.rocks/MyUnimol" target="__BLANK">MyUnimol</a> <% out.print(Calendar.getInstance().get(Calendar.YEAR)); %> &copy; &mdash; Tutti i diritti riservati</h6>
 	    </div>
 	    <paper-toast id="login_error_message" text="Dati di accesso non validi."></paper-toast>
 	    <paper-dialog id="privacyDialog" heading="Privacy" transition="core-transition-center">
