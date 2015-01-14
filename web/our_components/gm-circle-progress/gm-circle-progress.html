@@ -1,14 +1,15 @@
 <polymer-element name="gm-circle-progress" attributes="percentage numcfu">
     <template>
-        <!-- CSS -->
-        <link rel="stylesheet" href="circular-progress/progress.css">
-        <div id="pieProgress" class="pie_progress" role="progressbar" data-goal="{{percentage}}" style="margin-bottom: 20px;" data-speed="35" data-barsize="7" data-barcolor="#0943a0">
-            <div id='percentage' class="pie_progress__number">{{percentage}}</div>
-            <div id='numcfu' class="pie_progress__label">{{numcfu}} CFU</div>
+    	<!-- Foglio di stile per il singolo componente -->
+		<link rel="stylesheet" href="style.css">
+        <div id="pieProgress">
+            <div id="percentage">{{percentage}}</div>
+            <div id="numcfu">{{numcfu}} CFU</div>
         </div>
     </template>
     
     <!-- JS -->
+    <script src="../../bower_components/jquery.easing/js/jquery.easing.min.js"></script>
     <script src="../../bower_components/jquery-circle-progress/dist/circle-progress.js"></script>
     <script src="main.js"></script>
 </polymer-element>

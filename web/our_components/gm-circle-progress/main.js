@@ -17,6 +17,10 @@ Polymer('gm-circle-progress', {
             lineCap: 'round',
             fill: {
             	color: '#0943a0'
+            },
+            animation: {
+            	duration: 2000,
+            	easing: 'easeInOutCirc'
             }
         }).on('circle-animation-progress', function(event, progress, stepValue) {
             $(this.percentage).html(parseInt(100 * stepValue) + '%');
