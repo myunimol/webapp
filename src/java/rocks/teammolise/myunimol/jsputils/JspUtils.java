@@ -65,6 +65,7 @@ public class JspUtils {
 		out("<link rel='stylesheet' type='text/css' href='style/style.css' />");
 		out("<script src='bower_components/platform/platform.js'></script>");
 		out("<script src='//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>");
+		out("<script src='scripts/safariWebApp.js'></script>");
 		out("<script src='scripts/main.js'></script>");
 		out("<link rel='icon' sizes='192x192' href='img/Android/logo4x.png'>");
 		out("<link rel=\"apple-touch-icon\" href=\"img/ios/2x.png\" />");
