@@ -53,7 +53,8 @@
                 max-width: 58%;
             }
             #buttons {
-            	margin: 50px auto;
+            	margin: 0px auto;
+            	padding-top: 50px;
                 max-width: 60%;
                 text-align: center;
             }
@@ -76,7 +77,6 @@
             #header {
             	height: 10%;
             	margin: 0;
-            	margin-bottom: 7em;
             	padding: 0;
             	text-align: center;
             	background: #526E9C;
@@ -98,6 +98,8 @@
             	padding: 1em 1em 0 1em;
             	color: #CFD8DC;
             	font-size: smaller;
+            	max-width: 411px;
+				margin: 0 auto;
             }
             #footer a {
             	text-decoration: none;
@@ -119,6 +121,7 @@
 			<img src="img/android.png"></img>
 			<h1>MyUnimol</h1>
 		</div>
+		<div id="push1"></div>
         <div id="content">
 		    <paper-input-decorator type="text"  label= "Username" id= "username_input" floatinglabel class="my-input"  error="Inserisci il nome utente!">
 		        <input is="core-input" id= "username_input_field" autocapitalize="off" required>
@@ -131,8 +134,8 @@
 		    	<paper-button  onclick="sendData()" id="login" raised>Login</paper-button>
 		    	<div class="clear"></div>
 		    </div>
-		    <div id="push"></div>
 	    </div>
+	    <div id="push2"></div>
 	    <div id="footer">
 	    	<p><a href="http://teammolise.rocks/MyUnimol" target="__BLANK">MyUnimol</a> &egrave; un'applicazione sviluppata da alcuni studenti dell'<a href="http://unimol.it" target="__BLANK">Universit&agrave; degli Studi del Molise</a> e dell'<a href="http://unisa.it" target="__BLANK">Universit&agrave; degli Studi di Salerno</a>.</p>
 	    	<h6>Copyright <a href="http://teammolise.rocks/MyUnimol" target="__BLANK">MyUnimol</a> <% out.print(Calendar.getInstance().get(Calendar.YEAR)); %> &copy; &mdash; Tutti i diritti riservati</h6>
@@ -177,12 +180,26 @@
 	        }
 	
 	        document.addEventListener("polymer-ready", function () {
-	        	var pushDiv = document.getElementById("push");
+	        	
+	        	
+	        	var headerDiv = document.getElementById("header");
+	        	var headerHeight = headerDiv.clientHeight;
+	        	
 	        	var footerDiv = document.getElementById("footer");
-	        	var footerBox = footerDiv.getBoundingClientRect();
-	        	var pageHeight = window.innerHeight;
-	        	var pushHeight = pageHeight - footerBox.bottom;
-	        	pushDiv.style.height = pushHeight+"px";
+	        	var footerHeight = footerDiv.clientHeight;
+	        	
+	        	var contentDiv = document.getElementById("content");
+	        	var contentHeight = contentDiv.clientHeight;
+	        	
+	        	var totalSpace = window.innerHeight - (headerHeight + footerHeight);
+	        	
+	        	var push1Div = document.getElementById("push1");
+	        	var push2Div = document.getElementById("push2");
+	        	var extraSpace = totalSpace - contentHeight;
+	        	var pushHeight = extraSpace/2;
+	        	push1Div.style.height = pushHeight+"px";
+	        	push2Div.style.height = pushHeight+"px";
+	        	
 	        	var ajax = document.getElementById("ajaxData");
 	        	
 	        	ajax.addEventListener("myunimol-response", function (event) {
