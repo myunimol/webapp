@@ -13,9 +13,10 @@
 		<div class="animated-container">
 			<div id='container' class="exam-container">
 				<div id='fpexpandible'>
-					<div class='exam-name'>{{exam.name}}</div>
-					<div class="exam-cfus">{{exam.cfu}} CFU</div>
-					<span class="exam-vote-text">Voto: {{exam.vote}}</span>
+					<div id='examName'>{{exam.name}}</div>
+					<div id='examDate'><span id="placeholderDate">Verbalizzato il </span>{{exam.date}}</div>
+					<div id="exam-cfu">{{exam.cfu}} CFU</div>
+					<span id="exam-vote-text">{{exam.vote}}</span>
 				</div>
 				<core-collapse class='collapse-element' id='collapse'>
 					<fp-recordbookexam id="details"></fp-recordbookexam>

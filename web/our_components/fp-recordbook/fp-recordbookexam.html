@@ -5,13 +5,14 @@
 		<link rel="stylesheet" href="style.css">
 		<paper-spinner class='spinner' id='fprecordbookSpinner' active></paper-spinner>
 		<template bind="{{exam}}">
-			<div class='examdetail-year'><strong>Anno di corso:</strong> {{year}}°</div>
+			<div class='examdetail-year'>Esame del {{year}}° anno diviso in:</div>
 			<div class='examdetail-details'>
 				<template repeat="{{detail in details}}">
-					<div class='examdetail-name'><strong>Modulo:</strong> {{detail.name}}</div>
-					<div class='examdetail-cfu'><strong>CFU:</strong> {{detail.cfu}}</div>
-					<div class='examdetail-hours'><strong>Durata:</strong> {{detail.hours}} h</div>
-					<div class='examdetail-area'><strong>Settore:</strong> {{detail.area}}</div>
+					<br>
+					<div class='examdetail-name'><core-icon icon="check"></core-icon> {{detail.name}}</div>
+					<div id="examdetail-info">
+						<span class='examdetail-cfu'>{{detail.cfu}} CFU</span> per <span class='examdetail-hours'>{{detail.hours}}hh</span> nel settore "<span class='examdetail-area'>{{detail.area}}</span>"
+					</div>
 				</template>
 			</div>
 		</template>
