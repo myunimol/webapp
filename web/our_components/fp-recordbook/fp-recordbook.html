@@ -5,14 +5,31 @@
 		<!-- Foglio di stile per il singolo componente -->
 		<link rel="stylesheet" href="style.css">
 		<div class="content-item">
-			<div class="exam-container1">
-				<core-item id="weighted" icon="trending-up" label="Media Pesata" horizontal center layout>: {{averages.weightedAverage}}</core-item>
-				<core-item id="media" icon="assessment" label="Media" horizontal center layout>: {{averages.average}}</core-item>
-				<core-item id="base" icon="flag" label="Base di laurea" horizontal center layout>: {{averages.base}}</core-item>
+			
+			<div style="width:94%; margin: 20px auto;">
+			    <div id="weighted">
+			        <p class="dashboardIcon"><core-icon icon="trending-up" style="width: 40px; height: 40px; color: #526E9C"></core-icon></p>
+					<p>Media pesata</p>
+					<p class="value">{{averages.weightedAverage}}</p>
+			    </div>
+			    <div id="media" class="main">
+					<p><core-icon icon="assessment" style="width: 50px; height: 50px; color: #526E9C"></core-icon></p>
+					<p style="font-size: x-large;">Media</p>
+					<p class="value">{{averages.average}}</p>
+			    </div>
+			    <div id="base">
+					<p class="dashboardIcon"><core-icon icon="flag" style="width: 40px; height: 40px; color: #526E9C"></core-icon></p>
+					<p>Base di laurea</p>
+					<p class="value">{{averages.base}}</p>
+			    </div>
+			    <div style="clear: both;"></div>
 			</div>
+			
+			
 			
 			<shadow></shadow>
 		</div>
+		
 	</template>
     <script src="recordbook.js"></script>
 </polymer-element>

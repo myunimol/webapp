@@ -17,8 +17,25 @@ and open the template in the editor.
 	color: #555;
 }
 
-#weighted {
-	
+#weighted, #media, #base {
+	float:left; 
+	width: 33%;
+	text-align: center;
+}
+
+.dashboardIcon {
+	padding-top : 17px;
+}
+
+.value {
+	font-size: 30px;
+}
+.main {
+	padding-top: 0;
+}
+.main .value {
+	font-size: 35px;
+	font-weight: bold;
 }
 
 .exam-container {
