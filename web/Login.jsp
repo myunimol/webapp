@@ -37,7 +37,7 @@
 
         <style shim-shadowdom>  	 
             body {
-                min-height: 568px;
+            	min-height: 400px;
                 font-family: 'RobotoDraft', sans-serif;
             }
             #username_input {
@@ -86,9 +86,10 @@
 				height: 145%;
 				top: -.2em;
             }
+            #header h1 {
+            	margin-top: -7px;
+            }
             #footer {
-            	position: relative;
-            	bottom: 0;
             	height: 8em;
             	width: 100%;
             	text-align: center;
@@ -119,7 +120,7 @@
     <body id="body_id">
 		<div id="header">
 			<img src="img/android.png"></img>
-			<h1>MyUnimol</h1>
+			<h1 id="appName">MyUnimol</h1>
 		</div>
 		<div id="push1"></div>
         <div id="content">
@@ -180,12 +181,22 @@
 	        }
 	
 	        document.addEventListener("polymer-ready", function () {
-	        	
+
+	        	var appName = document.getElementById("appName");
+	        	var footerDiv = document.getElementById("footer");
+	        	if(window.innerHeight < 250) {
+	        		appName.style.display = "none";
+					footerDiv.style.display = "none";
+	        	} else if(window.innerHeight < 450) {
+	        		appName.style.fontSize = "smaller";
+					footerDiv.style.display = "none";
+	        	} else if (window.innerHeight < 550) {
+	        		footerDiv.style.display = "none";
+	        	}
 	        	
 	        	var headerDiv = document.getElementById("header");
 	        	var headerHeight = headerDiv.clientHeight;
 	        	
-	        	var footerDiv = document.getElementById("footer");
 	        	var footerHeight = footerDiv.clientHeight;
 	        	
 	        	var contentDiv = document.getElementById("content");
