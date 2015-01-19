@@ -144,11 +144,12 @@ and open the template in the editor.
 }
 
 #examName {
-	font-size: 1.5em;
+	font-size: 1em;
 	margin-right: 70px;
 	margin-left: 50px;
 	padding-top: 10px;
-	padding-left: 0;
+	padding-left: 20px;
+	overflow: hidden;
 }
 
 #examDate {
@@ -157,9 +158,14 @@ and open the template in the editor.
 	margin-left: 50px;
 	margin-right: 70px;
 	padding-top: 5px;
+	padding-left: 20px;
 }
 
 .spinner {
 	display: block;
 	margin: 0px auto;
+}
+
+.examdetail-container {
+	padding-left: 20px;
 }

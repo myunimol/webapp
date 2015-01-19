@@ -9,17 +9,17 @@ Polymer('fp-recordbookel', {
 	reloadExam : function() {
 		if (this.exam.vote == 'SUP' || this.exam.vote == 'IDO')
 			this.$.container.setAttribute("kind", "ido");
-		else if (this.exam.vote == "/")
+		else if (this.exam.vote == "/") {
 			this.$.container.setAttribute("kind", "notPassed");
-		else {
+			this.exam.vote = "-";
+			this.$.examDate.innerHTML = "";
+		} else {
 			this.$.container.setAttribute("kind", "passed");
 			// if (this.exam.vote == "30L")
 			// this.exam.vote = "30 / 30 e lode"
 			// else
 			// this.exam.vote = this.exam.vote + " / 30"
-			if (this.exam.vote == "" || this.exam.vote == "/") {
-				this.exam.vote = "-";
-			}
+			
 		}
 		if (this.exam.date == "" || this.exam.date == "/"
 				|| this.exam.date == null) {
