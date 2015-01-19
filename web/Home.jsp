@@ -8,6 +8,7 @@
     }
 %>
 
+<!DOCTYPE html>
 <html>
     <head>
         <title>MyUnimol</title>
@@ -32,9 +33,11 @@
         <link rel='import' href='bower_components/core-ajax/core-ajax.html' />
         <link rel='import' href='bower_components/core-collapse/core-collapse.html' />
         <link rel='import' href='bower_components/paper-button/paper-button.html' />
+        <link rel='import' href='bower_components/paper-fab/paper-fab.html' />
 
         <link rel='import' href='our_components/gm-circle-progress/gm-circle-progress.html' />
         <link rel='import' href='our_components/gm-navigation-tab/gm-navigation-tab.html' />
+        <link rel='import' href='our_components/myunimol-ajax/myunimol-ajax.html' />
 
         <style>
             .main-panel{
@@ -63,20 +66,20 @@
 
             #student-detail-button {
                 margin-top: 15px;
-                background: #7F8EB8;
+                background: #526E9C;
                 color: #FFF;
             }
         </style>
     </head>
 
     <body>
-    <core-ajax auto
+    <myunimol-ajax auto
                id='ajax' 
                method='POST'
                url="HomeServlet" 
                params='{}' 
                handleAs='json'>
-    </core-ajax>
+    </myunimol-ajax>
     
     <core-drawer-panel id="drawerPanel">
         <% utils.writeLeftMenu("Home", 0);%>
@@ -85,7 +88,7 @@
             <core-toolbar id="mainheader">
                 <paper-icon-button id="navicon" icon="menu"></paper-icon-button>
                 <span flex style="font-size: 28;">
-                    <strong>Home</strong>
+                    Home
                 </span>
             </core-toolbar>
             <div id='activeContentHandler' class="content">
@@ -118,7 +121,7 @@
                         </div>
                         <hr>
                     </core-collapse>
-                    <paper-button id="student-detail-button" value="1">MOSTRA DETTAGLI</paper-button>
+                    <paper-fab id="student-detail-button" icon="add"></paper-fab>
                 </div>
                 <div id="app-navigation">
                     <!-- gm-navigation-tab ha 3 parametri:
@@ -137,9 +140,8 @@
     <script src="scripts/home-scripts.js"></script>
     <script>
         document.addEventListener('polymer-ready', function() {
-        	freeze();
             var ajax = document.getElementById("ajax");
-            ajax.addEventListener("core-response", function(event) {
+            ajax.addEventListener("myunimol-response", function(event) {
                 var circleProgressBar = document.getElementsByTagName("gm-circle-progress")[0];
                 circleProgressBar.setAttribute("percentage", event.detail.response.percentCFU);
                 circleProgressBar.setAttribute("numcfu", event.detail.response.acquiredCFU+"/"+event.detail.response.totalCFU);
@@ -147,7 +149,6 @@
                 document.getElementById("weightedAverage").innerHTML = event.detail.response.weightedAverage;
                 document.getElementById("acquiredExams").innerHTML = ""+event.detail.response.totalExams;
                 document.getElementById("circleProgress").go();
-                unfreeze();
             });
         });
     </script>

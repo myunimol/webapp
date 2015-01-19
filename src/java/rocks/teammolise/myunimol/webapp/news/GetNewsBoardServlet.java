@@ -62,7 +62,7 @@ public class GetNewsBoardServlet extends HttpServlet {
            } else {
 	           JSONObject noCourse = new JSONObject();
 	           noCourse.put("result", "failure");
-	           noCourse.put("msg", "Spiacenti ma MyUnimol non supporta l'estrazione delle notizie per "+userInfo.getCourse()+"...");
+	           noCourse.put("msg", "Spiacenti ma MyUnimol non supporta ancora l'estrazione delle notizie per "+userInfo.getCourse()+"...");
 	           out.print(noCourse);
 	           return;
            }

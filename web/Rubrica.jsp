@@ -21,7 +21,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Rubrica</title>
+        <title>MyUnimol</title>
 		<meta name="apple-mobile-web-app-capable" content="yes" />
         <%
             utils.writeStandardImports();
@@ -38,12 +38,11 @@
             utils.writePolymerImport("core-ajax");
         %>
 
-
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <link rel="import" href="bower_components/paper-input/paper-input.html">
         <link rel="import" href="bower_components/paper-input/paper-input-decorator.html">
         <link rel="import" href="bower_components/paper-item/paper-item.html">
         <link rel="import" href="our_components/ef-contact/ef-contact.html">
+        <link rel='import' href='our_components/myunimol-ajax/myunimol-ajax.html' />
         
         <style>
         .my-input {
@@ -106,21 +105,21 @@
     </head>
     <body>
         
-    <core-ajax auto
+    <myunimol-ajax auto
                id='ajax' 
                method='POST'
                url="GetAddressBookServlet" 
                params='{}' 
                handleAs='json'>
-    </core-ajax>
+    </myunimol-ajax>
     
-    <core-ajax
+    <myunimol-ajax
                id='ajaxSearch' 
                method='POST'
                url="SearchContactsServlet" 
                params='{}' 
                handleAs='json'>
-    </core-ajax>
+    </myunimol-ajax>
 
     <core-drawer-panel id="drawerPanel">
         <% utils.writeLeftMenu("Rubrica", 2);%>
@@ -130,7 +129,9 @@
                 <paper-icon-button id="navicon" icon="menu"></paper-icon-button>
                 <paper-icon-button id="backButton" icon="arrow-back" style='display:none; '></paper-icon-button>
                 <span id='mainToolbar' flex style="font-size: 28;">
-                	<span id='labelRubrica'>Rubrica</span>
+                	<span id='labelRubrica'>
+                		Rubrica
+                	</span>
                 	<input style='color: white; display:none;' type='text' label='' id='ricercaInput' class='my-input'></paper-input>
                 </span>
                 <paper-icon-button id='buttonRicercaShow' style="color: white;" id="paper_item" icon="search"></paper-icon-button>
@@ -150,16 +151,14 @@
 
     <script>
         document.addEventListener('polymer-ready', function () {
-			freeze();
             var ajax = document.getElementById("ajax");
             
             document.efcontact = document.getElementById("efcontact");
             document.noContacts = document.getElementById("no-contacts");
             document.searchedTerm = document.noContacts.children[1].children[0];
 
-            ajax.addEventListener("core-response", function (event) {
+            ajax.addEventListener("myunimol-response", function (event) {
                 document.efcontact.contacts = event.detail.response.contacts;
-                unfreeze();
             });
             
             document.ricercaShow = document.getElementById("buttonRicercaShow");
@@ -182,7 +181,7 @@
             document.ricercaDoAction = function() {
             	var ajax = document.getElementById('ajaxSearch');
             	ajax.params = '{"search":"' + document.ricercaInput.value + '"}'
-            	ajax.addEventListener('core-response', document.ricercaResults);
+            	ajax.addEventListener('myunimol-response', document.ricercaResults);
             	ajax.go();
             	document.searchedTerm.innerHTML = document.ricercaInput.value;
             	document.backAction();

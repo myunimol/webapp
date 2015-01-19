@@ -8,9 +8,10 @@
     }
 %>
 
+<!DOCTYPE html>
 <html>
     <head>
-        <title>Libretto</title>
+        <title>MyUnimol</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -28,17 +29,19 @@
             utils.writePolymerImport("paper-icon-button");
             utils.writePolymerImport("core-ajax");
         %>
+        
         <link rel="import" href="our_components/fp-recordbook/fp-recordbook.html">
+        <link rel='import' href='our_components/myunimol-ajax/myunimol-ajax.html' />
     </head>
 
     <body>
-    <core-ajax auto
+    <myunimol-ajax auto
                id='ajax' 
                method='POST'
                url="RecordBookServlet" 
                params='{}' 
                handleAs='json'>
-    </core-ajax>
+    </myunimol-ajax>
 
     <core-drawer-panel id="drawerPanel">
         <% utils.writeLeftMenu("Libretto", 1);%>
@@ -47,9 +50,10 @@
             <core-toolbar id="mainheader">
                 <paper-icon-button id="navicon" icon="menu"></paper-icon-button>
                 <span flex style="font-size: 28;">
-                    <strong>Libretto</strong>
+                    Libretto
                 </span>
             </core-toolbar>
+            
             <div id='activeContentHandler' class="content"> 
                 <fp-recordbook id='fprecordbook'></fp-recordbook>    
             </div>
@@ -58,17 +62,16 @@
     </core-drawer-panel>
     <script>
         document.addEventListener('polymer-ready', function () {
-			freeze();
             var ajax = document.getElementById("ajax");
 
-            ajax.addEventListener("core-response", function (event) {
+            ajax.addEventListener("myunimol-response", function (event) {
             	document.getElementById("fprecordbook").averages = {
             		weightedAverage: event.detail.response.weightedAverage,
-            		average: event.detail.response.average
+            		average: event.detail.response.average,
+            		base: event.detail.response.base
             	}
             	
                 document.getElementById("fprecordbook").exams = event.detail.response.exams;
-            	unfreeze();
             });
         });
     </script>

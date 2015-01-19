@@ -1,0 +1,59 @@
+<link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
+<link rel="import" href="../../bower_components/paper-toast/paper-toast.html">
+<polymer-element name="myunimol-ajax" extends='core-ajax' attributes="nofreeze contentId norepeat">
+<script>
+Polymer('myunimol-ajax', {
+	nofreeze: false,
+	contentId: "activeContentHandler",
+	validResponse: false,
+	norepeat: true,
+	
+	ready : function() {
+		this.super();
+		
+		var toast = document.createElement("paper-toast");
+		this.toast = toast;
+		
+		var thisObject = this;
+		
+		document.body.appendChild(toast);
+		
+		this.addEventListener('core-error', function(event) {
+			var code = parseInt(event.detail.response.split(":")[0]);
+			if (code == 500)
+				this.toast.text = "Oops, questo non era previsto!";
+			else if (code == 404)
+				this.toast.text = "Pagina non trovata";
+			else if (code == 401)
+				window.location.href = "Login.jsp";
+			else
+				this.toast.text = "Errore sconosciuto. Codice: " + code
+				
+			this.toast.show();
+		})
+		
+		this.addEventListener('core-complete', function() {
+			if (!this.nofreeze)
+				unfreeze(this.contentId);
+		});
+		
+		this.addEventListener('core-response', function(event) {
+			if (JSON.stringify(event.detail.response) == '""') {
+				if (!this.norepeat) {
+					this.go();
+				}
+			} else {
+				this.fire("myunimol-response", {response: event.detail.response});
+			}
+		});
+	},
+	
+	go: function() {
+		this.super();
+		
+		if (!this.nofreeze)
+			freeze(this.contentId);
+	}
+});
+</script>
+</polymer-element>

@@ -1,20 +1,11 @@
-<polymer-element name="cb-taxes">
+<link rel="import" href="cb-taxesel.html">
+<link rel="import" href="../ss-multiple/ss-multiple.html">
+<polymer-element name="cb-taxes" extends="ss-multiple">
     <template>
         <!-- Foglio di stile per il singolo componente -->
         <link rel="stylesheet" href="style.css">
         <div class="content-item">
-            <!--Questo template itera tante volte quanti sono gli oggetti nell'array taxes.
-            L'array è creato nello script in fondo alla pagina.
-            -->
-            <template repeat="{{tax in taxes}}">
-                <div class="taxes-container">
-                    <div id="taxes-description">{{tax.billId}} - {{tax.description}}</div>
-                    <div id="taxes-year">Anno accademico: {{tax.year}}</div>
-                    <div id="taxes-expiring-date">Data scadenza: {{tax.expiringDate}}</div>
-                    <div id="taxes-amount">€ {{tax.amount}}</div>
-                    <div id="taxes-status-payment"><div class="{{tax.statusPayment}}" id="status-dot"></div></div>
-                </div>
-            </template>
+			<shadow></shadow>
         </div>
     </template>
     <script src="taxes.js"></script>

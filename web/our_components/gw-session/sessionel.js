@@ -12,10 +12,9 @@ Polymer('gw-sessionel', {
 		
 		var button = this.$.enrollButton;
 		button.elementId = this.session.id;
-		this.$.ajaxEnroll.addEventListener('core-response', this.enrollResponse);
+		this.$.ajaxEnroll.addEventListener('myunimol-response', this.enrollResponse);
 		button.ajax = this.$.ajaxEnroll;
 		button.addEventListener('click', function() {
-			this.ajax.addEventListener('core-response', this.onResponse);
 			this.ajax.params = '{"id": "' + this.elementId + '"}';
 			
 			this.ajax.go();

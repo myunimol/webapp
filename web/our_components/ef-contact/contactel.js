@@ -8,6 +8,6 @@ Polymer('ef-contactel', {
     	this.$.contact.collapsable = this.$.collapsable;
     	this.$.contact.addEventListener('click', function() {
     		this.collapsable.toggle();
-    	})
+    	});
     }
 });

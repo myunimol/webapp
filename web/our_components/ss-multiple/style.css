@@ -1,0 +1,47 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 17-dic-2014, 11.13.07
+    Author     : simone
+*/
+
+.animated-container {
+    animation: animate-contact 0.2s;
+    -webkit-animation: animate-contact 0.2s;
+}
+
+
+@-webkit-keyframes animate-contact {
+	from {
+		margin-top: 300px;
+		opacity: 0;
+	}
+	
+	70% {
+		opacity: 0.2;
+	}
+	
+	to {
+		margin-top:16px;
+		opacity:1;
+	}
+}
+
+@keyframes animate-contact {
+	from {
+		margin-top: 300px;
+		opacity: 0;
+	}
+	
+	70% {
+		opacity: 0.2;
+	}
+	
+	to {
+		margin-top:16px;
+		opacity:1;
+	}
+}

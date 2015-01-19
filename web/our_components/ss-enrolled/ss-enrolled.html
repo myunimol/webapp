@@ -1,0 +1,15 @@
+<link rel="import" href="ss-enrolledel.html">
+<polymer-element name="ss-enrolled">
+    <template>
+        <!-- Foglio di stile per il singolo componente -->
+        <link rel="stylesheet" href="style.css">
+        <div class="content-item" id='sessionsContainer'>
+        </div>
+    </template>
+    <!-- toggle setta opened da false a true -->
+    <!--File javascript che crea l'array sessions.
+    session.js crea un array "a mano"; l'ho utilizzato per testare il corretto funzionamento della componente
+    session-json.js dovrebbe essere lo script che va a creare l'array sessions sulla base del json risultante dalla chiamata alla servlet.
+    -->
+    <script src="enrolled.js"></script>
+</polymer-element>

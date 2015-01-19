@@ -1,10 +1,10 @@
 <link rel="import" href="gw-sessionel.html">
-<polymer-element name="gw-session">
+<link rel="import" href="../ss-multiple/ss-multiple.html">
+<polymer-element name="gw-session" extends="ss-multiple">
     <template>
         <!-- Foglio di stile per il singolo componente -->
         <link rel="stylesheet" href="style.css">
-        <div class="content-item" id='sessionsContainer'>
-        </div>
+        <shadow></shadow>
     </template>
     <!-- toggle setta opened da false a true -->
     <!--File javascript che crea l'array sessions.

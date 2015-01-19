@@ -4,19 +4,17 @@
  * and open the template in the editor.
  */
 Polymer('ef-contact', {
-	observe: {
-		contacts: 'reloadContacts'
-	},
-	
 	ready: function() {
+		this.super();
+		this.elementName = "ef-contactel";
+		this.elementProperty = "contact";
+	},
+
+	observe: {
+		contacts : "reloadContacts"
 	},
 	
-    reloadContacts: function() {
-    	this.$.container.innerHTML = "";
-    	for (var i = 0; i < this.contacts.length; i++) {
-    		var element = document.createElement("ef-contactel");
-    		element.contact = this.contacts[i];
-    		this.$.container.appendChild(element);
-    	}
-    }
+	reloadContacts: function() {
+		this.elements = this.contacts;
+	}
 });

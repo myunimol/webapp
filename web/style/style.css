@@ -25,10 +25,8 @@ core-toolbar {
   	background-color: #526E9C;
 }
 
-.centerSpinner {
-	position: absolute;
-	top:50%;
-	left:50%;
+#activeContentHandler {
+	min-height: 300px;
 }
 .centeredMessage {
 	position: relative;

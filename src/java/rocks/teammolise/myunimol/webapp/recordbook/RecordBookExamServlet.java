@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONObject;
 
 import rocks.teammolise.myunimol.api.APIConsumer;
-import rocks.teammolise.myunimol.api.AsyncAPIConsumer;
 import rocks.teammolise.myunimol.webapp.UserInfo;
 
 /**

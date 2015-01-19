@@ -8,29 +8,47 @@ and open the template in the editor.
     Author     : Giuseppe
 */
 .exam-container1 {
-    border: 0px solid #bebebe;
-    padding: 16px;
-    margin: 16px;
-    border-radius: 5px;
-    background-color: whitesmoke;
-    box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.25);
-    color: #555;
+	border: 0px solid #bebebe;
+	padding: 16px;
+	margin: 16px;
+	border-radius: 5px;
+	background-color: whitesmoke;
+	box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.25);
+	color: #555;
 }
 
-#weighted {
-    
+#weighted, #media, #base {
+	float:left; 
+	width: 33%;
+	text-align: center;
 }
+
+.dashboardIcon {
+	padding-top : 17px;
+}
+
+.value {
+	font-size: 30px;
+}
+.main {
+	padding-top: 0;
+}
+.main .value {
+	font-size: 35px;
+	font-weight: bold;
+}
+
 .exam-container {
-    border: 0px solid #bebebe;
-    padding: 16px;
-    margin: 16px;
-    border-radius: 5px;
-    box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.25);
-    color: #555;
+	border: 0px solid #bebebe;
+	padding: 16px;
+	margin: 16px;
+	border-radius: 5px;
+	box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.25);
+	color: #555;
 }
 
 .exam-container[kind="notPassed"] {
-    background-color: #FFEFEF;
+	background-color: #FFEFEF;
 }
 
 .exam-container[kind="passed"] {
@@ -42,64 +60,112 @@ and open the template in the editor.
 }
 
 #exam-matter {
-    font-size: 26px;
-    padding: 8px 0 16px;
-    color: #888;
+	font-size: 26px;
+	padding: 8px 0 16px;
+	color: #888;
 }
 
 #exam-vote {
-    display: inline-block;
-    height: 32px;
-    width: 32px;
-    border-radius: 50%;
-    background: #ddd;
-    line-height: 32px;
-    font-size: 16px;
-    color: #666; 
-    text-align: center;
+	display: inline-block;
+	height: 32px;
+	width: 32px;
+	border-radius: 50%;
+	background: #ddd;
+	line-height: 32px;
+	font-size: 16px;
+	color: #666;
+	text-align: center;
 }
 
 #exam-vote-text {
-    font-size: 16px;
-    padding-bottom: 15px;
-    color: black;
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: inline-block;
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+	background: #526E9C;
+	line-height: 50px;
+	font-size: 20px;
+	color: #fff;
+	text-align: center;
+}
+
+#fpexpandible {
+	position: relative;
+	min-height: 50px;
 }
 
 #exam-date {
-    font-size: 16px;
-    padding-bottom: 8px;
+	font-size: 16px;
+	padding-bottom: 8px;
 }
 
 #exam-year {
-    font-size: 16px;
-    padding-bottom: 8px;
+	font-size: 16px;
+	padding-bottom: 8px;
 }
 
 #exam-cfu-text {
-    font-size: 16px;
-    padding-bottom: 15px;
-    color: black;
+	font-size: 16px;
+	padding-bottom: 15px;
+	color: black;
 }
 
 #exam-cfu {
-    display: inline-block;
-    height: 32px;
-    width: 32px;
-    border-radius: 50%;
-    background: #ddd;
-    line-height: 32px;
-    font-size: 16px;
-    color: #666; 
-    text-align: center;
+	position: absolute;
+	top: 10px;
+	left: 0;
+	display: inline-block;
+	height: 45px;
+	width: 45px;
+	line-height: 18px;
+	font-size: 18px;
+	color: #666;
+	text-align: center;
 }
+
 .examdetail-year, .examdetail-details {
 	font-size: smaller;
+	font-style: italic;
+	text-align: center;
+	margin-left: 50px;
+	margin-right: 70px;
 }
-.exam-name {
-	font-size: larger;
+
+.examdetail-name {
+	font-weight: bold;
+}
+
+#examdetail-info {
+	font-size: smaller;
+	font-style: italic;
+}
+
+#examName {
+	font-size: 1em;
+	margin-right: 70px;
+	margin-left: 50px;
+	padding-top: 10px;
+	padding-left: 20px;
+	overflow: hidden;
+}
+
+#examDate {
+	font-size: 0.7em;
+	font-style: italic;
+	margin-left: 50px;
+	margin-right: 70px;
+	padding-top: 5px;
+	padding-left: 20px;
 }
 
 .spinner {
 	display: block;
-	position: relative;
+	margin: 0px auto;
+}
+
+.examdetail-container {
+	padding-left: 20px;
 }

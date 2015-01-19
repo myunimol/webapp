@@ -1,22 +1,35 @@
 <link rel="import" href="fp-recordbookel.html">
-<polymer-element name="fp-recordbook">
+<link rel="import" href="../ss-multiple/ss-multiple.html">
+<polymer-element name="fp-recordbook" extends="ss-multiple">
 	<template>
 		<!-- Foglio di stile per il singolo componente -->
 		<link rel="stylesheet" href="style.css">
 		<div class="content-item">
-			<div class="exam-container1">
-				<core-item id="weighted" icon="trending-up" label="Media Pesata" horizontal center layout>: {{averages.weightedAverage}}</core-item>
-				<core-item id="media" icon="assessment" label="Media" horizontal center layout>: {{averages.average}}</core-item>
+			
+			<div style="width:94%; margin: 20px auto;">
+			    <div id="weighted">
+			        <p class="dashboardIcon"><core-icon icon="trending-up" style="width: 40px; height: 40px; color: #526E9C"></core-icon></p>
+					<p>Media</p>
+					<p class="value">{{averages.average}}</p>
+			    </div>
+			    <div id="media" class="main">
+					<p><core-icon icon="assessment" style="width: 50px; height: 50px; color: #526E9C"></core-icon></p>
+					<p style="font-size: x-large;">Media pesata</p>
+					<p class="value">{{averages.weightedAverage}}</p>
+			    </div>
+			    <div id="base">
+					<p class="dashboardIcon"><core-icon icon="flag" style="width: 40px; height: 40px; color: #526E9C"></core-icon></p>
+					<p>Base di laurea</p>
+					<p class="value">{{averages.base}}</p>
+			    </div>
+			    <div style="clear: both;"></div>
 			</div>
-			<!-- Questo template itera tante volte quanti sono gli oggetti nell'array sessions.
-				 L'array è creato nello script in fondo alla pagina. -->
-			<div id='examsContainer'>
-			</div>
+			
+			
+			
+			<shadow></shadow>
 		</div>
-	    <!--File javascript che crea l'array sessions.
-	    session.js crea un array "a mano"; l'ho utilizzato per testare il corretto funzionamento della componente
-	    session-json.js dovrebbe essere lo script che va a creare l'array sessions sulla base del json risultante dalla chiamata alla servlet.
-	    -->
+		
 	</template>
     <script src="recordbook.js"></script>
 </polymer-element>

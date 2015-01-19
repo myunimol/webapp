@@ -1,6 +1,12 @@
 package rocks.teammolise.myunimol.jsputils;
 
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -53,12 +59,23 @@ public class JspUtils {
 	 * @throws IOException
 	 */
 	public void writeStandardImports() throws IOException {
-		out("<link rel='stylesheet' type='text/css' href='style/style.css'>");
+		out("<meta name='mobile-web-app-capable' content='yes'>");
+		out("<link rel='manifest' href='style/chromeManifest.json'>");
+		
+		out("<link rel='stylesheet' type='text/css' href='style/style.css' />");
 		out("<script src='bower_components/platform/platform.js'></script>");
 		out("<script src='//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>");
+		out("<script src='scripts/safariWebApp.js'></script>");
 		out("<script src='scripts/main.js'></script>");
-		out("<link rel='import' href='bower_components/font-roboto/roboto.html'>");
-		out("<link rel='import' href='bower_components/paper-spinner/paper-spinner.html'>");
+		out("<link rel='icon' sizes='192x192' href='img/Android/logo4x.png'>");
+		out("<link rel=\"apple-touch-icon\" href=\"img/ios/2x.png\" />");
+		out("<link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"img/ios/3x.png\" />");
+		out("<link rel=\"apple-touch-icon\" sizes=\"76x76\" href=\"img/ios/1x.png\" />");
+		out("<link rel=\"apple-touch-icon\" sizes=\"152x152\" href=\"img/ios/2-2x.png\" />");
+		out("<link rel=\"apple-touch-icon\" sizes=\"58x58\" href=\"img/ios/0x.png\" />");
+		out("<link rel='import' href='bower_components/font-roboto/roboto.html' />");
+		out("<link rel='import' href='bower_components/paper-spinner/paper-spinner.html' />");
+		out("<link rel='import' href='bower_components/paper-toast/paper-toast.html' />");
 	}
 	
 	/**
@@ -70,6 +87,20 @@ public class JspUtils {
 	 */
 	public void writePolymerImport(String pPolymerPath) throws IOException {
 		out("<link rel='import' href='bower_components/" + pPolymerPath + "/" + pPolymerPath + ".html'>");
+	}
+	
+	/**
+	 * Scrive l'import di una componente polymer standard. Ad esempio, se si vuole importare "bower_components/core-icon/core-icon.html"
+	 * basta passare come parametro "core-icon" e questo metodo scrive automaticamente l'import. Non funziona nei casi in cui l'import
+	 * non abbia nome della cartella e nome del file html uguali o nel caso in cui questi non siano componenti base di polymer.
+	 * @param pPolymerPath
+	 * @throws IOException
+	 */
+	public void directImport(String pPolymerPath) throws IOException {
+		List<String> content = Files.readAllLines(Paths.get(request.getServletContext().getRealPath(pPolymerPath)), Charset.defaultCharset());
+		
+		for (String string : content)
+			out(string + "\n");
 	}
 	
 	/**
