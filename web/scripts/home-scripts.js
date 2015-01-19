@@ -6,6 +6,11 @@ document.addEventListener('polymer-ready', function() {
     var studentDetailsBox = document.getElementById("student-progress-info");
     studentDetailsButton.addEventListener('click', function() {
         studentDetailsBox.toggle();
+        
+        if (studentDetailsBox.opened)
+        	studentDetailsButton.icon = "remove";
+    	else
+        	studentDetailsButton.icon = "add";	
         var statusValue = studentDetailsButton.getAttribute("value");
         /* Utilizzo l'attributo "value" per cambiare il testo del bottone */
         if (statusValue === "1") {

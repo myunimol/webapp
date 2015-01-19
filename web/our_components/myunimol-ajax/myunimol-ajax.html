@@ -25,7 +25,7 @@ Polymer('myunimol-ajax', {
 			else if (code == 404)
 				this.toast.text = "Pagina non trovata";
 			else if (code == 401)
-				this.toast.text = "Non sei autorizzato";
+				window.location.href = "Login.jsp";
 			else
 				this.toast.text = "Errore sconosciuto. Codice: " + code
 				

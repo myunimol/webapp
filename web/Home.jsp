@@ -33,6 +33,7 @@
         <link rel='import' href='bower_components/core-ajax/core-ajax.html' />
         <link rel='import' href='bower_components/core-collapse/core-collapse.html' />
         <link rel='import' href='bower_components/paper-button/paper-button.html' />
+        <link rel='import' href='bower_components/paper-fab/paper-fab.html' />
 
         <link rel='import' href='our_components/gm-circle-progress/gm-circle-progress.html' />
         <link rel='import' href='our_components/gm-navigation-tab/gm-navigation-tab.html' />
@@ -65,7 +66,7 @@
 
             #student-detail-button {
                 margin-top: 15px;
-                background: #7F8EB8;
+                background: #526E9C;
                 color: #FFF;
             }
         </style>
@@ -120,7 +121,7 @@
                         </div>
                         <hr>
                     </core-collapse>
-                    <paper-button id="student-detail-button" value="1">MOSTRA DETTAGLI</paper-button>
+                    <paper-fab id="student-detail-button" icon="add"></paper-fab>
                 </div>
                 <div id="app-navigation">
                     <!-- gm-navigation-tab ha 3 parametri:
