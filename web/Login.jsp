@@ -125,14 +125,14 @@
 		<div id="push1"></div>
         <div id="content">
 		    <paper-input-decorator type="text"  label= "Username" id= "username_input" floatinglabel class="my-input"  error="Inserisci il nome utente!">
-		        <input is="core-input" id= "username_input_field" autocapitalize="off" required>
+		        <input is="core-input" tabindex="1" id="username_input_field" autocapitalize="off" required>
 		    </paper-input-decorator>
 		    <paper-input-decorator type="password" id= "password_input" label= "Password" floatinglabel class="my-input" error="Inserisci la password!">
-		        <input is="core-input" id="password_input_field" type="password" autocapitalize="off" required>
+		        <input is="core-input" tabindex="2" id="password_input_field" type="password" autocapitalize="off" required>
 		    </paper-input-decorator>
 		    <div id="buttons">
-		    	<paper-button  onclick="showDialog('privacy')" id="privacy">Privacy</paper-button>
-		    	<paper-button  onclick="sendData()" id="login" raised>Login</paper-button>
+		    	<paper-button onclick="showDialog('privacy')" id="privacy">Privacy</paper-button>
+		    	<paper-button onclick="sendData()" id="login" raised>Login</paper-button>
 		    	<div class="clear"></div>
 		    </div>
 	    </div>
@@ -143,10 +143,11 @@
 	    </div>
 	    <paper-toast id="login_error_message" text="Dati di accesso non validi."></paper-toast>
 	    <paper-dialog id="privacyDialog" heading="Privacy" transition="core-transition-center">
-		  <h2>Condizioni di servizio</h2>
-		  <p>ATTENZIONE: MyUnimol non &egrave; un'applicazione ufficiale dell'Universit&agrave; degli Studi del Molise. Tutti i dati vengono reperiti dalla piattaforma ESSE3 dell'Universit&agrave; degli Studi del Molise e tali informazioni non vengono memorizzate nei nostri sistemi.</p>
-		  <p>Le informazioni base come le credenziali d'accesso, il nome, il cognome, l'anno di corso e le medie esami sono memorizzate in modo sicuro temporaneamente per questioni di risparmio di traffico dati e di performance.</p>
-		  <p>Effettuando l'accesso si esprime il proprio consenso al download automatico dei propri dati (quali nome, cognome, voto degli esami, corso di studi...) dalla piattaforma ESSE3 a proprio rischio e pericolo.</p>
+	    	<h2>Condizioni di servizio</h2>
+	    	<div style="text-align: justify;">
+				<p>ATTENZIONE: MyUnimol non &egrave; un'applicazione ufficiale dell'Universit&agrave; degli Studi del Molise. Tutti i dati vengono reperiti dalla piattaforma ESSE3 dell'Universit&agrave; degli Studi del Molise e tali informazioni non vengono memorizzate nei nostri sistemi.</p>
+				<p>Effettuando l'accesso si esprime il proprio consenso al download automatico dei propri dati (quali nome, cognome, voto degli esami, corso di studi...) dalla piattaforma ESSE3. MyUnimol si solleva da ogni eventuale responsabilit&agrave;.</p>
+		  	</div>
 		</paper-dialog>
 	    <myunimol-ajax nofreeze id='ajaxData' method='POST' url='LoginServlet'
 	               params = '{"username":"", "password":""}'
@@ -181,7 +182,8 @@
 	        }
 	
 	        document.addEventListener("polymer-ready", function () {
-
+				document.getElementById("username_input_field").focus();
+	        	
 	        	var appName = document.getElementById("appName");
 	        	var footerDiv = document.getElementById("footer");
 	        	if(window.innerHeight < 250) {
