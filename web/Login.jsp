@@ -191,12 +191,12 @@
             var reqst = document.getElementById("ajaxData");
 
             //prendo i dati dai paper input
-            var username = document.getElementById('username_input_field').value;
+            var username = document.getElementById('username_input_field').value.trim();
             var password = document.getElementById('password_input_field').value;
             // Se i campi non sono vuoti
             if (username != '' && password != '') {
                 //modifico i parametri e faccio partire la richiesta
-                reqst.params = '{"username": "' + username + '", "password":"' + password + '"}';
+                reqst.params = '{"username": "' + username.toLowerCase() + '", "password":"' + password + '"}';
                 reqst.go();
                 freeze("content");
             }
