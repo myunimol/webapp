@@ -38,12 +38,11 @@ public class GetUniversityNewsStub extends HttpServlet {
         PrintWriter out = response.getWriter();
         
         try {
-//        	   out.println("{\"newsList\": ["
-//        	   		+ "{\"date\": \"16/12/2014\", \"title\":\"\", \"link\":\"unimol.it\", \"text\": \"L'università resterà chiusa dal giorno 22/12/2014 al giorno 6/01/2015\"},"
-//        	   		+ "{\"date\": \"16/12/2014\", \"title\":\"\", \"link\":\"unimol.it\", \"text\": \"L'università resterà chiusa dal giorno 22/12/2014 al giorno 6/01/2015\"},"
-//        	   		+ "{\"date\": \"16/12/2014\", \"title\":\"\", \"link\":\"unimol.it\", \"text\": \"L'università resterà chiusa dal giorno 22/12/2014 al giorno 6/01/2015\"}"
-//        	   		+ "]}");     
-            out.println("{\"newsList\": []}");
+        	   out.println("{\"newsList\": ["
+        	   		+ "{\"date\": \"16/12/2014\", \"title\":\"\", \"link\":\"unimol.it\", \"text\": \"L'università resterà chiusa dal giorno 22/12/2014 al giorno 6/01/2015\"},"
+        	   		+ "{\"date\": \"16/12/2014\", \"title\":\"\", \"link\":\"unimol.it\", \"text\": \"L'università resterà chiusa dal giorno 22/12/2014 al giorno 6/01/2015\"},"
+        	   		+ "{\"date\": \"16/12/2014\", \"title\":\"\", \"link\":\"unimol.it\", \"text\": \"L'università resterà chiusa dal giorno 22/12/2014 al giorno 6/01/2015\"}"
+        	   		+ "]}");     
         } finally {
             out.close();
         }

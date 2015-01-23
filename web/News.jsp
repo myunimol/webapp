@@ -108,7 +108,7 @@
                         <div id="news-lav">
                             <cdr-news id='cdrnews'></cdr-news>
                             <div class="centeredMessage" class='no-sessions' id="no-sessions-av" style="display: none;">
-                                <img src="img/dont-know-icon.png" alt="booh emoji" />
+                                <img src="img/sad.png" alt="sad emoji" />
                                 <p>Al momento sembra non ci siano news...</p>
                             </div>
                         </div>
