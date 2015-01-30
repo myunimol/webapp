@@ -184,7 +184,7 @@
     <myunimol-ajax nofreeze id='ajaxData' method='POST' url='LoginServlet'
                    params = '{"username":"", "password":""}'
                    handleAs='json'
-                   contentId="content"></core-ajax>
+                   contentId="content"></myunimol-ajax>
     <script>
         function sendData() {
             //prendo il core-ajax
