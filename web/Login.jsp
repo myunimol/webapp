@@ -296,7 +296,6 @@
             var push2Div = document.getElementById("push2");
             var extraSpace = totalSpace - contentHeight;
             var pushHeight = extraSpace / 2;
-            console.log(pushHeight);
             push1Div.style.height = pushHeight + "px";
             push2Div.style.height = pushHeight + "px";
 
