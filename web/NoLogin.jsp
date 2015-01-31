@@ -43,6 +43,12 @@
                 min-height: 400px;
                 font-family: 'RobotoDraft', sans-serif;
             }
+            
+            #content a,#content a:visited,#content a:focus {
+            	text-transform: none;
+            	color: #526E9C;
+            	text-decoration: none;
+            }
             #username_input {
                 display: block;
                 margin: 0 auto;
@@ -151,6 +157,14 @@
         </style>
     </head>
     <body id="body_id">
+    <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/it_IT/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
     	<!-- <core-drawer-panel> -->
     	<core-header-panel mode="cover">
         <div id="header">
@@ -159,15 +173,25 @@
         </div>
         <div id="push1"></div>
         <div id="content" style="margin-bottom: 50px; margin-top: 90px; text-align: justify; margin-left: 50px; margin-right: 50px; width: auto; height: auto;">
-        	<p style="text-align: center;"><img style="width: 100px;" src="img/sad.png" /></p>
+        	<p style="text-align: center;"><img style="width: 100px;" src="img/WTF.png" /></p>
             <h1 style="text-align: center;">Cosa &egrave; successo?</h1>
             <p class="centerable">MyUnimol &egrave; attualmente disponibile solo per un numero selezionato di persone. Vogliamo diffondere il prodotto solo quando
             sar&agrave; perfettamente funzionante e garantirti la migliore esperienza.</p> 
             
             <p class="centerable">Se sei curioso, visita il nostro <a href="https://www.teammolise.rocks/MyUnimol">sito web</a> oppure chiedici di partecipare 
-            inviando un messaggio privato sulla nostra <a href="https://www.facebook.com/MyUnimol">pagina Facebook</a>.</p>
+            inviando un messaggio privato sulla nostra <a href="https://www.facebook.com/MyUnimol">pagina Facebook</a>. Siamo anche su <a href="https://twitter.com/MyUnimol">Twitter</a>!</p>
             
-            <p class="centerable">A presto!</p> 
+            <p class="centerable">A presto!</p>
+            <br> 
+            <div style="text-align: center;">
+            	<div style="display: inline;">
+	        		<div class="fb-like-box" data-href="https://www.facebook.com/MyUnimol" data-height="400" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="true" data-show-border="false"></div>
+        		</div>
+            	<div style="display: inline;">
+		            <a class="twitter-timeline" width="300" href="https://twitter.com/MyUnimol" data-widget-id="561534195642933248">Tweets by @MyUnimol</a>
+					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+	        	</div>
+        	</div>
         </div>
         <div id="push2"></div>
         <div id="footer">
