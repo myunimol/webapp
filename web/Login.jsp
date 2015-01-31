@@ -143,8 +143,8 @@
         </style>
     </head>
     <body id="body_id">
-        <div id="preloader-spinner" horizontal layout center style="height: 100%;">
-            <div vertical layout center style="margin: 0 auto">
+        <div id="preloader-spinner" style="height: 100%; text-align: center;">
+            <div style="margin: 0 auto">
                 <h1>Solo un secondo...</h1>
                 <img alt="preloader" src="img/preloader.GIF" width="64">
             </div>
