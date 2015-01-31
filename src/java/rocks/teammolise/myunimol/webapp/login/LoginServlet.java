@@ -6,18 +6,23 @@
 package rocks.teammolise.myunimol.webapp.login;
 
 import com.mashape.unirest.http.exceptions.UnirestException;
+
 import java.io.IOException;
 import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import org.json.*;
 
 import rocks.teammolise.myunimol.api.APIConsumer;
 import rocks.teammolise.myunimol.webapp.UserInfo;
+import rocks.teammolise.myunimol.webapp.configuration.ConfigurationManager;
+import rocks.teammolise.myunimol.webapp.configuration.ConfigurationManagerHandler;
 
 /**
  * 
@@ -41,11 +46,17 @@ public class LoginServlet extends HttpServlet {
         //il tipo di risultato della servlet
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        ConfigurationManager configManager = ConfigurationManagerHandler.getInstance();
 
         try {
             //sono per ricavare il contenuto degli input field
             String username = (String) request.getParameter("username");
             String password = (String) request.getParameter("password");
+            
+            if (!configManager.isAllowed(username)) {
+            	response.sendError(HttpServletResponse.SC_FORBIDDEN, "Betatest; you are not allowed!");
+            	return;
+            }
             
             JSONObject loginJSON = new APIConsumer().consume("testCredentials", username, password);
             

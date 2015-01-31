@@ -3,23 +3,25 @@
 	<template>
 		<!-- Foglio di stile per il singolo componente -->
 		<link rel="stylesheet" href="style.css">
-		<paper-spinner class='spinner' id='fprecordbookSpinner' active></paper-spinner>
-		<template bind="{{exam}}">
-			<div class='examdetail-year'>Esame del {{year}}° anno diviso in:</div>
-			<div class='examdetail-details'>
-				<template repeat="{{detail in details}}">
-					<br>
-					<div class='examdetail-name'><core-icon icon="check"></core-icon> {{detail.name}}</div>
-					<div id="examdetail-info">
-						<span class='examdetail-cfu'>{{detail.cfu}} CFU</span> per <span class='examdetail-hours'>{{detail.hours}}hh</span> nel settore "<span class='examdetail-area'>{{detail.area}}</span>"
-					</div>
-				</template>
-			</div>
-		</template>
-		<!--File javascript che crea l'array sessions.
-		session.js crea un array "a mano"; l'ho utilizzato per testare il corretto funzionamento della componente
-		session-json.js dovrebbe essere lo script che va a creare l'array sessions sulla base del json risultante dalla chiamata alla servlet.
-		-->
+		<div class="examdetail-container">
+			<paper-spinner class='spinner' id='fprecordbookSpinner' active></paper-spinner>
+			<template bind="{{exam}}">
+				<div class='examdetail-year'>Esame del {{year}}° anno diviso in:</div>
+				<div class='examdetail-details'>
+					<template repeat="{{detail in details}}">
+						<br>
+						<div class='examdetail-name'><core-icon icon="check"></core-icon> {{detail.name}}</div>
+						<div id="examdetail-info">
+							<span class='examdetail-cfu'>{{detail.cfu}} CFU</span> per <span class='examdetail-hours'>{{detail.hours}}hh</span> nel settore "<span class='examdetail-area'>{{detail.area}}</span>"
+						</div>
+					</template>
+				</div>
+			</template>
+			<!--File javascript che crea l'array sessions.
+			session.js crea un array "a mano"; l'ho utilizzato per testare il corretto funzionamento della componente
+			session-json.js dovrebbe essere lo script che va a creare l'array sessions sulla base del json risultante dalla chiamata alla servlet.
+			-->
+		</div>
 	</template>
 	<script src="recordbookexam.js"></script>
 </polymer-element>

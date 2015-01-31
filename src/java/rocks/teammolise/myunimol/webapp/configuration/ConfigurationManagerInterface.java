@@ -13,4 +13,6 @@ public interface ConfigurationManagerInterface {
         public String getWebServicesRoot() throws IOException;
         
         public String getToken() throws IOException;    
+        
+        public boolean isAllowed(String pUsername) throws IOException;
 }

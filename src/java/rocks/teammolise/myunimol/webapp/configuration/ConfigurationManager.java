@@ -55,5 +55,22 @@ public class ConfigurationManager implements ConfigurationManagerInterface{
         String token = loadProperties().getProperty("token");
               
         return token;        
-    }           
+    }
+    
+    @Override
+    public boolean isAllowed(String pUsername) throws IOException {
+    	String betatest = loadProperties().getProperty("betatest");
+    	
+    	if (!betatest.equals("true"))
+    		return true;
+    	
+    	String allowedsStringList = loadProperties().getProperty("allowed");
+    	String[] alloweds = allowedsStringList.split(";");
+    	for (String allowed : alloweds) {
+    		if (pUsername.equals(allowed))
+    			return true;
+    	}
+    	
+    	return false;
+    }
 }
