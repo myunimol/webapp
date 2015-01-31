@@ -146,7 +146,7 @@
         <div id="preloader-spinner" horizontal layout center style="height: 100%;">
             <div vertical layout center style="margin: 0 auto">
                 <h1>Solo un secondo...</h1>
-                <paper-spinner active></paper-spinner>
+                <img alt="preloader" src="img/preloader.GIF" width="64">
             </div>
         </div>
         <div id="after-loading" style="height: 100%; margin: 0; display: none">
@@ -224,7 +224,9 @@
         document.addEventListener("polymer-ready", function() {
             document.getElementById("preloader-spinner").style.display = "none";
             document.getElementById("after-loading").style.display = "block";
-            document.getElementById("username_input_field").focus();
+            
+            // removed because of an incopatibility with webapp in Safari on iOS.
+//             document.getElementById("username_input_field").focus();
 
             var appName = document.getElementById("appName");
             var footerDiv = document.getElementById("footer");
