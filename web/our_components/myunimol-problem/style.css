@@ -1,0 +1,37 @@
+#problemContainer {
+	text-align: center;
+	margin: 0 auto;
+	width: 90%;
+}
+
+#header {
+	margin-top: 3em;
+}
+
+#header p {
+	font-size: larger;
+}
+
+#other {
+	width: 80%;
+	margin: 0 auto;
+}
+
+#buttonsContainer {
+	margin-top: 2em;
+	margin-bottom: 3em;
+}
+
+.button {
+	background: #526E9C;
+	color: #fff;
+}
+
+.button-cancel {
+	background: #F44336;
+	color: #fff;
+}
+
+paper-dialog {
+	width: 50%;
+}

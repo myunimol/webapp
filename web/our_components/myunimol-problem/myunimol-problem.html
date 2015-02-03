@@ -1,0 +1,71 @@
+<!-- Some eventually needed imports -->
+<link rel="import" href="../../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../../bower_components/core-menu/core-menu.html">
+<link rel="import" href="../../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/core-icon/core-icon.html">
+<link rel="import" href="../../bower_components/core-input/core-input.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input-decorator.html">
+<link rel="import" href="../../bower_components/paper-input/paper-autogrow-textarea.html">
+<link rel="import" href="../../bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="../../bower_components/paper-dialog/paper-dialog-transition.html">
+
+<polymer-element name="myunimol-problem">
+	<template>
+		<style>
+	      @host { :scope {display: block;} }
+	    </style>
+		<!-- Foglio di stile per il singolo componente -->
+        <link rel="stylesheet" href="style.css">
+        <div id="problemContainer">
+        	<div id="header">
+        		<img src="../../img/sad.png" alt="emoji sad" width="100">
+        		<h1>Ci dispiace...</h1>
+        		<h3>...ma sbagliare è umano!</h3>
+        		<br>
+        		<p>Segnalaci il problema che hai riscontrato e cercheremo di risolverlo il prima possibile! <img alt="emoji swag" src="../../img/swag.png" width="20"></p>
+        		<br>
+        	</div>
+        	<div id="content">
+        		<div class="question">
+	        		Nello specifico, che cosa non funziona?&nbsp;&nbsp;&nbsp;<paper-dropdown-menu id="what" label="Scegli dall'elenco..." valueattr="label" on-core-select="{{selectProblemAction}}" selectedItem="{{selectedProblem}}">
+				        <template repeat="{{problem in problems}}">
+				        	<paper-item label="{{problem}}"></paper-item>
+				        </template>
+					</paper-dropdown-menu>
+        		</div>
+        		<div class="question" id="other" style="display: none;">
+        			<paper-input-decorator label="...e cioè???" floatinglabel>
+        				<input id="otherProblem" is="core-input" placeholder="...e cioè???" aria-label="...e cioè???">
+        			</paper-input-decorator>
+        		</div>
+        		<div class="question" id="specification">
+        			<paper-input-decorator label="Se vuoi, aggiungi ulteriori dettagli..." floatinglabel>
+				      <paper-autogrow-textarea>
+				        <textarea id="details" placeholder="Se vuoi, aggiungi ulteriori dettagli..." aria-label="Se vuoi, aggiungi ulteriori dettagli..."></textarea>
+				      </paper-autogrow-textarea>
+				    </paper-input-decorator>
+        		</div>
+        	</div>
+        	<div id="buttonsContainer">
+<!-- 	        	<paper-button id="buttonCancel" class="button-cancel" raised role="button"><core-icon icon="cancel" aria-label="cancel" role="img"></core-icon>Annulla</paper-button> -->
+	        	<paper-button id="buttonSend" on-tap="{{sendAction}}" class="button" raised role="button"><core-icon icon="send" aria-label="send" role="img"></core-icon>Invia</paper-button>
+	        	<paper-spinner id="sending" role="progressbar" aria-label="loading"></paper-spinner>
+        	</div>
+        </div>
+        <paper-dialog id="errorMsgDialog" transition="paper-dialog-transition-bottom" aria-label="Errore" heading="Errore" backdrop>
+        	<p id="headerMsgDialog"></p>
+        	<p id="errorMsg"></p>
+        	<paper-button label="Ok, ho capito" affirmative autofocus></paper-button>
+        </paper-dialog> 
+        <paper-toast id="thankyouToast" text="Grazie per averci segnalato il problema." duration="5000"></paper-toast>
+        <core-ajax
+        	id="ajax"
+		    url="../../SendProblem"
+		    handleAs="json"
+		    method="post"
+		    on-core-response="{{handleServletResponse}}"
+		    on-core-error="{{handleAjaxError}}"></core-ajax>
+	</template>
+	<script src="myunimol-problem.js"></script>
+</polymer-element>
