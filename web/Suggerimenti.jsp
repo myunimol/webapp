@@ -32,12 +32,13 @@
         %>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 		<link rel='import' href='our_components/myunimol-problem/myunimol-problem.html' />
+		<link rel='import' href='our_components/myunimol-advice/myunimol-advice.html' />
         <link rel='import' href='our_components/myunimol-ajax/myunimol-ajax.html' />
         
         <style shim-shadowdom>
             paper-tabs {
                 background-color: transparent;
-                color: #000';
+                color: #000;
                 box-shadow: none;
             }
 			paper-tabs::shadow #selectionBar {
@@ -72,7 +73,7 @@
 					<myunimol-problem></myunimol-problem>
 				</div>
 				<div id="adviceContent" style="display: none;">
-					advice
+					<myunimol-advice></myunimol-advice>
 				</div>
             </div>
         </core-header-panel>
