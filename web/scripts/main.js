@@ -3,6 +3,14 @@ function standardPolymerLoad() {
 	var toast = document.createElement("paper-toast");
 	document.errorHandlerToast = toast;
 	document.body.appendChild(toast);
+	
+	var preload = document.getElementById("preloader-spinner");
+	var realContent = document.getElementById("after-loading");
+	
+	if (preload != null && preload != undefined) {
+		preload.style.display = "none";
+		realContent.style.display = "block";
+	}
 }
 
 function setMenuAction() {

@@ -7,163 +7,172 @@
 <%@page import="rocks.teammolise.myunimol.webapp.UserInfo"%>
 <%@page import="rocks.teammolise.myunimol.jsputils.JspUtils"%>
 <%
-    JspUtils utils = new JspUtils(request, response, session, out);
+	JspUtils utils = new JspUtils(request, response, session, out);
 
-    if (!utils.checkLogin()) {
-        return;
-    }
+	if (!utils.checkLogin()) {
+		return;
+	}
 %>
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>MyUnimol</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <%
-            utils.writeStandardImports();
+<head>
+<title>MyUnimol</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<%
+	utils.writeStandardImports();
 
-            utils.writePolymerImport("core-header-panel");
-            utils.writePolymerImport("core-drawer-panel");
-            utils.writePolymerImport("core-menu");
-            utils.writePolymerImport("core-item");
-            utils.writePolymerImport("core-icon-button");
-            utils.writePolymerImport("core-toolbar");
-            utils.writePolymerImport("core-icons");
-            utils.writePolymerImport("core-icon");
-            utils.writePolymerImport("paper-icon-button");
-            utils.writePolymerImport("core-ajax");
-            utils.writePolymerImport("paper-tabs");
-        %>
+	utils.writePolymerImport("core-header-panel");
+	utils.writePolymerImport("core-drawer-panel");
+	utils.writePolymerImport("core-menu");
+	utils.writePolymerImport("core-item");
+	utils.writePolymerImport("core-icon-button");
+	utils.writePolymerImport("core-toolbar");
+	utils.writePolymerImport("core-icons");
+	utils.writePolymerImport("core-icon");
+	utils.writePolymerImport("paper-icon-button");
+	utils.writePolymerImport("core-ajax");
+	utils.writePolymerImport("paper-tabs");
+%>
 
-        <link rel="import" href="our_components/cdr-news/cdr-news.html">
-        <link rel='import' href='our_components/myunimol-ajax/myunimol-ajax.html' />
-        <style shim-shadowdom>
-            paper-tabs {
-                background-color: transparent;
-                color: #000';
-                    box-shadow: none;
-                    }
-                    paper-tabs::shadow #selectionBar {
-                    background-color: #526E9C;
-                    }
-                    paper-tabs paper-tab::shadow #ink {
-                    color: #526E9C;
-                    }
-                    #no-items {
-                    position: relative;
-                    display: block;
-                    width: 60%;
-                    margin: 20%;
-                    color: #526E9C;
-                    text-align: center;
-                    }
-                    #no-items > img {
-                    width: 50px;
-                    }
-                </style>
-            </head>
+<link rel="import" href="our_components/cdr-news/cdr-news.html">
+<link rel='import'
+	href='our_components/myunimol-ajax/myunimol-ajax.html' />
+<style shim-shadowdom>
+paper-tabs {
+	background-color: transparent;
+	color: #000';
+	box-shadow: none;
+}
 
-            <body>
-            <myunimol-ajax
-                id='ajaxAteneo' 
-                method='POST'
-                url="GetUniversityNewsServlet" 
-                params='{}' 
-                handleAs='json'>
-            </myunimol-ajax>
+paper-tabs::shadow #selectionBar {
+	background-color: #526E9C;
+}
 
-            <myunimol-ajax
-                id='ajaxDip' 
-                method='POST'
-                url="GetDepartmentNewsServlet" 
-                params='{}' 
-                handleAs='json'>
-            </myunimol-ajax>
+paper-tabs paper-tab::shadow #ink {
+	color: #526E9C;
+}
 
-            <myunimol-ajax auto
-                           id='ajaxAvvisi' 
-                           method='POST'
-                           url="GetNewsBoardServlet" 
-                           params=''
-                           handleAs='json'>
-            </myunimol-ajax>
+#no-items {
+	position: relative;
+	display: block;
+	width: 60%;
+	margin: 20%;
+	color: #526E9C;
+	text-align: center;
+}
 
-            <core-drawer-panel id="drawerPanel">
-                <% utils.writeLeftMenu("News", 4);%>
-                <core-header-panel main>
-                    <core-toolbar id="mainheader">
-                        <paper-icon-button id="navicon" icon="menu"></paper-icon-button>
-                        <span flex style="font-size: 28;">
-                            News
-                        </span>
-                    </core-toolbar>
-                    <paper-tabs selected='0'>
-                        <paper-tab id='avvisi'>Avvisi</paper-tab>
-                        <paper-tab id='ateneo'>Ateneo</paper-tab>
-                        <paper-tab id='dipartimento'>Dipartimento</paper-tab>
-                    </paper-tabs>
-                    <div id='activeContentHandler' class="content">
-                        <div id="news-lav">
-                            <cdr-news id='cdrnews'></cdr-news>
-                            <div class="centeredMessage" class='no-sessions' id="no-sessions-av" style="display: none;">
-                                <img src="img/sad.png" alt="sad emoji"/>
-                                <p>Al momento sembra non ci siano news...</p>
-                            </div>
-                        </div>
-                    </div>
-                </core-header-panel>
+#no-items>img {
+	width: 50px;
+}
+</style>
+</head>
 
-            </core-drawer-panel>
-            <script>
-                document.addEventListener('polymer-ready', function() {
-                    document.ajaxAction = function(event) {
-                        if (event.detail.response.result == "failure") {
-                            document.getElementById("default-msg").innerHTML = event.detail.response.msg;
-                            document.getElementById("no-items").style.display = "block";
-                            document.getElementById("cdrnews").newsList = null;
-                        } else {
-                            if (event.detail.response.newsList.length == 0) {
-                                document.getElementById('no-sessions-av').style.display = "block";
-                                document.getElementById('cdrnews').style.display = "none";
-                            }
-                            else if(event.detail.response.newsList.length != 0){
-                                document.getElementById("no-sessions-av").style.display = "none";
-                                document.getElementById("cdrnews").newsList = event.detail.response.newsList;
-                                document.getElementById('cdrnews').style.display = "block";
-                            }
-                        }
-                    }
+<body>
+	<!-- Preloader snippet -->
+	<div id="preloader-spinner" style="height: 100%; text-align: center;">
+		<div style="margin: 0 auto">
+			<h1>Solo un secondo...</h1>
+			<img alt="preloader" src="img/preloader.GIF" width="64">
+		</div>
+	</div>
+	<div id="after-loading" style="height: 100%; margin: 0; display: none">
+		<!-- End Preloader snippet -->
+		<myunimol-ajax id='ajaxAteneo' method='POST'
+			url="GetUniversityNewsServlet" params='{}' handleAs='json'>
+		</myunimol-ajax>
 
-                    document.ajaxAteneo = document.getElementById("ajaxAteneo");
-                    document.ajaxDip = document.getElementById("ajaxDip");
-                    document.ajaxAvvisi = document.getElementById("ajaxAvvisi");
+		<myunimol-ajax id='ajaxDip' method='POST'
+			url="GetDepartmentNewsServlet" params='{}' handleAs='json'>
+		</myunimol-ajax>
 
-                    document.ajaxAteneo.addEventListener("myunimol-response", document.ajaxAction);
-                    document.ajaxDip.addEventListener("myunimol-response", document.ajaxAction);
-                    document.ajaxAvvisi.addEventListener("myunimol-response", document.ajaxAction);
+		<myunimol-ajax auto id='ajaxAvvisi' method='POST'
+			url="GetNewsBoardServlet" params='' handleAs='json'>
+		</myunimol-ajax>
 
-                    var avvisi = document.getElementById('avvisi');
-                    var ateneo = document.getElementById('ateneo');
-                    var dipartimento = document.getElementById('dipartimento');
+		<core-drawer-panel id="drawerPanel"> <%
+ 	utils.writeLeftMenu("News", 4);
+ %>
+		<core-header-panel main> <core-toolbar
+			id="mainheader"> <paper-icon-button id="navicon"
+			icon="menu"></paper-icon-button> <span flex style="font-size: 28;">
+			News </span> </core-toolbar> <paper-tabs selected='0'> <paper-tab id='avvisi'>Avvisi</paper-tab>
+		<paper-tab id='ateneo'>Ateneo</paper-tab> <paper-tab id='dipartimento'>Dipartimento</paper-tab>
+		</paper-tabs>
+		<div id='activeContentHandler' class="content">
+			<div id="news-lav">
+				<cdr-news id='cdrnews'></cdr-news>
+				<div class="centeredMessage" class='no-sessions' id="no-sessions-av"
+					style="display: none;">
+					<img src="img/sad.png" alt="sad emoji" />
+					<p>Al momento sembra non ci siano news...</p>
+				</div>
+			</div>
+		</div>
+		</core-header-panel> </core-drawer-panel>
+	</div>
+	<!-- End Preloader div -->
+	<script>
+		document
+				.addEventListener(
+						'polymer-ready',
+						function() {
+							document.ajaxAction = function(event) {
+								if (event.detail.response.result == "failure") {
+									document.getElementById("default-msg").innerHTML = event.detail.response.msg;
+									document.getElementById("no-items").style.display = "block";
+									document.getElementById("cdrnews").newsList = null;
+								} else {
+									if (event.detail.response.newsList.length == 0) {
+										document
+												.getElementById('no-sessions-av').style.display = "block";
+										document.getElementById('cdrnews').style.display = "none";
+									} else if (event.detail.response.newsList.length != 0) {
+										document
+												.getElementById("no-sessions-av").style.display = "none";
+										document.getElementById("cdrnews").newsList = event.detail.response.newsList;
+										document.getElementById('cdrnews').style.display = "block";
+									}
+								}
+							}
 
-                    avvisi.addEventListener('click', function() {
-                        document.ajaxAvvisi.go();
-                    });
+							document.ajaxAteneo = document
+									.getElementById("ajaxAteneo");
+							document.ajaxDip = document
+									.getElementById("ajaxDip");
+							document.ajaxAvvisi = document
+									.getElementById("ajaxAvvisi");
 
-                    ateneo.addEventListener('click', function() {
-                        document.ajaxAteneo.go();
-                    });
+							document.ajaxAteneo.addEventListener(
+									"myunimol-response", document.ajaxAction);
+							document.ajaxDip.addEventListener(
+									"myunimol-response", document.ajaxAction);
+							document.ajaxAvvisi.addEventListener(
+									"myunimol-response", document.ajaxAction);
 
-                    dipartimento.addEventListener('click', function() {
-                        document.ajaxDip.go();
-                    });
-                });
-                
-                function checkNewsLength(){
-                    
-                }
-            </script>
-        </body>
-    </html>
+							var avvisi = document.getElementById('avvisi');
+							var ateneo = document.getElementById('ateneo');
+							var dipartimento = document
+									.getElementById('dipartimento');
+
+							avvisi.addEventListener('click', function() {
+								document.ajaxAvvisi.go();
+							});
+
+							ateneo.addEventListener('click', function() {
+								document.ajaxAteneo.go();
+							});
+
+							dipartimento.addEventListener('click', function() {
+								document.ajaxDip.go();
+							});
+						});
+
+		function checkNewsLength() {
+
+		}
+	</script>
+</body>
+</html>

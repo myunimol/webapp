@@ -36,6 +36,15 @@
     </head>
 
     <body>
+    <!-- Preloader snippet -->
+    <div id="preloader-spinner" style="height: 100%; text-align: center;">
+        <div style="margin: 0 auto">
+            <h1>Solo un secondo...</h1>
+            <img alt="preloader" src="img/preloader.GIF" width="64">
+        </div>
+    </div>
+    <div id="after-loading" style="height: 100%; margin: 0; display: none">
+    <!-- End Preloader snippet -->
     <myunimol-ajax auto 
                id='ajax' 
                method='POST' 
@@ -61,6 +70,7 @@
         </core-header-panel>
 
     </core-drawer-panel>
+    </div> <!-- End Preloader div -->
     <script>
         document.addEventListener('polymer-ready', function () {
             var ajax = document.getElementById("ajax");
