@@ -254,5 +254,6 @@
 									})
 						});
 	</script>
+	<% utils.writeTrackingCode(); %>
 </body>
 </html>

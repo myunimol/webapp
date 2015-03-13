@@ -174,5 +174,6 @@ paper-tabs paper-tab::shadow #ink {
 
 		}
 	</script>
+	<% utils.writeTrackingCode(); %>
 </body>
 </html>
