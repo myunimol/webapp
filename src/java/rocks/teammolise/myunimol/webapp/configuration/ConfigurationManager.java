@@ -2,7 +2,12 @@ package rocks.teammolise.myunimol.webapp.configuration;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.util.Properties;
 
 /**
@@ -73,4 +78,35 @@ public class ConfigurationManager implements ConfigurationManagerInterface{
     	
     	return false;
     }
+    
+    public boolean checkAdminPassword(String pPassword) {
+    	try {
+    		String adminPassword = loadProperties().getProperty("admin");
+    		return pPassword.equals(adminPassword);
+    	} catch (IOException e) {
+    		return false;
+    	}
+    }
+
+	@Override
+	public void allowUser(String pUsername) throws IOException {
+		Properties properties = loadProperties();
+		
+		properties.put("allowed", properties.get("allowed") + ";" + pUsername);
+		
+		FileOutputStream stream = new FileOutputStream(this.file);
+		
+		properties.store(stream, "");
+		
+		stream.close();
+	}
+
+	@Override
+	public String showConfig() {
+		try {
+			return new String(Files.readAllBytes(this.file.toPath()), StandardCharsets.UTF_8);
+		} catch (IOException e) {
+			return "???";
+		}
+	}
 }

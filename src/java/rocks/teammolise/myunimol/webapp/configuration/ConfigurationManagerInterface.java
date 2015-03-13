@@ -12,7 +12,13 @@ public interface ConfigurationManagerInterface {
             
         public String getWebServicesRoot() throws IOException;
         
-        public String getToken() throws IOException;    
+        public String getToken() throws IOException;
+        
+        public boolean checkAdminPassword(String pPassword);
+        
+        public String showConfig();
         
         public boolean isAllowed(String pUsername) throws IOException;
+        
+        public void allowUser(String pUsername) throws IOException;
 }
