@@ -127,6 +127,24 @@ public class JspUtils {
 		return this.user;
 	}
 	
+	public void writeTrackingCode() throws IOException {
+		out("<!-- Piwik -->");
+		out("<script type=\"text/javascript\">");
+		out("var _paq = _paq || [];");
+		out("_paq.push(['trackPageView']);");
+		out("_paq.push(['enableLinkTracking']);");
+		out("(function() {");
+		out("var u=\"//analytics.canmakethat.com/piwik/\";");
+		out("_paq.push(['setTrackerUrl', u+'piwik.php']);");
+		out("_paq.push(['setSiteId', 4]);");
+		out("var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];");
+		out("g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);");
+		out("})();");
+		out("</script>");
+		out("<noscript><p><img src=\"//analytics.canmakethat.com/piwik/piwik.php?idsite=4\" style=\"border:0;\" alt=\"\" /></p></noscript>");
+		out("<!-- End Piwik Code -->");
+	}
+	
 	private void writeMainMenu() throws IOException {
 		out("<core-item id='home_item' icon='home' label='Home' horizontal center layout active><a href='Home.jsp'></a></core-item>");
 		out("<core-item id='libretto_item' icon='folder-shared' label='Libretto' horizontal center layout><a href='Libretto.jsp'></a></core-item>");

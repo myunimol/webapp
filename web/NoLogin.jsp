@@ -356,5 +356,6 @@ body {
 
 		}
 	</script>
+	<% utils.writeTrackingCode(); %>
 </body>
 </html>
