@@ -104,16 +104,15 @@ paper-tabs paper-tab::shadow #ink {
 		<div id='activeContentHandler' class="content">
 			<div id="news-lav">
 				<cdr-news id='cdrnews'></cdr-news>
-				<div class="centeredMessage" class='no-sessions' id="no-sessions-av"
+				<div class="centeredMessage" class='no-items' id="no-items"
 					style="display: none;">
 					<img src="img/sad.png" alt="sad emoji" />
-					<p>Al momento sembra non ci siano news...</p>
+					<p id="default-msg">Al momento sembra non ci siano news...</p>
 				</div>
 			</div>
 		</div>
 		</core-header-panel> </core-drawer-panel>
-	</div>
-	<!-- End Preloader div -->
+	</div><!-- End Preloader div -->
 	<script>
 		document
 				.addEventListener(
@@ -126,12 +125,10 @@ paper-tabs paper-tab::shadow #ink {
 									document.getElementById("cdrnews").newsList = null;
 								} else {
 									if (event.detail.response.newsList.length == 0) {
-										document
-												.getElementById('no-sessions-av').style.display = "block";
+										document.getElementById('no-items').style.display = "block";
 										document.getElementById('cdrnews').style.display = "none";
 									} else if (event.detail.response.newsList.length != 0) {
-										document
-												.getElementById("no-sessions-av").style.display = "none";
+										document.getElementById("no-items").style.display = "none";
 										document.getElementById("cdrnews").newsList = event.detail.response.newsList;
 										document.getElementById('cdrnews').style.display = "block";
 									}
