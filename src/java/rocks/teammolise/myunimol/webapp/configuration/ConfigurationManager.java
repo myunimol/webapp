@@ -3,9 +3,7 @@ package rocks.teammolise.myunimol.webapp.configuration;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.Properties;
@@ -108,5 +106,11 @@ public class ConfigurationManager implements ConfigurationManagerInterface{
 		} catch (IOException e) {
 			return "???";
 		}
+	}
+
+	@Override
+	public String getMongoDbUri() throws IOException {
+		String mdburi = loadProperties().getProperty("mongodburi");
+		return mdburi;
 	}
 }

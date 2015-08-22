@@ -17,15 +17,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.bson.Document;
-import org.json.JSONObject;
 
-import com.mongodb.DB;
+import rocks.teammolise.myunimol.webapp.UserInfo;
+import rocks.teammolise.myunimol.webapp.configuration.ConfigurationManager;
+import rocks.teammolise.myunimol.webapp.configuration.ConfigurationManagerHandler;
+
 import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-
-import rocks.teammolise.myunimol.api.APIConsumer;
-import rocks.teammolise.myunimol.webapp.UserInfo;
 
 /**
  * 
@@ -33,6 +33,8 @@ import rocks.teammolise.myunimol.webapp.UserInfo;
  */
 @WebServlet(name = "SendProblem", urlPatterns = { "/SendProblem" })
 public class SendProblem extends HttpServlet {
+
+	private static final long serialVersionUID = 2946626199357505811L;
 
 	/**
 	 * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -52,6 +54,7 @@ public class SendProblem extends HttpServlet {
 		response.setContentType("application/json;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 
+		MongoClient mongoClient = null;
 		try {
 			if (request.getSession().getAttribute("userInfo") == null) {
 				response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized");
@@ -67,9 +70,13 @@ public class SendProblem extends HttpServlet {
 			String other = request.getParameter("other");
 			String details = request.getParameter("details");
 			
-		
-			MongoClient mongoClient = new MongoClient("localhost", 27017);
-			MongoDatabase db = mongoClient.getDatabase("myunimol");
+			ConfigurationManager confMgr = ConfigurationManagerHandler.getInstance();
+			String mdburi = confMgr.getMongoDbUri();
+			int pos = mdburi.lastIndexOf("/");
+			String dbName = mdburi.substring(pos+1, mdburi.length());
+			MongoClientURI uri = new MongoClientURI(mdburi);
+			mongoClient = new MongoClient(uri);
+			MongoDatabase db = mongoClient.getDatabase(dbName);
 			
 			MongoCollection<Document> collection = db.getCollection("problems");
 			Map<String, Object> userinfo = new HashMap<String, Object>();

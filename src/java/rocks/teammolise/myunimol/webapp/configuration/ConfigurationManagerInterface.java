@@ -21,4 +21,6 @@ public interface ConfigurationManagerInterface {
         public boolean isAllowed(String pUsername) throws IOException;
         
         public void allowUser(String pUsername) throws IOException;
+        
+        public String getMongoDbUri() throws IOException;
 }
