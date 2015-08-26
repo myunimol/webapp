@@ -200,7 +200,7 @@ body {
 		<div id="push2"></div>
 		<div id="footer">
 			<p>
-					<a href="https://www.facebook.com/hashtag/myunimol" target="__BLANK">#MyUnimol</a>
+					<a href="https://www.facebook.com/MyUnimol" target="__BLANK">MyUnimol</a>
 					&egrave; un <a href="https://github.com/myunimol">progetto Open Source</a> gestito da alcuni studenti dell'<a
 						href="http://unimol.it" target="__BLANK">Universit&agrave;
 						degli Studi del Molise</a>. <a href="https://www.facebook.com/hashtag/myunimol" target="__BLANK">#MyUnimol</a> <img src="img/heart.png" height="15" /> Open Source.
@@ -218,7 +218,7 @@ body {
 			<paper-icon-button icon="arrow-drop-up" id="mobile_foote_icon_button"></paper-icon-button>
 			<div id="mobile_disclaimer" style="display: none">
 					<p>
-					<a href="https://www.facebook.com/hashtag/myunimol" target="__BLANK">#MyUnimol</a>
+					<a href="https://www.facebook.com/MyUnimol" target="__BLANK">MyUnimol</a>
 					&egrave; un <a href="https://github.com/myunimol">progetto Open Source</a> gestito da alcuni studenti dell'<a
 						href="http://unimol.it" target="__BLANK">Universit&agrave;
 						degli Studi del Molise</a>. <a href="https://www.facebook.com/hashtag/myunimol" target="__BLANK">#MyUnimol</a> <img src="img/heart.png" height="15" /> Open Source.
