@@ -18,6 +18,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="description" content="MyUnimol è la nuova applicazione per gestire in maniera efficace ed efficiente la tua carriera universitaria!" />
+<meta name="author" content="MyUnimol" />
 <%
 	utils.writeStandardImports();
 
@@ -198,33 +200,31 @@ body {
 		<div id="push2"></div>
 		<div id="footer">
 			<p>
-				<a href="http://teammolise.rocks/MyUnimol" target="__BLANK">MyUnimol</a>
-				&egrave; un'applicazione sviluppata da alcuni studenti dell'<a
-					href="http://unimol.it" target="__BLANK">Universit&agrave;
-					degli Studi del Molise</a> e dell'<a href="http://unisa.it"
-					target="__BLANK">Universit&agrave; degli Studi di Salerno</a>.
-			</p>
-			<h6>
-				Copyright <a href="http://teammolise.rocks/MyUnimol"
-					target="__BLANK">MyUnimol</a>
-				<%
-					out.print(Calendar.getInstance().get(Calendar.YEAR));
-				%>
-				&copy; &mdash; Tutti i diritti riservati
-			</h6>
+					<a href="https://www.facebook.com/MyUnimol" target="__BLANK">MyUnimol</a>
+					&egrave; un <a href="https://github.com/myunimol">progetto Open Source</a> gestito da alcuni studenti dell'<a
+						href="http://unimol.it" target="__BLANK">Universit&agrave;
+						degli Studi del Molise</a>. <a href="https://www.facebook.com/hashtag/myunimol" target="__BLANK">#MyUnimol</a> <img src="img/heart.png" height="15" /> Open Source.
+				</p>
+				<h6>
+					Copyright <a href="https://github.com/myunimol"
+						target="__BLANK">MyUnimol</a>
+					<%
+						out.print(Calendar.getInstance().get(Calendar.YEAR));
+					%>
+					&copy; &mdash; Tutti i diritti riservati
+				</h6>
 		</div>
 		<div id="mobile_footer">
 			<paper-icon-button icon="arrow-drop-up" id="mobile_foote_icon_button"></paper-icon-button>
 			<div id="mobile_disclaimer" style="display: none">
-				<p>
-					<a href="http://teammolise.rocks/MyUnimol" target="__BLANK">MyUnimol</a>
-					&egrave; un'applicazione sviluppata da alcuni studenti dell'<a
+					<p>
+					<a href="https://www.facebook.com/MyUnimol" target="__BLANK">MyUnimol</a>
+					&egrave; un <a href="https://github.com/myunimol">progetto Open Source</a> gestito da alcuni studenti dell'<a
 						href="http://unimol.it" target="__BLANK">Universit&agrave;
-						degli Studi del Molise</a> e dell'<a href="http://unisa.it"
-						target="__BLANK">Universit&agrave; degli Studi di Salerno</a>.
+						degli Studi del Molise</a>. <a href="https://www.facebook.com/hashtag/myunimol" target="__BLANK">#MyUnimol</a> <img src="img/heart.png" height="15" /> Open Source.
 				</p>
 				<h6>
-					Copyright <a href="http://teammolise.rocks/MyUnimol"
+					Copyright <a href="https://github.com/myunimol"
 						target="__BLANK">MyUnimol</a>
 					<%
 						out.print(Calendar.getInstance().get(Calendar.YEAR));

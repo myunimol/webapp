@@ -21,11 +21,14 @@ import org.json.JSONObject;
 
 import com.mongodb.DB;
 import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
 import rocks.teammolise.myunimol.api.APIConsumer;
 import rocks.teammolise.myunimol.webapp.UserInfo;
+import rocks.teammolise.myunimol.webapp.configuration.ConfigurationManager;
+import rocks.teammolise.myunimol.webapp.configuration.ConfigurationManagerHandler;
 
 /**
  * 
@@ -33,6 +36,8 @@ import rocks.teammolise.myunimol.webapp.UserInfo;
  */
 @WebServlet(name = "SendAdvice", urlPatterns = { "/SendAdvice" })
 public class SendAdvice extends HttpServlet {
+
+	private static final long serialVersionUID = 1769283861945380763L;
 
 	/**
 	 * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -52,6 +57,7 @@ public class SendAdvice extends HttpServlet {
 		response.setContentType("application/json;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 
+		MongoClient mongoClient = null;
 		try {
 			if (request.getSession().getAttribute("userInfo") == null) {
 				response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized");
@@ -67,9 +73,13 @@ public class SendAdvice extends HttpServlet {
 			String other = request.getParameter("other");
 			String details = request.getParameter("details");
 			
-		
-			MongoClient mongoClient = new MongoClient("localhost", 27017);
-			MongoDatabase db = mongoClient.getDatabase("myunimol");
+			ConfigurationManager confMgr = ConfigurationManagerHandler.getInstance();
+			String mdburi = confMgr.getMongoDbUri();
+			int pos = mdburi.lastIndexOf("/");
+			String dbName = mdburi.substring(pos+1, mdburi.length());
+			MongoClientURI uri = new MongoClientURI(mdburi);
+			mongoClient = new MongoClient(uri);
+			MongoDatabase db = mongoClient.getDatabase(dbName);
 			
 			MongoCollection<Document> collection = db.getCollection("advices");
 			Map<String, Object> userinfo = new HashMap<String, Object>();
@@ -99,6 +109,7 @@ public class SendAdvice extends HttpServlet {
 			response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Internal server error");
 		} finally {
 			out.close();
+			mongoClient.close();
 		}
 	}
 
