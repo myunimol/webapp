@@ -128,21 +128,16 @@ public class JspUtils {
 	}
 	
 	public void writeTrackingCode() throws IOException {
-		out("<!-- Piwik -->");
-		out("<script type=\"text/javascript\">");
-		out("var _paq = _paq || [];");
-		out("_paq.push(['trackPageView']);");
-		out("_paq.push(['enableLinkTracking']);");
-		out("(function() {");
-		out("var u=\"//analytics.canmakethat.com/piwik/\";");
-		out("_paq.push(['setTrackerUrl', u+'piwik.php']);");
-		out("_paq.push(['setSiteId', 4]);");
-		out("var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];");
-		out("g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);");
-		out("})();");
+		out("<script>");
+		out("(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){");
+		out("(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),");
+		out("m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)");
+		out("})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');");
+		out("");
+		out("ga('create', 'UA-85742831-1', 'auto');");
+		out("ga('send', 'pageview');");
+		out("");
 		out("</script>");
-		out("<noscript><p><img src=\"//analytics.canmakethat.com/piwik/piwik.php?idsite=4\" style=\"border:0;\" alt=\"\" /></p></noscript>");
-		out("<!-- End Piwik Code -->");
 	}
 	
 	private void writeMainMenu() throws IOException {
