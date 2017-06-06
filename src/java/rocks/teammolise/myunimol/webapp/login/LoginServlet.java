@@ -66,7 +66,10 @@ public class LoginServlet extends HttpServlet {
                 //inserisco i dati presi dal JSON nel bean dell'utente
             	UserInfo userInfo = new UserInfo();
                 userInfo.setName(loginJSON.getString("name"));
-                userInfo.setSurname(loginJSON.getString("surname"));
+                if (loginJSON.has("surname"))
+                	userInfo.setSurname(loginJSON.getString("surname"));
+                else
+                	userInfo.setSurname("");
                 userInfo.setStudentClass(loginJSON.getString("studentClass"));
                 userInfo.setStudentId(loginJSON.getString("studentID"));
                 userInfo.setTaxes(loginJSON.getString("taxes"));
